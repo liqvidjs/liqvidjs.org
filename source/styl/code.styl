@@ -1,0 +1,30 @@
+code[class*="language-"], pre[class*="language-"]
+  background #222
+  border none
+  color #0F0
+  text-shadow none
+  
+:not(pre) > code[class*="language-"]
+  background #DDD
+  border none
+  box-shadow none
+  color #222
+  padding 0 3px
+
+.token.attr-value
+  color #FFF
+  
+.token.keyword
+  color #0FF
+
+.token.string, .language-css .token.string
+  color #FFF
+
+.token.interpolation, .token.interpolation > *
+  color orange
+
+.token.tag
+  color #FF0080
+
+.token.property
+  color $blue

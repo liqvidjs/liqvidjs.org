@@ -1,8 +1,90 @@
+/* colors */
+$wine = #AF1866
+$blue = #1A69B5
+
+/* reset */
 *
   box-sizing border-box
   margin 0
   padding 0
   
+:link, :visited
+  color inherit
+  text-decoration none
+
+html
+  height 100%
+  width 100%
+
 body
   font-family Helvetica, Arial, sans-serif
   font-size 16px
+  line-height 1.2
+  min-height 100%
+  width 100%
+  
+  --wine #AF1866
+  --blue #1A69B5
+
+nav
+  background lighten($blue, 97.5%)
+  border-right 2px solid $wine
+  width 20%
+  min-height 100%
+  
+  position fixed
+  
+#logo
+  display block
+  margin 0 auto
+  width 50%
+  
+nav > ul > li
+  color $wine
+  font-size 1.5rem
+  padding .2em .5em
+  
+main
+  padding .5em 2em .5em 1em
+  position absolute
+  left 20%
+  width 80%
+
+  :link, :visited
+    color $blue
+    font-weight bold
+
+// headers
+h1
+  margin 1em 0 .5em
+  
+h2
+  margin 1em 0 .5em
+
+h3
+  margin 1em 0 .5em
+
+h4
+  margin 1em 0 .5em
+  
+main p
+  margin .5em 0
+  
+dfn
+  font-weight bold
+  
+.todo
+  background #FDD
+  border 1px solid red
+  padding .5em
+  color red
+
+// lists
+main
+  ol, ul
+    margin 1em 0 1em 2em
+    
+  li
+    margin .5em 0
+
+@import "code"
