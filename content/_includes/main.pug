@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+    title= title
+    
+    link(href="/img/logo.png", rel="icon", type="image/png")
+
+    link(href="/css/prism.css", rel="stylesheet", type="text/css")
+    link(href="/css/style.css", rel="stylesheet", type="text/css")
+    script(src="/js/prism.js")
+  body
+    nav
+      a(href="/")
+        img(alt="Ractive-Player", id="logo", src="/img/logo.svg")
+      ul
+        li
+          a(href="/") Introduction
+        li Guide
+          ul
+            li
+              a(href="/guide/concepts") Concepts
+            li
+              a(href="/authoring") Authoring
+            li
+              a(href="/recording") Recording
+            li
+              a(href="/mastering") Mastering
+            li
+              a(href="/plugins") Plugins
+            li
+              a(href="/styling") CSS
+        li Reference
+
+          ul
+            li
+              a(href="/reference/Audio") Audio
+            li
+              a(href="/reference/Hooks") Hooks
+            li
+              a(href="/reference/IdMap") IdMap
+            li
+              a(href="/reference/Playback") Playback
+            li
+              a(href="/reference/Player") Player
+            li
+              a(href="/reference/Script") Script
+            li
+              a(href="/reference/Utils") Utils
+            li
+              a(href="/reference/Video") Video
+        li
+          a(href="/about") About
+    main !{content}
+    script document.write(`<script src="${location.protocol}//${location.hostname}:36000/livereload.js"><` + `/script>`);

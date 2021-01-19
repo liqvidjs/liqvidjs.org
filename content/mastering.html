@@ -1,0 +1,34 @@
+---
+layout: main.pug
+title: Mastering
+---
+
+<h1>Mastering</h1>
+
+<h2>Mastering Checklist</h2>
+
+<ol>
+  <li><input type="checkbox"/> Remove <code>rp-recording</code> code</li>
+
+  <li><input type="checkbox"/> Ensure fat-fingers etc. for mobile</li>
+
+  <li><input type="checkbox"/> Make sure that mouseUp events are appropriately <a href="/reference/Player/#preventCanvasClick">intercepted</a>.</li>
+
+  <li>
+    <p><input type="checkbox"/> Join audio audio files into a single file—this is necessary due to the <a href="https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide#The_play()_method">Web Autoplay Policy</a>. See <a href="https://trac.ffmpeg.org/wiki/Concatenate#demuxer">https://trac.ffmpeg.org/wiki/Concatenate#demuxer</a>.</p>
+  </li>
+
+  <li><input type="checkbox"/> Fix webm file produced by browser:
+    <pre class="language-bash command-line" data-prompt="$"><code>ffmpeg -i audio.webm -strict -2 audio-fixed.webm
+mv audio-fixed.webm audio.webm</code></pre>
+  </li>
+  <li><input type="checkbox"/> Ensure that audio files are available as both webm and mp4:
+    <pre class="language-bash command-line" data-prompt="$"><code>ffmpeg -i audio.webm audio.mp4</code></pre>
+  </li>
+
+  <li><input type="checkbox"/> Generate thumbnails for the video using <a href="https://github.com/ysulyma/rp-thumb-capture">rp-thumb-capture</a></li>
+  <li><input type="checkbox"/> Make sure there is CSS to load custom fonts etc.</li>
+  <li><input type="checkbox"/> Make sure MEDIA_URL is set correctly</li>
+  <li><input type="checkbox"/> Compress Javascript</li>
+  <li><input type="checkbox"/> Compress CSS</li>
+</ol>
