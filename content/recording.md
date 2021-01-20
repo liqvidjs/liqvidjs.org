@@ -47,8 +47,4 @@ import Recording from "rp-recording";
   </tbody>
 </table>
 
-<p class="todo">does pausing work reliably? probably not</p>
-
-<p class="todo">keyboard commands on different systems</p>
-
 <p class="todo">indicate warning about durations</p>

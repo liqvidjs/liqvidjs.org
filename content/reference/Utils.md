@@ -5,9 +5,7 @@ title: Utils
 
 # {{title}}
 
-<p class="todo">comment about prioritizing ease of authoring</p>
-
-<p>You will probably only need animation, authoring, interactivity, misc, mobile</p>
+<p>You will probably only need animation, authoring, interactivity, misc, mobile.</p>
 
 <h2 id="animation">Utils.animation</h2>
 
@@ -19,35 +17,6 @@ animate(options: {
   duration: number,
   easing?: (x: number) =&gt; number
 }): (t: number) =&gt; number;
-</code></pre>
-      
-<pre class="language-typescript" id="animation.easings"><code>
-easings: {
-  easeInSine:     [number, number, number, number];
-  easeOutSine:    [number, number, number, number];
-  easeInOutSine:  [number, number, number, number];
-  easeInQuad:     [number, number, number, number];
-  easeOutQuad:    [number, number, number, number];
-  easeInOutQuad:  [number, number, number, number];
-  easeInCubic:    [number, number, number, number];
-  easeOutCubic:   [number, number, number, number];
-  easeInOutCubic: [number, number, number, number];
-  easeInQuart:    [number, number, number, number];
-  easeOutQuart:   [number, number, number, number];
-  easeInOutQuart: [number, number, number, number];
-  easeInQuint:    [number, number, number, number];
-  easeOutQuint:   [number, number, number, number];
-  easeInOutQuint: [number, number, number, number];
-  easeInExpo:     [number, number, number, number];
-  easeOutExpo:    [number, number, number, number];
-  easeInOutExpo:  [number, number, number, number];
-  easeInCirc:     [number, number, number, number];
-  easeOutCirc:    [number, number, number, number];
-  easeInOutCirc:  [number, number, number, number];
-  easeInBack:     [number, number, number, number];
-  easeOutBack:    [number, number, number, number];
-  easeInOutBack:  [number, number, number, number];
-}
 </code></pre>
 
 <pre class="language-typescript" id="animation.replay"><code>
@@ -173,6 +142,11 @@ attachClickHandler(node: Node, callback: (e: MouseEvent| TouchEvent) =&gt; void)
 </code></pre>
 
 <h2 id="react">Utils.react</h2>
+
+<pre class="language-typescript" id="react.useForceUpdate"><code>
+useForceUpdate(): React.DispatchWithoutAction;
+</code></pre>
+A forceUpdate() function.
 
 <pre class="language-typescript" id="react.recursiveMap"><code>
 recursiveMap

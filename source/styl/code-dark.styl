@@ -1,0 +1,72 @@
+pre[class*="language-"]
+  background #000000DA
+  border-radius .5em
+  box-shadow 0 0 .3em #0004 inset
+  font-size .9em
+  
+  // avoid flash
+  > code:not([class*="language-"])
+    opacity 0
+  
+  ::selection
+    background #49483E
+    
+code[class*="language-"]
+  color #0F0
+  text-shadow none
+  
+:not(pre) > code[class*="language-"]
+  background #E0E0E0
+  // border none
+  // box-shadow none
+  color #000
+  text-shadow 0 1px white
+  padding 0 3px
+  
+  .token.punctuation
+    color inherit
+
+// toolbar
+div.code-toolbar > .toolbar a, div.code-toolbar > .toolbar button, div.code-toolbar > .toolbar span
+  background $wine
+  border-radius .2em
+  box-shadow none
+  color #FFF
+  cursor pointer
+  font-size .9em
+  text-shadow none
+  padding .3em .5em
+  
+  &:hover
+    color #222
+
+// tokens
+
+.token.attr-value
+  color #FFF
+  
+.token.comment
+  background slategrey
+  color moccasin
+
+.token.keyword
+  color #0FF
+
+.token.string, .language-css .token.string
+  background none
+  color #FFF
+
+.token.interpolation, .token.interpolation > *
+  color orange
+  
+.token.operator
+  background none
+
+.token.tag
+  color #FF0080
+  
+.token.function
+  color #AE81FF
+
+.token.property
+  color $blue

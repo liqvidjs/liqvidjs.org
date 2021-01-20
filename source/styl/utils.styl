@@ -1,0 +1,18 @@
+table-border-radius(ul,ur,dr,dl)
+  border-radius 0 0 dr dl
+  
+  > caption:first-child
+    border-top-left-radius ul
+    border-top-right-radius ur
+  
+  > thead:first-child > :first-child > :first-child
+    border-top-left-radius ul
+    
+  > thead:first-child > :first-child > :last-child
+    border-top-right-radius ul
+    
+  > tbody:last-child > tr:last-child > :first-child
+    border-bottom-left-radius dl
+    
+  > :last-child > tr:last-child > :last-child
+    border-bottom-right-radius dr

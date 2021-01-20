@@ -1,5 +1,15 @@
+.DS_Store
 .env
 node_modules
 
 *.sublime-*
 *.png
+
+# generated files
+/public_html/*
+!/public_html/css
+!/public_html/git_hook.php
+!/public_html/img
+!/public_html/js
+!/public_html/r
+!/public_html/r/rp-tutorial/index.html

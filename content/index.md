@@ -8,3 +8,9 @@ title: "Ractive-Player: A library for interactive videos"
     <iframe src="/r/rp-tutorial/" allowfullscreen></iframe>
   </div>
 </div>
+
+To install a new project:
+
+`npm install ractive-player rp-recording`
+
+<img src="/img/github.png"/> <a href="https://github.com/ysulyma/ractive-player">GitHub</a>

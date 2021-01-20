@@ -1,30 +1,43 @@
-code[class*="language-"], pre[class*="language-"]
-  background #222
-  border none
-  color #0F0
-  text-shadow none
+pre[class*="language-"]
+  background-image url("/img/grid.png")
+  // background #000
+  border-radius .5em
+  box-shadow 0 0 .3em #0004 inset
+  text-shadow 1px 1px white
   
 :not(pre) > code[class*="language-"]
-  background #DDD
-  border none
-  box-shadow none
-  color #222
-  padding 0 3px
+  background #E0E0E0
+  // border none
+  // box-shadow none
+  // color #222
+  text-shadow 0 1px white
+  // padding 0 3px
 
-.token.attr-value
-  color #FFF
+// toolbar
+div.code-toolbar > .toolbar a, div.code-toolbar > .toolbar button, div.code-toolbar > .toolbar span
+  color #000
+  font-size .8em
+  padding .3em .5em
+  background #CCC
+  box-shadow 0 2px 0 0 rgba(0,0,0,0.2)
+  border-radius .2em
+
+// tokens
+
+// .token.attr-value
+//   color #FFF
   
-.token.keyword
-  color #0FF
+// .token.keyword
+//   color #0FF
 
-.token.string, .language-css .token.string
-  color #FFF
+// .token.string, .language-css .token.string
+//   color #FFF
 
-.token.interpolation, .token.interpolation > *
-  color orange
+// .token.interpolation, .token.interpolation > *
+//   color orange
 
-.token.tag
-  color #FF0080
+// .token.tag
+//   color #FF0080
 
-.token.property
-  color $blue
+// .token.property
+//   color $blue

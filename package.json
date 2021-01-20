@@ -6,6 +6,7 @@
   "author": "Yuri Sulyma",
   "license": "MIT",
   "dependencies": {
+    "@11ty/eleventy": "^0.11.1",
     "authenticator": "^1.1.2",
     "bases": "^0.2.1",
     "bluebird": "^3.7.2",
@@ -28,7 +29,6 @@
     "moment": "^2.24.0",
     "pg": "^8.2.1",
     "promisify-node": "^0.4.0",
-    "pug": "^3.0.0",
     "ractive-player": "^1.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -91,6 +91,7 @@
     "gulp-wrapper": "^1.0.0",
     "livereload": "^0.9.1",
     "nib": "^1.1.2",
+    "pug": "^3.0.0",
     "require-nocache": "^1.0.0",
     "stylus": "^0.54.7",
     "terser-webpack-plugin": "^1.4.1",
