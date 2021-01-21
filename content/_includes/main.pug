@@ -4,12 +4,22 @@ html
     meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
     title= title
     
-    link(href="/img/logo.svg", rel="icon", type="image/svg+xml")
+    link(href="/favicon.ico", rel="icon", type="image/x-icon")
 
+    //- social share
+    meta(property="og:title" content="RactivePlayer - A library for interactive videos in HTML/CSS/JS")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content="https://ractive-player.org")
+    meta(property="og:image" content="https://ractive-player.org/img/logo-og.png")
+    meta(property="og:description" content="A library for interactive videos in HTML/CSS/JS")
+
+    //- CSS
     link(href="/css/prism.css", rel="stylesheet", type="text/css")
     link(href="/css/style.css", rel="stylesheet", type="text/css")
+
     script(src="/js/prism.js")
   body
+    pre= Object.keys(locals)
     nav
       a(href="/")
         img(alt="Ractive-Player", id="logo", src="/img/logo.svg")
