@@ -131,3 +131,31 @@ kbd
   background #DDD
   box-shadow 0 0 1px inset #0002
   padding 1px 2px
+
+a[href^="https://github.com"]
+  &::before
+    background-image url("/img/github.png")
+    background-size 1em 1em
+    content ""
+    display inline-block
+    height 1em
+    width 1em
+    margin 0 .1em 0 .1em
+    vertical-align middle
+
+a[href^="https://www.npmjs.com"]
+  &::before
+    background-image url("/img/npm.png")
+    background-size 1em 1em
+    content ""
+    display inline-block
+    height 1em
+    width 1em
+    margin 0 .1em 0 .1em
+    vertical-align middle
+
+.warning
+  background #FCC
+  border 1px solid red
+  padding .5em
+  

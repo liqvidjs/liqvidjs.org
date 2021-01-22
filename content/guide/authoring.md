@@ -31,7 +31,7 @@ function Form() {
 
 ## Mobile
 
-### Fat fingers
+<h2 id="fat-fingers">Fat fingers</h2>
 
 Controls need a larger clickable area on mobile. You can use the following to increase the clickable area of an HTML component:
 
