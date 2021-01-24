@@ -14,6 +14,7 @@ if ($json->repository->full_name === "ysulyma/ractive-player.org") {
     fail();
   }
   `cd ~ && git pull`;
+  `cd ~ && PATH=\$PATH:${NODE_PATH}:${NPX_PATH} && npx @11ty/eleventy --input content --output public_html 2>&1`;
 } else {
   fail();
 }
