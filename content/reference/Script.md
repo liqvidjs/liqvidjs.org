@@ -37,7 +37,7 @@ markers: [string, number, number][];
 playback: Playback;
 </code></pre>
 
-The underlying <a href="/reference/Playback/">Playback</a> object.
+The underlying [Playback](/reference/Playback/) instance.
 
 <h2>Methods</h2>
 
