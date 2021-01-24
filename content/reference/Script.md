@@ -39,9 +39,13 @@ constructor(markers: Array<[string, string | number] | [string, string | number,
 back(): void;
 </code></pre>
 
+Seek playback to the previous marker.
+
 <pre class="language-typescript" id="forward"><code>
 forward(): void;
 </code></pre>
+
+Advance playback to the next marker.
 
 <pre class="language-typescript" id="markerByName"><code>
 markerByName(name: string): [string, number, number];
