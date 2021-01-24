@@ -11,6 +11,7 @@ title: Plugins
 
 ## Unofficial (unsupported) plugins
 
+- [rp-codemirror](https://www.npmjs.com/package/rp-codemirror)
 - [rp-cursor](https://www.npmjs.com/package/rp-cursor)
 - [rp-paint](https://www.npmjs.com/package/rp-paint)
 - [rp-prompt](https://www.npmjs.com/package/rp-prompt)
