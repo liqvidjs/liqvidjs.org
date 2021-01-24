@@ -1,6 +1,6 @@
 <?php
 $NODE_PATH="/home/ractivep/nodevenv/node/14/bin";
-$NPX_PATH = "~/nodevenv/node/14/lib/bin";
+$NPX_PATH = "~/nodevenv/node/14/lib/node_modules/.bin";
 
 $keys = parse_ini_file(realpath($_SERVER["DOCUMENT_ROOT"] . "/../keys/keys"));
 
