@@ -7,27 +7,31 @@ title: Playback
 
 ## Properties
 
-<pre class="language-typescript" id="audioContext"><code>
+<pre class="language-ts" id="audioContext"><code>
 audioContext: AudioContext;
 </code></pre>
 
-<pre class="language-typescript" id="audioNode"><code>
+<pre class="language-ts" id="audioNode"><code>
 audioNode: GainNode;
 </code></pre>
 
-<pre class="language-typescript" id="currentTime"><code>
+<pre class="language-ts" id="currentTime"><code>
 currentTime: number;
 </code></pre>
-<p>The current playback time in milliseconds.</p>
-<p><strong>Warning:</strong> the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/">HTMLMediaElement</a> interface measures this property in seconds.</p>
 
-<pre class="language-typescript" id="duration"><code>
+The current playback time in milliseconds.
+
+**Warning:** the [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface measures this property in seconds.
+
+<pre class="language-ts" id="duration"><code>
 duration: number;
 </code></pre>
-<p>The length of the playback in milliseconds.</p>
-<p><strong>Warning:</strong> the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/">HTMLMediaElement</a> interface measures this property in seconds.</p>
 
-<pre class="language-typescript" id="hub"><code>
+The length of the playback in milliseconds.
+
+**Warning:** the [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface measures this property in seconds.</p>
+
+<pre class="language-ts" id="hub"><code>
 hub: StrictEventEmitter&lt;EventEmitter, {
   "bufferupdate": void;
   "cuechange": void;
@@ -43,35 +47,40 @@ hub: StrictEventEmitter&lt;EventEmitter, {
 }&gt;;
 </code></pre>
 
-<pre class="language-typescript" id="paused"><code>
+<pre class="language-ts" id="paused"><code>
 paused: boolean;
 </code></pre>
 
-<pre class="language-typescript" id="playbackRate"><code>
+Whether the playback is paused.
+
+<pre class="language-ts" id="playbackRate"><code>
 playbackRate: number;
 </code></pre>
 
-<pre class="language-typescript" id="playingFrom"><code>
-playingFrom: number;
-</code></pre>
+The rate at which the playback is being played.
 
-<pre class="language-typescript" id="seeking"><code>
+<pre class="language-ts" id="seeking"><code>
 seeking: boolean;
 </code></pre>
 
+Whether the playback is in the process of seeking to a new position.
+
 ## Methods
 
-<pre class="language-typescript" id="pause"><code>
+<pre class="language-ts" id="pause"><code>
 pause(): void;
 </code></pre>
-<p>Pause playback.</p>
 
-<pre class="language-typescript" id="play"><code>
+Pause playback.
+
+<pre class="language-ts" id="play"><code>
 play(): void;
 </code></pre>
-<p>Resume playback.</p>
 
-<pre class="language-typescript" id="seek"><code>
+Resume playback.
+
+<pre class="language-ts" id="seek"><code>
 seek(t: number | string): void;
 </code></pre>
-<p>Seek playback to a specific time.</p>
+
+Seek playback to a specific time.
