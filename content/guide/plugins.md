@@ -11,6 +11,7 @@ title: Plugins
 
 ## Other plugins
 
+- [rp-codebooth](https://github.com/ysulyma/rp-codebooth)
 - [rp-codemirror](https://www.npmjs.com/package/rp-codemirror)
 - [rp-cursor](https://www.npmjs.com/package/rp-cursor)
 - [rp-katex](https://github.com/ysulyma/rp-katex)
