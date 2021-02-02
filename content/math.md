@@ -1,6 +1,7 @@
 ---
 layout: main.pug
 title: "Math tutorial | Ractive-Player"
+ogDescription: "Math-specific tutorial for ractive-player"
 ---
 
 <div class="video-container" style="width: 100%">

@@ -1,15 +1,16 @@
 ---
 layout: main.pug
-title: Plugins
+title: Packages
 ---
 
-# Plugins
+# Packages
 
-## Core plugins
+## Core packages
+- [ractive-player](https://www.npmjs.com/package/ractive-player)
 - [rp-recording](https://www.npmjs.com/package/rp-recording)
 - [rp-thumb-capture](https://github.com/ysulyma/rp-thumb-capture)
 
-## Other plugins
+## Plugins
 
 - [rp-codebooth](https://www.npmjs.com/package/rp-codebooth)
 - [rp-codemirror](https://www.npmjs.com/package/rp-codemirror)
@@ -19,3 +20,8 @@ title: Plugins
 - [rp-paint](https://www.npmjs.com/package/rp-paint)
 - [rp-prompt](https://www.npmjs.com/package/rp-prompt)
 - [rp-xyjax](https://www.npmjs.com/package/rp-xyjax)
+
+## Tutorials / Sample projects
+
+- [rp-tutorial](https://github.com/ysulyma/rp-tutorial) (watch online [here](/))
+- [rp-tutorial-math](https://github.com/ysulyma/rp-tutorial-math) (watch online [here](/math/))
