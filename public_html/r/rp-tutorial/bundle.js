@@ -694,314 +694,6 @@ module.exports = function bezier(mX1, mY1, mX2, mY2) {
 
 /***/ }),
 
-/***/ "./node_modules/rp-paint/rp-paint.recorder.js":
-/*!****************************************************!*\
-  !*** ./node_modules/rp-paint/rp-paint.recorder.js ***!
-  \****************************************************/
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-
-
-!function (e, t) {  true ? module.exports = t(__webpack_require__(/*! react */ "react"), __webpack_require__(/*! rp-recording */ "rp-recording")) : 0; }(self, (function (e, t) { return (() => {
-    "use strict";
-    var r = { 20: (e, t, r) => { r.d(t, { default: () => s }); var a = r(888), n = r(798); const c = a.createElement("g", { fill: "#fff" }, a.createElement("path", { d: "m23.2859 93.4398c-.0321-.002-.0563-.0008-.0887-.0029-.3133-.0198-.6378-.0447-.9657-.0753-.328-.0306-.6593-.0666-.9909-.1101-.3318-.0435-.6632-.0936-.988-.1521s-.644-.1257-.951-.2014c-.307-.0756-.6014-.16-.88-.2549-.1392-.0475-.275-.098-.4052-.1507-.1301-.0527-.2545-.1084-.3742-.1666-.1196-.0582-.2338-.1186-.3416-.1826-.1079-.0639-.2101-.1313-.3047-.2013s-.1816-.1425-.2618-.2187c-.0801-.0763-.1531-.1562-.2173-.239l-.1672-.2593c-.047-.0898-.0854-.1829-.1138-.2797-.0286-.0967-.0477-.1972-.0563-.3013-.0085-.1041-.0067-.2113.006-.323.0127-.1118.018-.222.0147-.3289-.0031-.1069-.0145-.2107-.0325-.3129-.018-.102-.0434-.201-.0754-.2984s-.0705-.1925-.1154-.2854c-.0448-.0928-.0956-.1841-.1523-.2724-.0567-.0882-.1187-.1739-.1863-.2578s-.1415-.1652-.2189-.2448c-.0775-.0796-.1592-.158-.2455-.2332-.0864-.0753-.1764-.1477-.2708-.2188-.0942-.0711-.1931-.1401-.2943-.2072-.0419-.0278-.09-.051-.1331-.0782-1.5258 3.321-3.9582 5.3779-8.95801 6.29-.81882.1494-.54858 1.1271 0 1.1271 5.90331 0 12.69441-.0272 17.76821-1.5602z" }), a.createElement("path", { d: "m23.147 78.0639c-3.7321 0-6.8361 2.6364-7.4747 6.1118-.3443 1.2582-.7294 2.3904-1.1966 3.4072.0432.0271.0912.0504.1332.0782.1011.0671.2.136.2943.2072.0943.0711.1843.1435.2707.2187.0863.0752.168.1537.2455.2333.0774.0795.1513.1609.2189.2448s.1296.1696.1863.2578c.0567.0883.1075.1796.1523.2724.0449.0928.0834.188.1154.2854.032.0973.0574.1963.0754.2984s.0294.206.0325.3128c.0033.107-.002.2171-.0147.3289s-.0145.219-.006.3231c.0086.1041.0277.2045.0563.3013.0284.0968.0668.1899.1138.2796.047.0896.1029.1765.1672.2593.0642.0828.1372.1628.2173.239.0802.0763.1672.1488.2618.2188.0946.0699.1969.1373.3047.2013s.222.1243.3416.1825c.1197.0583.2441.1139.3742.1666.1302.0528.266.1033.4052.1507.2786.0949.573.1793.88.255.307.0756.6262.1428.951.2013s.6563.1087.988.1521c.3316.0435.6629.0795.9909.1101.3279.0306.6524.0556.9657.0754.0324.002.0566.0009.0887.0028 2.9268-.8843 5.2842-2.267 6.5652-4.4401.5674-1.0421.8888-2.2334.8888-3.497 0-4.1084-3.3986-7.4388-7.5929-7.4388z" }), a.createElement("path", { d: "m71.302 5.00013c-.1587.0034-.3394.07411-.5029.28538-.232.31688-30.4484 41.40919-37.3275 53.54479.164.0523.332.1059.5014.1651 1.0616.3707 2.235.8774 3.4873 1.5674 1.4894.8207 3.0912 1.9006 4.7534 3.3159 7.5537-11.9997 29.4184-57.63808 29.5882-57.99055.1568-.39472.0022-.67845-.1582-.78806-.0101-.00685-.0209-.01359-.0326-.02029-.0764-.04393-.1857-.08232-.3091-.07967z" }), a.createElement("path", { d: "m32.6403 60.3861c-.1163.2378-.2152.4547-.2957.6475-2.5564 6.1258-6.3889 13.48-7.4496 16.2842 2.033.308 3.799 1.4052 4.962 2.9625 1.9802-2.2656 6.6581-9.0957 10.8541-14.2271.1599-.1956.338-.4317.5309-.7041-1.5083-1.3064-2.9557-2.3097-4.2979-3.0783-1.2986-.7438-2.4989-1.2688-3.5657-1.6414-.2549-.089-.5-.1709-.7381-.2433z" })); class o extends n.ReplayDataRecorder {
-            beginRecording() { this.push([0, { type: "change-sheet", sheet: 0 }]), this.push([0, { type: "set-stroke-style", strokeStyle: "#FFF" }]); }
-            captureAction(e) { this.manager && !this.manager.paused && this.capture(this.manager.getTime(), e); }
-        } const s = { key: "rp-paint", icon: c, name: "Paint", recorder: new o, saveComponent: function (e) { return a.createElement(a.Fragment, null, e.data ? a.createElement("textarea", { readOnly: !0, value: JSON.stringify(e.data) }) : "Brush data not yet available."); } }; }, 888: t => { t.exports = e; }, 798: e => { e.exports = t; } }, a = {};
-    function n(e) { if (a[e])
-        return a[e].exports; var t = a[e] = { exports: {} }; return r[e](t, t.exports, n), t.exports; }
-    return n.d = (e, t) => { for (var r in t)
-        n.o(t, r) && !n.o(e, r) && Object.defineProperty(e, r, { enumerable: !0, get: t[r] }); }, n.o = (e, t) => Object.prototype.hasOwnProperty.call(e, t), n(20);
-})().default; }));
-
-
-/***/ }),
-
-/***/ "./node_modules/rp-thumb-capture/rp-thumb-capture.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/rp-thumb-capture/rp-thumb-capture.js ***!
-  \***********************************************************/
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-
-(function webpackUniversalModuleDefinition(root, factory) {
-    if (true)
-        module.exports = factory(__webpack_require__(/*! react */ "react"), __webpack_require__(/*! ractive-player */ "ractive-player"));
-    else {}
-})((typeof self !== 'undefined' ? self : this), function (__WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_ractive_player__) {
-    return (() => {
-        "use strict";
-        var __webpack_modules__ = ({
-            "./src/polyfills.ts": ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_852__) => {
-                __nested_webpack_require_852__.r(__webpack_exports__);
-                __nested_webpack_require_852__.d(__webpack_exports__, {
-                    "fullscreenEnabled": () => fullscreenEnabled,
-                    "requestFullScreen": () => requestFullScreen,
-                    "exitFullScreen": () => exitFullScreen,
-                    "isFullScreen": () => isFullScreen,
-                    "onFullScreenChange": () => onFullScreenChange
-                });
-                const id = (_) => _;
-                const fullscreenEnabled = ["fullscreenEnabled", "webkitFullscreenEnabled", "mozFullScreenEnabled", "msFullscreenEnabled"]
-                    .map(_ => document[_])
-                    .concat(false)
-                    .find(_ => _ !== undefined);
-                const requestFullScreen = ["requestFullscreen", "webkitRequestFullscreen", "mozRequestFullScreen", "msRequestFullscreen"]
-                    .map(_ => document.body[_])
-                    .concat(() => { })
-                    .find(id)
-                    .bind(document.body);
-                const exitFullScreen = ["exitFullscreen", "webkitExitFullscreen", "mozCancelFullScreen", "msExitFullscreen"]
-                    .map(_ => document[_])
-                    .concat(async () => { })
-                    .find(id)
-                    .bind(document);
-                const isFullScreen = () => ["fullscreen", "webkitIsFullScreen", "mozFullScreen"]
-                    .map(_ => document[_])
-                    .find(_ => _ !== undefined);
-                function onFullScreenChange(callback) {
-                    for (const event of ["fullscreenchange", "webkitfullscreenchange", "mozfullscreenchange", "MSFullscreenChange"])
-                        document.addEventListener(event, callback);
-                }
-            }),
-            "./src/thumb-capture.tsx": ((__unused_webpack_module, __webpack_exports__, __nested_webpack_require_2780__) => {
-                __nested_webpack_require_2780__.r(__webpack_exports__);
-                __nested_webpack_require_2780__.d(__webpack_exports__, {
-                    "default": () => ThumbCapture
-                });
-                var react__WEBPACK_IMPORTED_MODULE_0__ = __nested_webpack_require_2780__("react");
-                var react__WEBPACK_IMPORTED_MODULE_0___default = __nested_webpack_require_2780__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-                var _polyfills__WEBPACK_IMPORTED_MODULE_1__ = __nested_webpack_require_2780__("./src/polyfills.ts");
-                var ractive_player__WEBPACK_IMPORTED_MODULE_2__ = __nested_webpack_require_2780__("ractive-player");
-                var ractive_player__WEBPACK_IMPORTED_MODULE_2___default = __nested_webpack_require_2780__.n(ractive_player__WEBPACK_IMPORTED_MODULE_2__);
-                const { waitFor } = ractive_player__WEBPACK_IMPORTED_MODULE_2__.Utils.misc;
-                const sleep = ractive_player__WEBPACK_IMPORTED_MODULE_2__.Utils.misc.wait;
-                const THUMB_OPTIONS = {
-                    cols: 5,
-                    rows: 5,
-                    height: 100,
-                    width: 160,
-                    frequency: 4
-                };
-                const css = `#rp-thumb-capture {
-  position: relative;
-}
-
-#rp-thumbs-dialog {
-  background-color: #2A2A2A;
-  border-radius: 2px 2px 0 0;
-  box-shadow: 2px -2px 2px 2px rgba(0, 0, 0, 0.3);
-  box-sizing: border-box;
-  color: #FFF !important;
-  font-family: "Roboto Slab", sans-serif;
-  line-height: 1.5;
-  
-  position: absolute;
-  bottom: 42px;
-  right: 0;
-  
-  padding: .5em;
-}
-
-#rp-thumbs-dialog > label {
-  display: block;
-}
-
-#rp-thumbs-dialog > input {
-  font-family: monospace;
-}
-
-#rp-thumbs-dialog > button {
-    background-color: #A52117;
-    border: 0 none transparent;
-    box-sizing: border-box;
-    color: #FFF;
-    display: block;
-    font-family: "Roboto Slab", sans-serif;
-    font-size: 1em;
-    margin-top: .5em;
-    padding: .25em;
-}
-
-#rp-thumb-sheets > a {
-  display: block;
-}`;
-                function ThumbCapture() {
-                    const player = (0, ractive_player__WEBPACK_IMPORTED_MODULE_2__.usePlayer)();
-                    const [paneOpen, setPaneOpen] = (0, react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
-                    const [sheets, setSheets] = (0, react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
-                    const extensionId = (0, react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
-                    (0, react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-                        const style = document.createElement("style");
-                        style.setAttribute("type", "text/css");
-                        style.textContent = css;
-                        document.head.appendChild(style);
-                        return () => {
-                            document.head.removeChild(style);
-                        };
-                    }, []);
-                    const recordThumbs = (0, react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(async () => {
-                        const wasFullScreen = (0, _polyfills__WEBPACK_IMPORTED_MODULE_1__.isFullScreen)();
-                        const api = await wrapPortMaster(chrome.runtime.connect(extensionId.current));
-                        const { frequency } = THUMB_OPTIONS;
-                        const thumbs = [];
-                        (0, _polyfills__WEBPACK_IMPORTED_MODULE_1__.requestFullScreen)();
-                        await waitFor(() => (0, _polyfills__WEBPACK_IMPORTED_MODULE_1__.isFullScreen)());
-                        const oldState = hideUI();
-                        await sleep(6000);
-                        const { playback } = player;
-                        for (let t = 0; t <= playback.duration; t += frequency * 1000) {
-                            playback.seek(t);
-                            await sleep(100);
-                            thumbs.push(await api.captureTab());
-                        }
-                        if (!wasFullScreen)
-                            (0, _polyfills__WEBPACK_IMPORTED_MODULE_1__.exitFullScreen)();
-                        restoreUI(oldState);
-                        const sheets = await processThumbs(thumbs);
-                        setSheets(sheets);
-                    }, []);
-                    const togglePane = (0, react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(() => {
-                        setPaneOpen(_ => !_);
-                    }, []);
-                    const dialogStyle = {
-                        display: paneOpen ? "block" : "none"
-                    };
-                    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { id: "rp-thumb-capture" }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { id: "rp-thumbs-dialog", style: dialogStyle }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", null, "Extension ID"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", { id: "rp-thumbs-ext-id", type: "text", onBlur: player.resumeKeyCapture, onFocus: player.suspendKeyCapture, onChange: e => extensionId.current = e.currentTarget.value }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", { onClick: recordThumbs }, "Record"), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { id: "rp-thumb-sheets" }, sheets.map((sheet, i) => (react__WEBPACK_IMPORTED_MODULE_0__.createElement("a", { key: i, href: sheet, download: `${i}.png` }, "Sheet ", i))))), react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", { onClick: togglePane, height: "36", width: "36", viewBox: "0 0 100 100" }, react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M 10 70 a 1,1 0 0,1 80,0 z", fill: "#FFC0CB", stroke: "#FFF", strokeWidth: "7" }), react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", { d: "M 35 66.5 a 1,1 0 0,1 30,0 z", fill: "#FFE0EB", stroke: "none" }))));
-                }
-                function wrapPortMaster(port) {
-                    let callCounter = 0;
-                    const returnPromises = {};
-                    return new Promise((resolve) => {
-                        port.onMessage.addListener((msg) => {
-                            switch (msg.type) {
-                                case "apiDefinition":
-                                    const api = {};
-                                    msg.methodNames.forEach(name => {
-                                        api[name] = (...args) => {
-                                            const callId = callCounter++;
-                                            port.postMessage({ type: "apiCall", callId, methodName: name, arguments: args });
-                                            return new Promise((resolve) => {
-                                                returnPromises[callId] = resolve;
-                                            });
-                                        };
-                                    });
-                                    Object.freeze(api);
-                                    resolve(api);
-                                    break;
-                                case "apiReturn":
-                                    const { callId } = msg;
-                                    returnPromises[callId](msg.value);
-                                    delete returnPromises[callId];
-                                    break;
-                            }
-                        });
-                        port.postMessage({ type: "establish" });
-                    });
-                }
-                function hideUI() {
-                    const changes = [
-                        [document.querySelector(".rp-controls"), "display", "none"],
-                        [document.querySelector(".rp-canvas"), "cursor", "none"],
-                        [document.body, "cursor", "none"]
-                    ];
-                    for (let i = 0; i < changes.length; ++i) {
-                        const [elt, prop, val] = changes[i];
-                        changes[i][2] = elt.style[prop];
-                        elt.style[prop] = val;
-                    }
-                    return changes;
-                }
-                function restoreUI(oldState) {
-                    for (const [elt, prop, val] of oldState) {
-                        elt.style[prop] = val;
-                    }
-                }
-                async function processThumbs(thumbs) {
-                    const { rows, cols, height, width } = THUMB_OPTIONS, count = rows * cols;
-                    const canvas = document.createElement("canvas");
-                    canvas.setAttribute("width", (width * cols).toString());
-                    canvas.setAttribute("height", (height * rows).toString());
-                    const ctx = canvas.getContext("2d");
-                    const sheets = [];
-                    for (let sheetNum = 0, len = Math.ceil(thumbs.length / count); sheetNum < len; ++sheetNum) {
-                        ctx.clearRect(0, 0, width * cols, height * rows);
-                        const sheetImgs = await Promise.all(thumbs
-                            .slice(sheetNum * count, (sheetNum + 1) * count)
-                            .map(dataURI => {
-                            return new Promise((resolve) => {
-                                const img = document.createElement("img");
-                                img.onload = () => resolve(img);
-                                img.src = dataURI;
-                            });
-                        }));
-                        for (let i = 0; i < rows; ++i) {
-                            for (let j = 0; j < cols; ++j) {
-                                const index = i * cols + j;
-                                if (index >= sheetImgs.length)
-                                    break;
-                                ctx.drawImage(sheetImgs[index], j * width, i * height, width, height);
-                            }
-                        }
-                        sheets.push(canvas.toDataURL("image/png"));
-                    }
-                    return sheets;
-                }
-            }),
-            "ractive-player": ((module) => {
-                module.exports = __WEBPACK_EXTERNAL_MODULE_ractive_player__;
-            }),
-            "react": ((module) => {
-                module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
-            })
-        });
-        var __webpack_module_cache__ = {};
-        function __nested_webpack_require_13164__(moduleId) {
-            if (__webpack_module_cache__[moduleId]) {
-                return __webpack_module_cache__[moduleId].exports;
-            }
-            var module = __webpack_module_cache__[moduleId] = {
-                exports: {}
-            };
-            __webpack_modules__[moduleId](module, module.exports, __nested_webpack_require_13164__);
-            return module.exports;
-        }
-        (() => {
-            __nested_webpack_require_13164__.n = (module) => {
-                var getter = module && module.__esModule ?
-                    () => module['default'] :
-                    () => module;
-                __nested_webpack_require_13164__.d(getter, { a: getter });
-                return getter;
-            };
-        })();
-        (() => {
-            __nested_webpack_require_13164__.d = (exports, definition) => {
-                for (var key in definition) {
-                    if (__nested_webpack_require_13164__.o(definition, key) && !__nested_webpack_require_13164__.o(exports, key)) {
-                        Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-                    }
-                }
-            };
-        })();
-        (() => {
-            __nested_webpack_require_13164__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
-        })();
-        (() => {
-            __nested_webpack_require_13164__.r = (exports) => {
-                if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-                    Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-                }
-                Object.defineProperty(exports, '__esModule', { value: true });
-            };
-        })();
-        return __nested_webpack_require_13164__("./src/thumb-capture.tsx");
-    })()
-        .default;
-});
-
-
-/***/ }),
-
 /***/ "./src/CodeMirror.tsx":
 /*!****************************!*\
   !*** ./src/CodeMirror.tsx ***!
@@ -1178,22 +870,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ractive_player__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(ractive_player__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var rp_paint__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rp-paint */ "./node_modules/rp-paint/rp-paint.js");
 /* harmony import */ var rp_paint__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(rp_paint__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var rp_paint_recorder__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rp-paint/recorder */ "./node_modules/rp-paint/rp-paint.recorder.js");
-/* harmony import */ var rp_paint_recorder__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rp_paint_recorder__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _recordings__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./recordings */ "./src/recordings.ts");
-/* harmony import */ var _prompts__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./prompts */ "./src/prompts.tsx");
+/* harmony import */ var _recordings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./recordings */ "./src/recordings.ts");
+/* harmony import */ var _prompts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./prompts */ "./src/prompts.tsx");
 
 
 const { animate } = ractive_player__WEBPACK_IMPORTED_MODULE_1__.Utils.animation, { during } = ractive_player__WEBPACK_IMPORTED_MODULE_1__.Utils.authoring;
 
 
 
-
 function PaintSlide() {
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", Object.assign({ id: "sec-paint" }, during("paint/")),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(rp_paint__WEBPACK_IMPORTED_MODULE_2__.PaintCanvas, { recorder: (rp_paint_recorder__WEBPACK_IMPORTED_MODULE_3___default().recorder) }),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(rp_paint__WEBPACK_IMPORTED_MODULE_2__.PaintReplay, { replay: _recordings__WEBPACK_IMPORTED_MODULE_4__.paintReplay, start: "paint/" }),
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_prompts__WEBPACK_IMPORTED_MODULE_5__.PaintPrompt, null)));
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(rp_paint__WEBPACK_IMPORTED_MODULE_2__.PaintReplay, { replay: _recordings__WEBPACK_IMPORTED_MODULE_3__.paintReplay, start: "paint/" }),
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(_prompts__WEBPACK_IMPORTED_MODULE_4__.PaintPrompt, null)));
 }
 
 
@@ -1447,23 +1135,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var ractive_player__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ractive-player */ "ractive-player");
 /* harmony import */ var ractive_player__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(ractive_player__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var rp_thumb_capture__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rp-thumb-capture */ "./node_modules/rp-thumb-capture/rp-thumb-capture.js");
-/* harmony import */ var rp_thumb_capture__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(rp_thumb_capture__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _lib_rebind_arrow_keys__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @lib/rebind-arrow-keys */ "./lib/rebind-arrow-keys.ts");
-/* harmony import */ var _lib_seekonload__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @lib/seekonload */ "./lib/seekonload.ts");
-/* harmony import */ var _media_url__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./media-url */ "./src/media-url.ts");
-/* harmony import */ var _markers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./markers */ "./src/markers.ts");
-/* harmony import */ var _objects__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./objects */ "./src/objects.ts");
-/* harmony import */ var _Intro__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Intro */ "./src/Intro.tsx");
-/* harmony import */ var _CodeMirror__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./CodeMirror */ "./src/CodeMirror.tsx");
-/* harmony import */ var _Cursor__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Cursor */ "./src/Cursor.tsx");
-/* harmony import */ var _Paint__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Paint */ "./src/Paint.tsx");
-/* harmony import */ var _PlaybackSlide__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./PlaybackSlide */ "./src/PlaybackSlide.tsx");
-/* harmony import */ var _ScriptSlide__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./ScriptSlide */ "./src/ScriptSlide.tsx");
-/* harmony import */ var _PlayerSlide__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./PlayerSlide */ "./src/PlayerSlide.tsx");
-/* harmony import */ var _UtilsSlide__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./UtilsSlide */ "./src/UtilsSlide.tsx");
-/* harmony import */ var _RecordingSlide__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./RecordingSlide */ "./src/RecordingSlide.tsx");
-
+/* harmony import */ var _lib_rebind_arrow_keys__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @lib/rebind-arrow-keys */ "./lib/rebind-arrow-keys.ts");
+/* harmony import */ var _lib_seekonload__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @lib/seekonload */ "./lib/seekonload.ts");
+/* harmony import */ var _media_url__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./media-url */ "./src/media-url.ts");
+/* harmony import */ var _markers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./markers */ "./src/markers.ts");
+/* harmony import */ var _objects__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./objects */ "./src/objects.ts");
+/* harmony import */ var _Intro__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Intro */ "./src/Intro.tsx");
+/* harmony import */ var _CodeMirror__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./CodeMirror */ "./src/CodeMirror.tsx");
+/* harmony import */ var _Cursor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Cursor */ "./src/Cursor.tsx");
+/* harmony import */ var _Paint__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Paint */ "./src/Paint.tsx");
+/* harmony import */ var _PlaybackSlide__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./PlaybackSlide */ "./src/PlaybackSlide.tsx");
+/* harmony import */ var _ScriptSlide__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./ScriptSlide */ "./src/ScriptSlide.tsx");
+/* harmony import */ var _PlayerSlide__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./PlayerSlide */ "./src/PlayerSlide.tsx");
+/* harmony import */ var _UtilsSlide__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./UtilsSlide */ "./src/UtilsSlide.tsx");
+/* harmony import */ var _RecordingSlide__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./RecordingSlide */ "./src/RecordingSlide.tsx");
 
 
 
@@ -1483,20 +1168,18 @@ __webpack_require__.r(__webpack_exports__);
 
 const controls = (react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null,
     ractive_player__WEBPACK_IMPORTED_MODULE_2__.Player.defaultControlsLeft,
-    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "rp-controls-right" },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement((rp_thumb_capture__WEBPACK_IMPORTED_MODULE_3___default()), null),
-        ractive_player__WEBPACK_IMPORTED_MODULE_2__.Player.defaultControlsRight)));
+    react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", { className: "rp-controls-right" }, ractive_player__WEBPACK_IMPORTED_MODULE_2__.Player.defaultControlsRight)));
 function Ractive() {
     const playerRef = react__WEBPACK_IMPORTED_MODULE_0__.useRef();
     react__WEBPACK_IMPORTED_MODULE_0__.useEffect(() => {
         const player = playerRef.current;
-        (0,_lib_rebind_arrow_keys__WEBPACK_IMPORTED_MODULE_4__.default)(player);
+        (0,_lib_rebind_arrow_keys__WEBPACK_IMPORTED_MODULE_3__.default)(player);
         player.canPlay.then(() => {
-            (0,_lib_seekonload__WEBPACK_IMPORTED_MODULE_5__.default)(player.playback);
+            (0,_lib_seekonload__WEBPACK_IMPORTED_MODULE_4__.default)(player.playback);
             player.ready();
         });
     }, []);
-    const script = new ractive_player__WEBPACK_IMPORTED_MODULE_2__.Script(_markers__WEBPACK_IMPORTED_MODULE_7__.default);
+    const script = new ractive_player__WEBPACK_IMPORTED_MODULE_2__.Script(_markers__WEBPACK_IMPORTED_MODULE_6__.default);
     const ps = script.parseStart;
     const highlights = [
         { title: "Codebooth", time: ps("codemirror/") },
@@ -1514,23 +1197,23 @@ function Ractive() {
         height: 100,
         width: 160,
         frequency: 4,
-        path: `${_media_url__WEBPACK_IMPORTED_MODULE_6__.MEDIA_URL}/thumbs/%s.png`,
+        path: `${_media_url__WEBPACK_IMPORTED_MODULE_5__.MEDIA_URL}/thumbs/%s.png`,
         highlights
     };
     return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(ractive_player__WEBPACK_IMPORTED_MODULE_2__.Player, { controls: controls, ref: playerRef, script: script, thumbs: thumbData },
-        react__WEBPACK_IMPORTED_MODULE_0__.createElement(ractive_player__WEBPACK_IMPORTED_MODULE_2__.IdMap, { map: _objects__WEBPACK_IMPORTED_MODULE_8__.default },
+        react__WEBPACK_IMPORTED_MODULE_0__.createElement(ractive_player__WEBPACK_IMPORTED_MODULE_2__.IdMap, { map: _objects__WEBPACK_IMPORTED_MODULE_7__.default },
             react__WEBPACK_IMPORTED_MODULE_0__.createElement(ractive_player__WEBPACK_IMPORTED_MODULE_2__.Audio, { start: 0 },
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("source", { src: `${_media_url__WEBPACK_IMPORTED_MODULE_6__.MEDIA_URL}/audio/audio.webm`, type: "audio/webm" }),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("source", { src: `${_media_url__WEBPACK_IMPORTED_MODULE_6__.MEDIA_URL}/audio/audio.mp4`, type: "audio/mp4" })),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Intro__WEBPACK_IMPORTED_MODULE_9__.default, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CodeMirror__WEBPACK_IMPORTED_MODULE_10__.default, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Cursor__WEBPACK_IMPORTED_MODULE_11__.default, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Paint__WEBPACK_IMPORTED_MODULE_12__.default, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PlaybackSlide__WEBPACK_IMPORTED_MODULE_13__.default, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ScriptSlide__WEBPACK_IMPORTED_MODULE_14__.default, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PlayerSlide__WEBPACK_IMPORTED_MODULE_15__.default, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UtilsSlide__WEBPACK_IMPORTED_MODULE_16__.default, null),
-            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RecordingSlide__WEBPACK_IMPORTED_MODULE_17__.default, null))));
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("source", { src: `${_media_url__WEBPACK_IMPORTED_MODULE_5__.MEDIA_URL}/audio/audio.webm`, type: "audio/webm" }),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("source", { src: `${_media_url__WEBPACK_IMPORTED_MODULE_5__.MEDIA_URL}/audio/audio.mp4`, type: "audio/mp4" })),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Intro__WEBPACK_IMPORTED_MODULE_8__.default, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CodeMirror__WEBPACK_IMPORTED_MODULE_9__.default, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Cursor__WEBPACK_IMPORTED_MODULE_10__.default, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Paint__WEBPACK_IMPORTED_MODULE_11__.default, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PlaybackSlide__WEBPACK_IMPORTED_MODULE_12__.default, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ScriptSlide__WEBPACK_IMPORTED_MODULE_13__.default, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_PlayerSlide__WEBPACK_IMPORTED_MODULE_14__.default, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_UtilsSlide__WEBPACK_IMPORTED_MODULE_15__.default, null),
+            react__WEBPACK_IMPORTED_MODULE_0__.createElement(_RecordingSlide__WEBPACK_IMPORTED_MODULE_16__.default, null))));
 }
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__.createElement(Ractive, null), document.querySelector("main"));
 
@@ -1691,16 +1374,6 @@ const paintReplay = [[0, { "type": "change-sheet", "sheet": 0 }], [0, { "type": 
 
 /***/ }),
 
-/***/ "rp-recording":
-/*!******************************!*\
-  !*** external "RPRecording" ***!
-  \******************************/
-/***/ ((module) => {
-
-module.exports = RPRecording;
-
-/***/ }),
-
 /***/ "ractive-player":
 /*!********************************!*\
   !*** external "RactivePlayer" ***!
@@ -1750,7 +1423,7 @@ module.exports = ReactDOM;
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
