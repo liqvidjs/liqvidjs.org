@@ -1,6 +1,7 @@
 ---
 layout: main.pug
 title: "Ractive-Player: A library for interactive videos"
+ogTitle: "Ractive-Player: A library for interactive videos"
 ---
 
 <div class="video-container" style="width: 100%">
