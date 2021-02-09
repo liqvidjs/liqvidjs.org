@@ -1,7 +1,7 @@
 ---
 layout: main.pug
-title: "Ractive-Player: A library for interactive videos"
-ogTitle: "Ractive-Player: A library for interactive videos"
+title: "Ractive-Player: Create interactive videos in React"
+ogTitle: "Ractive-Player: Create interactive videos in React"
 ogImage: https://d2og9lpzrymesl.cloudfront.net/r/rp-tutorial/icon.png
 ---
 
