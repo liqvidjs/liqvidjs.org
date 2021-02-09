@@ -16,7 +16,7 @@ The code is split into many modules and plugins.
 
 * The best way to get started is to clone <a href="https://github.com/ysulyma/rp-tutorial">rp-tutorial</a>
 
-* If you want to use this for mathematical content, you should also watch the [math tutorial](/math/) and clone [rp-tutorial-math](https://github.com/ysulyma/rp-tutorial-math)
+* If you want to use this for mathematical/scientific content, you should also watch the [math tutorial](/math/) and clone [rp-tutorial-math](https://github.com/ysulyma/rp-tutorial-math)
 
 ## Phases of development
 
