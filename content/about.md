@@ -10,7 +10,7 @@ title: About
 
 [Subreddit](https://reddit.com/r/ractive_player/)
 
-[La mer qui monte](https://lmqm.xyz)
+[Epiplexis](https://epiplexis.xyz)
 
 <!-- ## History -->
 

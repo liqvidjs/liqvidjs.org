@@ -2844,9 +2844,9 @@ function Intro() {
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(_lib_Link__WEBPACK_IMPORTED_MODULE_2__.default, { href: "https://reactjs.org/" }, "React documentation")),
                 react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", Object.assign({}, from("intro/node")),
                     react__WEBPACK_IMPORTED_MODULE_0__.createElement(_lib_Link__WEBPACK_IMPORTED_MODULE_2__.default, { href: "https://nodejs.org/en/" }, "Node.js")),
-                react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", Object.assign({}, from("intro/lmqm")),
+                react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", Object.assign({}, from("intro/epiplexis")),
                     "Inspiration: ",
-                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_lib_Link__WEBPACK_IMPORTED_MODULE_2__.default, { href: "https://lmqm.xyz/" }, "La mer qui monte")))),
+                    react__WEBPACK_IMPORTED_MODULE_0__.createElement(_lib_Link__WEBPACK_IMPORTED_MODULE_2__.default, { href: "https://epiplexis.xyz/" }, "Epiplexis")))),
         react__WEBPACK_IMPORTED_MODULE_0__.createElement(_prompts__WEBPACK_IMPORTED_MODULE_3__.IntroScript, null)));
 }
 
@@ -3517,7 +3517,7 @@ __webpack_require__.r(__webpack_exports__);
     ["intro/ts", "0:04.530"],
     ["intro/react", "0:07.922"],
     ["intro/node", "0:12.258"],
-    ["intro/lmqm", "0:05.510"],
+    ["intro/epiplexis", "0:05.510"],
     ["ktx/", "0:05.211"],
     ["ktx/display", "0:02.478"],
     ["ktx/ex", "0:01.233"],
