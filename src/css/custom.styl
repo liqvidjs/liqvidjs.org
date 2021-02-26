@@ -1,0 +1,126 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+ 
+ /* colors */
+$wine = #AF1866
+$blue = #1A69B5
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: $wine;
+  --ifm-color-primary-dark: rgb(33, 175, 144);
+  --ifm-color-primary-darker: rgb(31, 165, 136);
+  --ifm-color-primary-darkest: rgb(26, 136, 112);
+  --ifm-color-primary-light: rgb(70, 203, 174);
+  --ifm-color-primary-lighter: rgb(102, 212, 189);
+  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-code-font-size: 95%;
+
+  --ifm-navbar-height: 3rem;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+.hero--primary {
+  --ifm-hero-background-color: saturation(darken($blue, 60%), 15%);
+}
+
+.hero__title
+  color $blue
+
+.footer {
+  --ifm-footer-background-color: #051524;
+  --ifm-link-hover-decoration: none;
+}
+
+.button
+  --ifm-button-background-color $blue
+  border none
+  // --ifm-font-color-base #FFF
+  color #FFF
+  
+  &:hover
+    background $blue
+
+iframe {
+  border: none;
+}
+
+@import "nav"
+@import "homepage"
+
+.tutorial
+  padding 1em
+  
+  > .video-container
+    margin-bottom 1em
+  
+  > p
+    margin-left 12.5%
+
+.qa > dt
+  font-weight bold
+  margin-left 1.5em
+  position relative
+  
+  &::before
+    content "Q. "
+    font-weight bold
+    left -1.5em
+    position absolute
+  
+.qa > dd
+  margin-left 1.5em
+  margin-bottom 1em
+  position relative
+  
+  &::before
+    content "A. "
+    font-weight bold
+    left -1.5em
+    position absolute
+
+/* ractives */
+.video-container {
+  margin: 0 auto;
+  width: 75%;
+}
+.aspect-ratio {
+  position: relative;
+  height: 0;
+  padding-bottom: 100%;
+}
+.aspect-ratio > iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+iframe.fake-fullscreen {
+  position: fixed;
+  top: var(--scroll-y);
+  left: 0;
+  height: var(--vh);
+  width: var(--vw);
+  z-index: 10000;
+}
+@media (orientation: portrait) {
+  iframe.fake-fullscreen {
+    transform: rotate(-90deg);
+    transform-origin: top left;
+    left: 0;
+    top: 100%;
+    width: var(--vh);
+    height: var(--vw);
+  }
+}

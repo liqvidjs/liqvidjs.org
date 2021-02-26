@@ -1,0 +1,77 @@
+/* hero */
+.heroBanner_src-pages- {
+  padding: 0 1em 1em !important;
+}
+
+.hero
+  > .container > .buttons_src-pages- > .button
+    font-size 1.2em
+    
+  > .container
+    font-size 1.2vw
+    
+  > .container > .interactive
+    color #104170
+    font-size 1.7em
+    font-weight 200
+    position relative
+
+.hero__title
+  font-size 2.6em
+
+.hero__subtitle
+  font-size 2.2em
+  
+// desktop-only styles
+@media (min-width: 850px)
+  .hero
+    > *
+      vertical-align top
+    
+    > .container
+      left 4%
+      top 1em
+      position absolute
+      text-align left
+      width 30%
+      
+      > .interactive
+        width 80%
+        
+        &::after
+          content url("/img/arrow.svg")
+          position absolute
+          left calc(100%)
+          width 2em
+          top -.1em
+
+    > .video-container
+      margin 1em 0 0 32.5%
+      width 67.5% !important
+
+// mobile-only styles
+@media (max-width: 850px)
+  .hero
+    display block
+    
+    > .container
+      font-size 1em
+      text-align center
+      width 100%
+      
+      > .interactive
+        font-size 1em
+        
+      > .buttons_src-pages-
+        display none
+
+    > .video-container
+      margin-top 1em
+      width 100%
+
+  .hero__title
+    margin .5em 0
+
+  .hero__subtitle
+    font-size 1.1em
+    margin .5em 0
