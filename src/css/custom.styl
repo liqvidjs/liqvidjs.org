@@ -89,38 +89,4 @@ iframe {
     left -1.5em
     position absolute
 
-/* ractives */
-.video-container {
-  margin: 0 auto;
-  width: 75%;
-}
-.aspect-ratio {
-  position: relative;
-  height: 0;
-  padding-bottom: 100%;
-}
-.aspect-ratio > iframe {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-iframe.fake-fullscreen {
-  position: fixed;
-  top: var(--scroll-y);
-  left: 0;
-  height: var(--vh);
-  width: var(--vw);
-  z-index: 10000;
-}
-@media (orientation: portrait) {
-  iframe.fake-fullscreen {
-    transform: rotate(-90deg);
-    transform-origin: top left;
-    left: 0;
-    top: 100%;
-    width: var(--vh);
-    height: var(--vw);
-  }
-}
+@import "ractives"
