@@ -1,0 +1,54 @@
+#hero
+  background saturation(darken($blue, 60%), 15%)
+  color #FFF
+  padding 0 1em 1em
+  position relative
+  width 100%
+  
+  > *
+    display inline-block
+    vertical-align top
+  
+.hero-desc
+  display inline-block
+  font-size 1.4em
+  left 2.5%
+  position absolute
+  width 20%
+    
+  > strong
+    font-style italic
+  
+  > h1
+    color $blue
+    font-size 1.6em
+
+  > :visited, > :link
+    background $blue
+    color #FFF
+    display block
+    margin 2em auto 0
+    padding .5em 0
+    text-align center
+    
+  > .interactive
+    color darken($blue, 38%)
+    font-weight 200
+
+#hero > .video-container
+  margin 1em 0 0 25%
+  width 75% !important
+    
+#features
+  display flex
+  flex-direction row
+  justify-content space-evenly
+  padding .5em
+
+.feature
+  flex-basis 30%
+  padding 0 0 1em
+  
+  > h3
+    color #444
+    font-size 1.2em

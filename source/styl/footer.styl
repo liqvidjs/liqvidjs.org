@@ -1,0 +1,39 @@
+footer
+  background darken($blue, 80%)
+  color #FFF
+  padding 1em
+
+.footer-cols
+  display flex
+  flex-direction row
+  justify-content space-evenly
+  padding 0 1em
+
+.footer-cols > .col
+  display inline-block
+  margin 0 1em
+  vertical-align top
+  
+  > h4
+    color #999
+    text-transform uppercase
+  
+  > ul
+    list-style-type none
+    
+    > li > :link, > li > :visited
+      display inline-block
+      padding .4em 0
+      
+      &:hover
+        color $wine
+      
+      &::before
+        content none
+        width 0
+        height 0
+
+#copyright
+  display block
+  margin-top 1em
+  text-align center
