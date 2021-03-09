@@ -31,27 +31,63 @@ The above links provide practical advice on the issues that arise in each phase.
 
 ### Playback
 
-This is the most important class. Effectively, this mimics an audio/video element that can be played and rewinded, has volume controls, a playback rate, etc. It thus imitates the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/">HTMLMediaElement</a> interface to a certain extent, although it does not fully implement that interface.
+This is the most important class. Effectively, a [Playback](/docs/reference/Playback) mimics an audio/video element that can be played and rewinded, has volume settings, a playback rate, etc. It thus imitates the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/">HTMLMediaElement</a> interface to a certain extent, although it does not fully implement that interface.
 
 Times are generally represented as numbers representing milliseconds since the beginning of playback. They can also be specified as strings like <code class="language-typescript">"7:35"</code> or <code class="language-typescript">"7:35.66"</code>. Currently, there is no distinction between time points and time durations.
 
-<strong>Warning: the HTMLMediaElement interface usually represents times in <em>seconds</em>.</strong>
+:::caution
+The HTMLMediaElement interface usually represents times in _seconds_.
+:::
 
 ### Script
 
-A <code class="language-typescript">Script</code> augments a <code class="language-typescript">Playback</code> by distinguishing specific timepoints, which we call <dfn>markers</dfn> (<em>cue</em> would also be appropriate, but that conflicts with WebVTT Cues).
-
-#### Markers
+A [Script](/docs/reference/Script) augments a Playback by breaking it into named segments, which we call <dfn>markers</dfn> (<em>cue</em> would also be appropriate, but that conflicts with WebVTT Cues).
 
 A <dfn>marker</dfn> is a triple <code class="language-typescript">[name: string, start: number, end: number]</code>, where <code class="language-typescript">start</code> and <code class="language-typescript">end</code> are times in the sense of the previous section. However, when creating a <code class="language-typescript">Script</code> a marker may be specified as a pair <code class="language-typescript">[name: string, duration: number]</code>.
 
+```ts
+const markers = [
+  ["intro/","0:19.081"],
+  ["intro/name","0:07.332"],
+  ["intro/day", "0:09.351"],
+  ["animals/","0:03.737"],
+  ["animals/cat","0:00.931"],
+  ["animals/elephant","0:02.371"],
+  ["animals/dog","0:03.206"],
+  ["end/","0:08.897"],
+  ["end/qs","0:01.500"]
+] as [string, string][];
+
+const script = new Script(markers);
+```
+
+When defining markers in the [Authoring](/docs/guide/authoring) phase, you can put anything for the duration, e.g. `["intro/", "1:00"]`. The durations will get filled in during the [Recording](/docs/guide/recording) phase.
+
 ### Player
 
-A <code>Player</code> provides a GUI interface for playing ractives, resembling a traditional web video player.
+A [Player](/docs/reference/Player) provides a GUI interface for playing ractives, resembling a traditional web video player.
 
 #### Showing/Hiding
 
-If an element has the <code class="language-html">data-from-first="first"</code> attribute, it will be visible only when the current marker is equal to or comes after the marker whose name is <code>"first"</code>. If an element further has the <code class="language-html">data-from-last="last"</code> attribute, it will be visible only when the current marker comes strictly before the marker whose name is <code>"last"</code>. If an element has the <code class="language-html">data-during="prefix"</code> attribute, it will be visible only when the current marker's name begins with <code class="language-typescript">"prefix"</code>. There are helper functions for this in <a href="/docs/reference/Utils#authoring">Utils.authoring</a>.
+If an element has the <code class="language-html">data-from-first="first"</code> attribute, it will be visible only when the current marker is equal to or comes after the marker whose name is <code>"first"</code>. If an element further has the <code class="language-html">data-from-last="last"</code> attribute, it will be visible only when the current marker comes strictly before the marker whose name is <code>"last"</code>. If an element has the <code class="language-html">data-during="prefix"</code> attribute, it will be visible only when the current marker's name begins with <code class="language-typescript">"prefix"</code>.
+
+There are helper functions for this in [Utils.authoring](/docs/reference/Utils#utilsauthoring). Since you will be using these a lot, you might want to define a shortcut for them in your text editor.
+
+```tsx
+import {Utils} from "ractive-player";
+const {during, from} = Utils.authoring;
+
+function IntroSlide() {
+  return (
+    <section {...during("intro/")}>
+      <h1 {...from("intro/", "intro/day")}>
+        Hello <span {...from("intro/name")}>Bob!</span>
+      </h1>
+      <p {...from("intro/day")}>Have a great day!</p>
+    </section>
+  );
+}
+```
 
 Internally, elements are hidden by setting <code class="language-css">opacity:0; pointer-events: none;</code>, and shown by removing these attributes. This operates outside of React rendering. The reason for using these styles instead of
 

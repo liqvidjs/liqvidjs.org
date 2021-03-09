@@ -58,6 +58,10 @@ module.exports = {
           title: "Community",
           items: [
             {
+              label: "Discord",
+              href: "https://discord.gg/u8Qab99zHx"
+            },
+            {
               label: "Reddit",
               href: "https://reddit.com/r/ractive_player/",
             }
@@ -90,12 +94,12 @@ module.exports = {
           // editUrl:
             // "https://github.com/ysulyma/ractive-player/edit/master/website/",
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // editUrl:
-            // "https://github.com/ysulyma/ractive-player/edit/master/website/blog/",
-        },
+        // blog: {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   // editUrl:
+        //     // "https://github.com/ysulyma/ractive-player/edit/master/website/blog/",
+        // },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
