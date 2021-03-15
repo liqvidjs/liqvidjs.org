@@ -30,13 +30,28 @@ function Form() {
 
 ### Canvas clicks
 
-### Dragging
+By default, clicking anywhere on the video pauses it. Of course, you do not want this behavior for interactive components or links. To prevent this, add `onMouseUp={Player.preventCanvasClick}`:
+
+```tsx
+import {Player} from "ractive-player";
+
+<a href="https://example.com" target="_blank" onMouseUp={Player.preventCanvasClick}>
+This link will open in a new tab and will not pause the video when clicked.
+</a>
+```
+
+<!-- ### Dragging
+
+```tsx
+import {Utils} from "ractive-player";
+const {dragHelperReact} = Utils.interactivity;
+```-->
 
 ## Mobile
 
 ### Fake fullscreen
 
-Mobile devices do not support the fullscreen API. As a workaround, when the fullscreen control is tapped on a mobile device, ractive-player will dispatch an event to the window containing the `iframe`. You can then maximize the .
+Mobile devices do not support the fullscreen API. As a workaround, when the fullscreen control is tapped on a mobile device, ractive-player will dispatch an event to the window containing the `iframe`. You can then maximize the iframe using CSS.
 
 Here is example code for this:
 
