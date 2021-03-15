@@ -2,6 +2,8 @@
 title: Overview
 ---
 
+This is the text documentation. For a comprehensive personal tour through the library, check out the [ractives deep dive](https://www.youtube.com/watch?v=9O8h58ANY64).
+
 ## Code
 The code is split into many modules and plugins.
 
