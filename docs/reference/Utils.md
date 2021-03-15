@@ -1,8 +1,9 @@
 <p>You will probably only need animation, authoring, interactivity, misc, mobile.</p>
 
-## Utils.animation
+## `Utils.animation`
 
-<!-- <!-- <pre class="language-typescript" id="animation.animate"><code> -->
+### `animate()`
+<!-- <pre class="language-typescript" id="animation.animate"><code> -->
 ```typescript
 animate(options: {
   startValue?: number,
@@ -13,28 +14,39 @@ animate(options: {
 }): (t: number) => number;
 ```
 
+### `replay()`
+
 ```typescript
 replay<K>({data, start, end, active, inactive, compressed}: ReplayArgs<K>): (t: number) => void;
 ```
 
-## Utils.authoring
+## `Utils.authoring`
 
-<!-- <!-- <pre class="language-typescript" id="authoring.during"><code> -->
+### `during()`
+
+Returns a CSS block to show the element only when marker name begins with `prefix`.
+
 ```typescript
-/** Returns a CSS block to show the element only when marker name begins with `prefix` */
 during: (prefix: string) => {"data-during": string;};
 ```
 
+### `from()`
+
+Returns a CSS block to show the element when marker is in [first, last).
+
 ```typescript
-/** Returns a CSS block to show the element when marker is in [first, last) */
 from: (first: string, last?: string) => {"data-from-first": string; "data-from-last"?: string;};
 ```
+
+### `showIf()`
 
 ```typescript
 showIf(cond: boolean): {style?: React.CSSProperties;};
 ```
 
 ## Utils.interactivity
+
+### `dragHelper()`
 
 ```typescript
 dragHelper<T extends Node, E extends MouseEvent | React.MouseEvent<T> | TouchEvent | React.TouchEvent<T>>(
@@ -48,6 +60,8 @@ dragHelper<T extends Node, E extends MouseEvent | React.MouseEvent<T> | TouchEve
   up?: (e: MouseEvent | TouchEvent) => void
 ): (e: E) => void;
 ```
+
+### `dragHelperReact()`
 
 ```typescript
 dragHelperReact<T extends Node>(
@@ -67,57 +81,85 @@ dragHelperReact<T extends Node>(
 };
 ```
 
-## Utils.media
+## `Utils.media`
+
+### `awaitMediaCanPlay()`
 
 ```typescript
 awaitMediaCanPlay(media: HTMLMediaElement): Promise<Event>;
 ```
 
+### `awaitMediaCanPlayThrough()`
 ```typescript
 awaitMediaCanPlayThrough(media: HTMLMediaElement): Promise<Event>;
 ```
 
-## Utils.misc
+## `Utils.misc`
+
+### `between()`
+
+Equivalent to `(min <= val) && (val < max)`.
 
 ```typescript
-/** Equivalent to `(min <= val) && (val < max)`. */
 between(min: number, val: number, max: number): boolean;
 ```
+
+### `bind()`
 
 ```typescript
 /** Bind methods on o. */
 bind<T extends {[P in K]: Function}, K extends keyof T>(o: T, methods: K[]): void;
 ```
 
+
+### `constrain ()`
+
+Equivalent to `Math.min(max, Math.max(min, val))`
+
 ```typescript
-/** Equivalent to `Math.min(max, Math.max(min, val))` */
 constrain: (min: number, val: number, max: number) => number;    
 ```
 
+### `range ()`
+
+Returns [0, ..., n-1]
+
 ```typescript
-/** Returns [0, ..., n-1] */
 range: (n: number) => number[];
 ```
 
+
+### `wait()`
+
+Returns a Promise that resolves in `time` milliseconds.
+
 ```typescript
-/** Returns a Promise that resolves in `time` milliseconds. */
 wait(time: number): Promise<void>;
 ```
 
+### `waitFor()`
+
+Returns a Promise that resolves once `callback` returns true.
+
 ```typescript
-/** Returns a Promise that resolves once `callback` returns true. */
 waitFor(callback: () => boolean, interval?: number): Promise<void>;
 ```
 
-## Utils.mobile
+## `Utils.mobile`
+
+### `anyHover`
+Whether any available input mechanism can hover over elements. This is often used as a standin for desktop/mobile.
 
 ```typescript
-/** Whether any available input mechanism can hover over elements. This is used as a standin for desktop/mobile. */
 anyHover: boolean;
 ```
 
+### `onClick()`
+
+Drop-in replacement for onClick handlers which works better on mobile.
+
 ```typescript
-/** Drop-in replacement for onClick handlers which works better on mobile. */
+/**  */
 onClick: <T extends Node>(
   callback: (e: React.MouseEvent<T, MouseEvent> | React.TouchEvent<T>) => void,
   innerRef?: React.Ref<T>
@@ -128,20 +170,27 @@ onClick: <T extends Node>(
 };
 ```
 
+### `attachClickHandler()`
+
+Replacement for addEventListener("click") which works better on mobile.
+
+Returns a function to remove the event listener.
+
 ```typescript
-/**
-  Replacement for addEventListener("click") which works better on mobile.
-  Returns a function to remove the event listener.
-*/
 attachClickHandler(node: Node, callback: (e: MouseEvent| TouchEvent) => void): () => void;
 ```
 
-<h2 id="react">Utils.react</h2>
+## `Utils.react`
 
+### `useForceUpdate()`
 ```typescript
 useForceUpdate(): React.DispatchWithoutAction;
 ```
 A forceUpdate() function.
+
+### `recursiveMap()`
+
+Used internally by [IdMap](/docs/reference/IdMap); you probably shouldn't use it.
 
 ```typescript
 recursiveMap
@@ -149,32 +198,39 @@ recursiveMap
   : React.ReactChild[];
 ```
 
-Don't use this.
+### `Utils.replayData`
 
-<h2 id="replayData">Utils.replayData</h2>
+### `concat()`
 
 ```typescript
 concat<T>(...args: [ReplayData<T>, number][]): ReplayData<T>;
 ```
 
+### `length()`
+
 ```typescript
   length<T>(data: ReplayData<T>): number;
 ```
 
-## Utils.time
+## `Utils.time`
+
+### `timeRegexp`
 
 ```typescript
 timeRegexp: RegExp;
 ```
 
+### `parseTime()`
 ```typescript
 parseTime(str: string): number;
 ```
 
+### `formatTime()`
 ```typescript
 formatTime(time: number): string;
 ```
 
+### `formatTimeMs()`
 ```typescript
 formatTimeMs(time: number): string;    
 ```

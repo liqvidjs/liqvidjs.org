@@ -1,18 +1,41 @@
+This class is the core of the library. It is an animation loop+event emitter which imitates an [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) being played (although it does not fully implement that interface).
+
+The Playback is attached to the [Player](/docs/reference/Player#playback) and can be accessed like so:
+
+```tsx
+import {usePlayer} from "ractive-player";
+
+function Button() {
+  const {playback} = usePlayer();
+
+  return <button onClick={() => playback.pause()}>Pause</button>;
+}
+```
+
 ## Properties
 
+### `audioContext`
 ```typescript
 audioContext: AudioContext;
 ```
-
+### `audioNode`
 ```typescript
 audioNode: GainNode;
 ```
+
+### `currentTime`
+The current playback time in milliseconds.
+
+**Warning:** the [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface measures this property in seconds.
 
 ```typescript
 currentTime: number;
 ```
 
-The current playback time in milliseconds.
+### `duration`
+
+
+The length of the playback in milliseconds.
 
 **Warning:** the [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface measures this property in seconds.
 
@@ -20,10 +43,7 @@ The current playback time in milliseconds.
 duration: number;
 ```
 
-The length of the playback in milliseconds.
-
-**Warning:** the [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface measures this property in seconds.
-
+### `hub`
 ```typescript
 hub: StrictEventEmitter<EventEmitter, {
   "bufferupdate": void;
@@ -40,40 +60,51 @@ hub: StrictEventEmitter<EventEmitter, {
 }>;
 ```
 
+### `paused`
+
+Whether the playback is paused.
+
 ```typescript
 paused: boolean;
 ```
+### `playbackRate`
 
-Whether the playback is paused.
+The rate at which the playback is being played.
 
 ```typescript
 playbackRate: number;
 ```
 
-The rate at which the playback is being played.
+### `seeking`
+
+Whether the playback is in the process of seeking to a new position.
 
 ```typescript
 seeking: boolean;
 ```
 
-Whether the playback is in the process of seeking to a new position.
-
 ## Methods
+
+### `pause()`
+
+Pause playback.
 
 ```typescript
 pause(): void;
 ```
 
-Pause playback.
+### `play()`
+
+Resume playback.
 
 ```typescript
 play(): void;
 ```
 
-Resume playback.
+### `seek()`
+
+Seek playback to a specific time.
 
 ```typescript
 seek(t: number | string): void;
 ```
-
-Seek playback to a specific time.
