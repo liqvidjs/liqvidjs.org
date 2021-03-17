@@ -46,7 +46,7 @@ playback: Playback;
 
 ## Methods
 
-### `constructor(()`
+### `constructor()`
 ```typescript
 constructor(markers: Array<[string, string | number] | [string, string | number, string | number]>);
 ```
@@ -81,15 +81,17 @@ markerNumberOf(name: string): number;
 ```
 
 ### `parseEnd()`
+
+If `end` is a string, returns the ending time of the marker with that name. Otherwise, returns `end`.
+
 ```typescript
 parseEnd(end: number | string): number;
 ```
 
-If `end` is a string, returns the ending time of the marker with that name. Otherwise, returns `end`.
-
 ### `parseStart()`
+
+If `start` is a string, returns the starting time of the marker with that name. Otherwise, returns `start`.
+
 ```typescript
 parseStart(start: number | string): number;
 ```
-
-If `start` is a string, returns the starting time of the marker with that name. Otherwise, returns `start`.
