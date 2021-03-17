@@ -30,6 +30,20 @@ Returns a CSS block to show the element only when marker name begins with `prefi
 during: (prefix: string) => {"data-during": string;};
 ```
 
+#### Example
+```tsx
+import {Utils} from "ractive-player";
+const {during} = Utils.authoring;
+
+function IntroSlide() {
+  return (
+    <section {...during("intro/")}>
+      {/* Content will only be visible when marker name starts with "intro/" */}
+    </section>
+  );
+}
+```
+
 ### `from()`
 
 Returns a CSS block to show the element when marker is in [first, last).
@@ -106,15 +120,15 @@ between(min: number, val: number, max: number): boolean;
 
 ### `bind()`
 
+Bind methods of an object to the object, so that `this` behaves as expected. This is mainly for code using class components rather than Hooks.
+
 ```typescript
-/** Bind methods on o. */
 bind<T extends {[P in K]: Function}, K extends keyof T>(o: T, methods: K[]): void;
 ```
 
-
 ### `constrain()`
 
-Equivalent to `Math.min(max, Math.max(min, val))`
+Equivalent to `Math.min(max, Math.max(min, val))`.
 
 ```typescript
 constrain: (min: number, val: number, max: number) => number;    
