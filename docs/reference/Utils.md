@@ -1,6 +1,6 @@
-<p>You will probably only need animation, authoring, interactivity, misc, mobile.</p>
+You will probably only need animation, authoring, interactivity, misc, mobile.
 
-## `Utils.animation`
+## `Utils.animation` {#animation}
 
 ### `animate()`
 <!-- <pre class="language-typescript" id="animation.animate"><code> -->
@@ -20,7 +20,7 @@ animate(options: {
 replay<K>({data, start, end, active, inactive, compressed}: ReplayArgs<K>): (t: number) => void;
 ```
 
-## `Utils.authoring`
+## `Utils.authoring` {#authoring}
 
 ### `during()`
 
@@ -44,7 +44,7 @@ from: (first: string, last?: string) => {"data-from-first": string; "data-from-l
 showIf(cond: boolean): {style?: React.CSSProperties;};
 ```
 
-## Utils.interactivity
+## `Utils.interactivity` {#interactivity}
 
 ### `dragHelper()`
 
@@ -81,7 +81,7 @@ dragHelperReact<T extends Node>(
 };
 ```
 
-## `Utils.media`
+## `Utils.media` {#media}
 
 ### `awaitMediaCanPlay()`
 
@@ -94,7 +94,7 @@ awaitMediaCanPlay(media: HTMLMediaElement): Promise<Event>;
 awaitMediaCanPlayThrough(media: HTMLMediaElement): Promise<Event>;
 ```
 
-## `Utils.misc`
+## `Utils.misc` {#misc}
 
 ### `between()`
 
@@ -112,7 +112,7 @@ bind<T extends {[P in K]: Function}, K extends keyof T>(o: T, methods: K[]): voi
 ```
 
 
-### `constrain ()`
+### `constrain()`
 
 Equivalent to `Math.min(max, Math.max(min, val))`
 
@@ -120,14 +120,13 @@ Equivalent to `Math.min(max, Math.max(min, val))`
 constrain: (min: number, val: number, max: number) => number;    
 ```
 
-### `range ()`
+### `range()`
 
-Returns [0, ..., n-1]
+Returns `[0, ..., n-1]`
 
 ```typescript
 range: (n: number) => number[];
 ```
-
 
 ### `wait()`
 
@@ -145,7 +144,7 @@ Returns a Promise that resolves once `callback` returns true.
 waitFor(callback: () => boolean, interval?: number): Promise<void>;
 ```
 
-## `Utils.mobile`
+## `Utils.mobile` {#mobile}
 
 ### `anyHover`
 Whether any available input mechanism can hover over elements. This is often used as a standin for desktop/mobile.
@@ -180,7 +179,7 @@ Returns a function to remove the event listener.
 attachClickHandler(node: Node, callback: (e: MouseEvent| TouchEvent) => void): () => void;
 ```
 
-## `Utils.react`
+## `Utils.react` {#react}
 
 ### `useForceUpdate()`
 ```typescript
@@ -198,7 +197,7 @@ recursiveMap
   : React.ReactChild[];
 ```
 
-### `Utils.replayData`
+## `Utils.replayData` {#replayData}
 
 ### `concat()`
 
@@ -212,7 +211,7 @@ concat<T>(...args: [ReplayData<T>, number][]): ReplayData<T>;
   length<T>(data: ReplayData<T>): number;
 ```
 
-## `Utils.time`
+## `Utils.time` {#time}
 
 ### `timeRegexp`
 
