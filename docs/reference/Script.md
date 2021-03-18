@@ -1,6 +1,6 @@
-## Properties
+## Properties {#properties}
 
-### `hub`
+### `hub` {#hub}
 
 ```typescript
 hub: StrictEventEmitter<EventEmitter, {
@@ -8,13 +8,13 @@ hub: StrictEventEmitter<EventEmitter, {
 }>;
 ```
 
-### `loadTasks`
+### `loadTasks` {#loadTasks}
 
 ```typescript
 loadTasks: Promise<unknown>[];
 ```
 
-### `markerIndex`
+### `markerIndex` {#markerIndex}
 
 Index of the active marker.
 
@@ -22,7 +22,7 @@ Index of the active marker.
 markerIndex: number;
 ```
 
-### `markerName`
+### `markerName` {#markerName}
 
 Name of the active marker.
 
@@ -30,28 +30,28 @@ Name of the active marker.
 markerName: string;
 ```
 
-### `markers`
+### `markers` {#markers}
 
 ```typescript
 markers: [string, number, number][];
 ```
 
-### `playback`
+### `playback` {#playback}
 
-The underlying [Playback](/docs/reference/Playback/) instance.
+The underlying [Playback](/docs/reference/Playback) instance.
 
 ```typescript
 playback: Playback;
 ```
 
-## Methods
+## Methods {#methods}
 
-### `constructor()`
+### `constructor()` {#constructor}
 ```typescript
 constructor(markers: Array<[string, string | number] | [string, string | number, string | number]>);
 ```
 
-### `back()`
+### `back()` {#back}
 
 Seek playback to the previous marker.
 
@@ -59,7 +59,7 @@ Seek playback to the previous marker.
 back(): void;
 ```
 
-### `forward()`
+### `forward()` {#forward}
 
 Advance playback to the next marker.
 
@@ -67,12 +67,12 @@ Advance playback to the next marker.
 forward(): void;
 ```
 
-### `markerByName()`
+### `markerByName()` {#markerByName}
 ```typescript
 markerByName(name: string): [string, number, number];
 ```
 
-### `markerNumberOf()`
+### `markerNumberOf()` {#markerNumberOf}
 
 Returns the first index of a marker named `name`. Throws an error if no marker named `name` exists.
 
@@ -80,7 +80,7 @@ Returns the first index of a marker named `name`. Throws an error if no marker n
 markerNumberOf(name: string): number;
 ```
 
-### `parseEnd()`
+### `parseEnd()` {#parseEnd}
 
 If `end` is a string, returns the ending time of the marker with that name. Otherwise, returns `end`.
 
@@ -88,7 +88,7 @@ If `end` is a string, returns the ending time of the marker with that name. Othe
 parseEnd(end: number | string): number;
 ```
 
-### `parseStart()`
+### `parseStart()` {#parseStart}
 
 If `start` is a string, returns the starting time of the marker with that name. Otherwise, returns `start`.
 

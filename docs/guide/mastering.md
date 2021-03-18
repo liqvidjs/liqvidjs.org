@@ -2,7 +2,7 @@
 title: Mastering
 ---
 
-## Mastering Checklist
+## Mastering Checklist {#mastering-checklist}
 
 1. <input type="checkbox"/> Remove the <code>rp-recording</code> <code class="language-html">&lt;script&gt;</code> tag
 

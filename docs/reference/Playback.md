@@ -12,18 +12,18 @@ function Button() {
 }
 ```
 
-## Properties
+## Properties {#properties}
 
-### `audioContext`
+### `audioContext` {#audioContext}
 ```typescript
 audioContext: AudioContext;
 ```
-### `audioNode`
+### `audioNode` {#audioNode}
 ```typescript
 audioNode: GainNode;
 ```
 
-### `currentTime`
+### `currentTime` {#currentTime}
 The current playback time in milliseconds.
 
 **Warning:** the [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface measures this property in seconds.
@@ -32,7 +32,7 @@ The current playback time in milliseconds.
 currentTime: number;
 ```
 
-### `duration`
+### `duration` {#duration}
 
 
 The length of the playback in milliseconds.
@@ -43,7 +43,7 @@ The length of the playback in milliseconds.
 duration: number;
 ```
 
-### `hub`
+### `hub` {#hub}
 
 An [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) that your code can subscribe to. Emits the following events:
 
@@ -79,14 +79,14 @@ hub: StrictEventEmitter<EventEmitter, {
 }>;
 ``` 
 
-### `paused`
+### `paused` {#paused}
 
 Whether the playback is paused.
 
 ```typescript
 paused: boolean;
 ```
-### `playbackRate`
+### `playbackRate` {#playbackRate}
 
 The rate at which the playback is being played.
 
@@ -94,7 +94,7 @@ The rate at which the playback is being played.
 playbackRate: number;
 ```
 
-### `seeking`
+### `seeking` {#seeking}
 
 Whether the playback is in the process of seeking to a new position.
 
@@ -102,9 +102,9 @@ Whether the playback is in the process of seeking to a new position.
 seeking: boolean;
 ```
 
-## Methods
+## Methods {#methods}
 
-### `pause()`
+### `pause()` {#pause}
 
 Pause playback.
 
@@ -112,7 +112,7 @@ Pause playback.
 pause(): void;
 ```
 
-### `play()`
+### `play()` {#play}
 
 Resume playback.
 
@@ -120,7 +120,7 @@ Resume playback.
 play(): void;
 ```
 
-### `seek()`
+### `seek()` {#seek}
 
 Seek playback to a specific time.
 

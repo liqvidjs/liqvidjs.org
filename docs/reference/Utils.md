@@ -6,7 +6,7 @@ import {Utils} from "ractive-player";
 
 ## `Utils.animation` {#animation}
 
-### `animate()`
+### `animate()` {#animate}
 <!-- <pre class="language-typescript" id="animation.animate"><code> -->
 ```typescript
 animate(options: {
@@ -18,7 +18,7 @@ animate(options: {
 }): (t: number) => number;
 ```
 
-### `replay()`
+### `replay()` {#replay}
 
 ```typescript
 replay<K>({data, start, end, active, inactive, compressed}: ReplayArgs<K>): (t: number) => void;
@@ -26,7 +26,7 @@ replay<K>({data, start, end, active, inactive, compressed}: ReplayArgs<K>): (t: 
 
 ## `Utils.authoring` {#authoring}
 
-### `during()`
+### `during()` {#during}
 
 Returns a CSS block to show the element only when marker name begins with `prefix`.
 
@@ -34,7 +34,7 @@ Returns a CSS block to show the element only when marker name begins with `prefi
 during: (prefix: string) => {"data-during": string;};
 ```
 
-#### Example
+#### Example {#example}
 ```tsx
 import {Utils} from "ractive-player";
 const {during} = Utils.authoring;
@@ -48,7 +48,7 @@ function IntroSlide() {
 }
 ```
 
-### `from()`
+### `from()` {#from}
 
 Returns a CSS block to show the element when marker is in [first, last).
 
@@ -56,7 +56,7 @@ Returns a CSS block to show the element when marker is in [first, last).
 from: (first: string, last?: string) => {"data-from-first": string; "data-from-last"?: string;};
 ```
 
-### `showIf()`
+### `showIf()` {#showif}
 
 ```typescript
 showIf(cond: boolean): {style?: React.CSSProperties;};
@@ -64,7 +64,7 @@ showIf(cond: boolean): {style?: React.CSSProperties;};
 
 ## `Utils.interactivity` {#interactivity}
 
-### `dragHelper()`
+### `dragHelper()` {#draghelper}
 
 ```typescript
 dragHelper<T extends Node, E extends MouseEvent | React.MouseEvent<T> | TouchEvent | React.TouchEvent<T>>(
@@ -79,7 +79,7 @@ dragHelper<T extends Node, E extends MouseEvent | React.MouseEvent<T> | TouchEve
 ): (e: E) => void;
 ```
 
-### `dragHelperReact()`
+### `dragHelperReact()` {#draghelperreact}
 
 ```typescript
 dragHelperReact<T extends Node>(
@@ -101,13 +101,13 @@ dragHelperReact<T extends Node>(
 
 ## `Utils.media` {#media}
 
-### `awaitMediaCanPlay()`
+### `awaitMediaCanPlay()` {#awaitmediacanplay}
 
 ```typescript
 awaitMediaCanPlay(media: HTMLMediaElement): Promise<Event>;
 ```
 
-### `awaitMediaCanPlayThrough()`
+### `awaitMediaCanPlayThrough()` {#awaitmediacanplaythrough}
 ```typescript
 awaitMediaCanPlayThrough(media: HTMLMediaElement): Promise<Event>;
 ```
@@ -116,7 +116,7 @@ awaitMediaCanPlayThrough(media: HTMLMediaElement): Promise<Event>;
 
 A bunch of little functions that should be part of core Javascript, but aren't.
 
-### `between()`
+### `between()` {#between}
 
 Equivalent to `(min <= val) && (val < max)`.
 
@@ -124,7 +124,7 @@ Equivalent to `(min <= val) && (val < max)`.
 between(min: number, val: number, max: number): boolean;
 ```
 
-### `bind()`
+### `bind()` {#bind}
 
 Bind methods of an object to the object, so that `this` behaves as expected. This is mainly for code using class components rather than Hooks.
 
@@ -132,7 +132,7 @@ Bind methods of an object to the object, so that `this` behaves as expected. Thi
 bind<T extends {[P in K]: Function}, K extends keyof T>(o: T, methods: K[]): void;
 ```
 
-### `constrain()`
+### `constrain()` {#constrain}
 
 Equivalent to `Math.min(max, Math.max(min, val))`.
 
@@ -140,7 +140,7 @@ Equivalent to `Math.min(max, Math.max(min, val))`.
 constrain: (min: number, val: number, max: number) => number;    
 ```
 
-### `range()`
+### `range()` {#range}
 
 Returns `[0, ..., n-1]`
 
@@ -148,7 +148,7 @@ Returns `[0, ..., n-1]`
 range: (n: number) => number[];
 ```
 
-### `wait()`
+### `wait()` {#wait}
 
 Returns a Promise that resolves in `time` milliseconds.
 
@@ -156,7 +156,7 @@ Returns a Promise that resolves in `time` milliseconds.
 wait(time: number): Promise<void>;
 ```
 
-### `waitFor()`
+### `waitFor()` {#waitfor}
 
 Returns a Promise that resolves once `callback` returns true.
 
@@ -168,14 +168,14 @@ waitFor(callback: () => boolean, interval?: number): Promise<void>;
 
 Utilities for ensuring compatibility with mobile devices.
 
-### `anyHover`
+### `anyHover` {#anyhover}
 Whether any available input mechanism can hover over elements. This is often used as a standin for desktop/mobile.
 
 ```typescript
 anyHover: boolean;
 ```
 
-### `onClick()`
+### `onClick()` {#onclick}
 
 Drop-in replacement for onClick handlers which works better on mobile.
 
@@ -191,7 +191,7 @@ onClick: <T extends Node>(
 };
 ```
 
-### `attachClickHandler()`
+### `attachClickHandler()` {#attachclickhandler}
 
 Replacement for addEventListener("click") which works better on mobile.
 
@@ -203,7 +203,7 @@ attachClickHandler(node: Node, callback: (e: MouseEvent| TouchEvent) => void): (
 
 ## `Utils.react` {#react}
 
-### `useForceUpdate()`
+### `useForceUpdate()` {#useforceupdate}
 
 A forceUpdate() function.
 
@@ -211,7 +211,7 @@ A forceUpdate() function.
 useForceUpdate(): React.DispatchWithoutAction;
 ```
 
-### `recursiveMap()`
+### `recursiveMap()` {#recursivemap}
 
 Used internally by [IdMap](/docs/reference/IdMap); you probably shouldn't use it.
 
@@ -223,13 +223,13 @@ recursiveMap
 
 ## `Utils.replayData` {#replayData}
 
-### `concat()`
+### `concat()` {#concat}
 
 ```typescript
 concat<T>(...args: [ReplayData<T>, number][]): ReplayData<T>;
 ```
 
-### `length()`
+### `length()` {#length}
 
 ```typescript
   length<T>(data: ReplayData<T>): number;
@@ -239,7 +239,7 @@ concat<T>(...args: [ReplayData<T>, number][]): ReplayData<T>;
 
 Utilities for manipulating time strings, e.g. `1:44.23`.
 
-### `timeRegexp`
+### `timeRegexp` {#timeregexp}
 
 The regular expression used internally by `parseTime()`. Equal to `/^(?:(?:(\d+):)?(\d+):)?(\d+)(?:\.(\d+))?$/`.
 
@@ -247,7 +247,7 @@ The regular expression used internally by `parseTime()`. Equal to `/^(?:(?:(\d+)
 timeRegexp: RegExp;
 ```
 
-### `parseTime()`
+### `parseTime()` {#parsetime}
 
 Parses a time in `hh:mm:ss.ms` format to milliseconds. Hours, minutes, and milliseconds can be omitted if 0.
 
@@ -255,7 +255,7 @@ Parses a time in `hh:mm:ss.ms` format to milliseconds. Hours, minutes, and milli
 parseTime(str: string): number;
 ```
 
-### `formatTime()`
+### `formatTime()` {#formattime}
 
 Format a time (given in milliseconds) as `hh:mm:ss`.
 
@@ -263,7 +263,7 @@ Format a time (given in milliseconds) as `hh:mm:ss`.
 formatTime(time: number): string;
 ```
 
-### `formatTimeMs()`
+### `formatTimeMs()` {#formattimems}
 
 Format a time (given in milliseconds) as `hh:mm:ss.ms`.
 

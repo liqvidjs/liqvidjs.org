@@ -3,7 +3,7 @@ layout: main.pug
 title: About
 ---
 
-## Links
+## Links {#links}
 [GitHub repo](https://github.com/ysulyma/ractive-player)
 
 [NPM Page](https://www.npmjs.com/package/ractive-player)

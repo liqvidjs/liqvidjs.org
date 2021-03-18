@@ -4,7 +4,7 @@ title: Overview
 
 This is the text documentation. For a comprehensive personal tour through the library, check out the [ractives deep dive](https://www.youtube.com/watch?v=9O8h58ANY64).
 
-## Code
+## Code {#code}
 The code is split into many modules and plugins.
 
 * The main package is <a href="https://www.npmjs.com/package/ractive-player">ractive-player</a>
@@ -17,7 +17,7 @@ The code is split into many modules and plugins.
 
 * If you want to use this for mathematical/scientific content, you should also watch the [math tutorial](/math) and clone [rp-tutorial-math](https://github.com/ysulyma/rp-tutorial-math)
 
-## Phases of development
+## Phases of development {#phases-of-development}
 
 In my experience, the process of creating a ractive can be divided into three phases. (This does not include the creative phase of deciding <em>what</em> you want to say, which is usually the hardest part.)
 
@@ -29,9 +29,9 @@ In my experience, the process of creating a ractive can be divided into three ph
 
 The above links provide practical advice on the issues that arise in each phase.
 
-## Classes and Concepts
+## Classes and Concepts {#classes-and-concepts}
 
-### Playback
+### Playback {#playback}
 
 This is the most important class. Effectively, a [Playback](/docs/reference/Playback) mimics an audio/video element that can be played and rewinded, has volume settings, a playback rate, etc. It thus imitates the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/">HTMLMediaElement</a> interface to a certain extent, although it does not fully implement that interface.
 
@@ -41,7 +41,7 @@ Times are generally represented as numbers representing milliseconds since the b
 The HTMLMediaElement interface usually represents times in _seconds_.
 :::
 
-### Script
+### Script {#script}
 
 A [Script](/docs/reference/Script) augments a Playback by breaking it into named segments, which we call <dfn>markers</dfn> (<em>cue</em> would also be appropriate, but that conflicts with WebVTT Cues).
 
@@ -65,11 +65,11 @@ const script = new Script(markers);
 
 When defining markers in the [Authoring](/docs/guide/authoring) phase, you can put anything for the duration, e.g. `["intro/", "1:00"]`. The durations will get filled in during the [Recording](/docs/guide/recording) phase.
 
-### Player
+### Player {#player}
 
 A [Player](/docs/reference/Player) provides a GUI interface for playing ractives, resembling a traditional web video player.
 
-#### Showing/Hiding
+#### Showing/Hiding {#showinghiding}
 
 If an element has the <code class="language-html">data-from-first="first"</code> attribute, it will be visible only when the current marker is equal to or comes after the marker whose name is <code>"first"</code>. If an element further has the <code class="language-html">data-from-last="last"</code> attribute, it will be visible only when the current marker comes strictly before the marker whose name is <code>"last"</code>. If an element has the <code class="language-html">data-during="prefix"</code> attribute, it will be visible only when the current marker's name begins with <code class="language-typescript">"prefix"</code>.
 
@@ -103,7 +103,7 @@ It may seem strange to render everything at the beginning and then selectively s
 
 It is important that <code class="language-typescript">Playback</code> and <code class="language-typescript">Script</code> do not depend on React, and could be used without <code class="language-typescript">Player</code>. Eventually we will be more agnostic about templating systems, so that e.g. Vue or Custom Elements could be used instead of (or in conjunction with) React.
 
-### ReplayData
+### ReplayData {#replaydata}
 
 This is a common pattern in RP elements replaying something recorded by the author (cursor movements, typing, etc.). It is not part of the JavaScript code, but is exported from the TypeScript.
 

@@ -1,15 +1,15 @@
-## Static properties
+## Static properties {#static-properties}
 
-### `Context`
+### `Context` {#Context}
 ```typescript
 static Context: React.Context<Player>;
 ```
 
-React Context containing a reference to the player. If you are using Hooks, you can use [usePlayer()](/docs/reference/hooks#useplayer) instead.
+React [Context](https://reactjs.org/docs/context.html) containing a reference to the ambient player. If you are using Hooks, you can use [usePlayer()](/docs/reference/hooks#usePlayer) instead.
 
-## Static methods
+## Static methods {#static-methods}
 
-### `allowScroll()`
+### `allowScroll()` {#allowScroll}
 
 Prevents intercepting of scroll on mobile. See [Scroll events](/docs/guide/authoring#scroll-events) in the Authoring guide.
 
@@ -17,7 +17,7 @@ Prevents intercepting of scroll on mobile. See [Scroll events](/docs/guide/autho
 static allowScroll(e: React.TouchEvent | TouchEvent): void;
 ```
 
-### `preventCanvasClick()`
+### `preventCanvasClick()` {#preventCanvasClick}
 
 Prevents a click from pausing/playing the video. See [Canvas clicks](/docs/guide/authoring#canvas-clicks) in the Authoring guide.
 
@@ -25,21 +25,21 @@ Prevents a click from pausing/playing the video. See [Canvas clicks](/docs/guide
 static preventCanvasClick(e: React.MouseEvent | MouseEvent): void;
 ```
 
-## Properties
+## Properties {#properties}
 
-### `canPlay`
+### `canPlay` {#canPlay}
 
 ```typescript
 canPlay: Promise<void[]>;
 ```
 
-### `canPlayThrough`
+### `canPlayThrough` {#canPlayThrough}
 
 ```typescript
 canPlayThrough: Promise<void[]>;
 ```
 
-### `canvas`
+### `canvas` {#canvas}
 
 The div where ractive content is attached (which is separate from ractive controls).
 
@@ -47,7 +47,7 @@ The div where ractive content is attached (which is separate from ractive contro
 canvas: HTMLDivElement;
 ```
 
-### `hub`
+### `hub` {#hub}
 
 An [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) that your code can subscribe to. Emits the following events:
 
@@ -65,7 +65,7 @@ hub: StrictEventEmitter<EventEmitter, {
 }>;
 ```
 
-### `keymap`
+### `keymap` {#keymap}
 
 The [KeyMap](/docs/reference/KeyMap/) instance attached to this player.
 
@@ -73,7 +73,7 @@ The [KeyMap](/docs/reference/KeyMap/) instance attached to this player.
 keymap: KeyMap;
 ```
 
-### `playback`
+### `playback` {#playback}
 
 The underlying [Playback](/docs/reference/Playback/) instance.
 
@@ -81,7 +81,7 @@ The underlying [Playback](/docs/reference/Playback/) instance.
 playback: Playback;
 ```
 
-### `script`
+### `script` {#script}
 
 The underlying [Script](/docs/reference/Script/) instance.
 
@@ -89,15 +89,15 @@ The underlying [Script](/docs/reference/Script/) instance.
 script: Script;
 ```
 
-## Methods
+## Methods {#methods}
 
-### `obstruct()`
+### `obstruct()` {#obstruct}
 
 ```typescript
 obstruct(event: "canplay" | "canplaythrough", task: Promise<unknown>): void;
 ```
 
-### `ready()`
+### `ready()` {#ready}
 
 Call this method when the ractive is ready to begin playing.
 
@@ -105,7 +105,7 @@ Call this method when the ractive is ready to begin playing.
 ready(): void;
 ```
 
-### `resumeKeyCapture()`
+### `resumeKeyCapture()` {#resumeKeyCapture}
 
 Resumes keyboard controls. See [Forms](/docs/guide/authoring#forms) in the Authoring guide.
 
@@ -113,7 +113,7 @@ Resumes keyboard controls. See [Forms](/docs/guide/authoring#forms) in the Autho
 resumeKeyCapture(): void;
 ```
 
-### `suspendKeyCapture()`
+### `suspendKeyCapture()` {#suspendKeyCapture}
 
 Suspends keyboard controls so that components can receive keyboard input. See [Forms](/docs/guide/authoring#forms) in the Authoring guide.
 

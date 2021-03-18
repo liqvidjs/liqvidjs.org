@@ -2,7 +2,7 @@
 title: Authoring
 ---
 
-## Forms
+## Forms {#forms}
 In order for a component to receive keyboard input, you need to disable the keyboard controls. There is also a strange bug in iOS Safari where input components need to be manually focused.
 
 ```tsx
@@ -26,9 +26,9 @@ function Form() {
 }
 ```
 
-## Interactivity
+## Interactivity {#interactivity}
 
-### Canvas clicks
+### Canvas clicks {#canvas-clicks}
 
 By default, clicking anywhere on the video pauses it. Of course, you do not want this behavior for interactive components or links. To prevent this, add `onMouseUp={Player.preventCanvasClick}`:
 
@@ -47,9 +47,9 @@ import {Utils} from "ractive-player";
 const {dragHelperReact} = Utils.interactivity;
 ```-->
 
-## Mobile
+## Mobile {#mobile}
 
-### Fake fullscreen
+### Fake fullscreen {#fake-fullscreen}
 
 Mobile devices do not support the fullscreen API. As a workaround, when the fullscreen control is tapped on a mobile device, ractive-player will dispatch an event to the window containing the `iframe`. You can then maximize the iframe using CSS.
 
@@ -111,7 +111,7 @@ iframe.fake-fullscreen {
 }
 ```
 
-### Fat fingers
+### Fat fingers {#fat-fingers}
 
 Controls need a larger clickable area on mobile. You can use the following to increase the clickable area of an HTML component:
 
@@ -134,11 +134,11 @@ We learned this trick from <a href="https://front-back.com/expand-clickable-area
 
 For SVG components, such as a `<circle/>`, you can use a duplicate element which is a bit larger and has `fill: transparent`.
 
-### Click events
+### Click events {#click-events}
 
 Click events do not work reliably on mobile devices; one should use touch events instead. We provide an <a href="/docs/reference/Utils#mobile.onClick">onClick</a> helper for this.
 
-### Scroll events
+### Scroll events {#scroll-events}
 
 <p>On mobile, <code>Player</code> intercepts <code>touchmove</code> events to prevent scrolling of the window. This can cause problems with scrolling in elements with <code class="language-css">overflow: auto</code> and variants. To ensure an element can be scrolled, write</p>
 

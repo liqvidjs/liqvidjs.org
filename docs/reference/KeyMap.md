@@ -24,9 +24,9 @@ function Searchable() {
 
 Although you can create other KeyMap instances, you'll most likely only use the one attached to the player.
 
-## Static methods
+## Static methods {#static-methods}
 
-### `normalize()`
+### `normalize()` {#normalize}
 
 Returns a canonical form of the shortcut sequence.
 
@@ -34,7 +34,7 @@ Returns a canonical form of the shortcut sequence.
 static normalize(seq: string): string;
 ```
 
-#### Example
+#### Example {#example}
 
 ```tsx
 import {KeyMap} from "ractive-player";
@@ -43,7 +43,7 @@ import {KeyMap} from "ractive-player";
 KeyMap.normalize("Alt+Ctrl+2");
 ```
 
-### `identify()`
+### `identify()` {#identify}
 
 Given a KeyboardEvent (or React wrapper thereof), returns a shortcut sequence matching that event.
 
@@ -51,9 +51,9 @@ Given a KeyboardEvent (or React wrapper thereof), returns a shortcut sequence ma
 static identify(e: KeyboardEvent | React.KeyboardEvent<unknown>): string;
 ```
   
-## Methods
+## Methods {#methods}
 
-### `bind()`
+### `bind()` {#bind}
 
 Bind a handler to be called when the shortcut sequence is pressed.
 
@@ -61,7 +61,7 @@ Bind a handler to be called when the shortcut sequence is pressed.
 bind(seq: string, cb: (e: KeyboardEvent) => void): void;
 ```
 
-### `unbind()`
+### `unbind()` {#unbind}
 
 Unbind a handler from a shortcut sequence.
 
@@ -69,7 +69,7 @@ Unbind a handler from a shortcut sequence.
 unbind(seq: string, cb: (e: KeyboardEvent) => void): void;
 ```
 
-### `getKeys()`
+### `getKeys()` {#getkeys}
 
 Return all shortcut sequences with handlers bound to them.
 
@@ -77,7 +77,7 @@ Return all shortcut sequences with handlers bound to them.
 getKeys(): string[];
 ```
 
-### `getHandlers()`
+### `getHandlers()` {#gethandlers}
 
 Get the list of handlers for a given shortcut sequence.
 
@@ -85,7 +85,7 @@ Get the list of handlers for a given shortcut sequence.
 getHandlers(seq: string): ((e: KeyboardEvent) => void)[];
 ```
 
-### `handle()`
+### `handle()` {#handle}
 
 Dispatches all handlers matching the given event.
 
