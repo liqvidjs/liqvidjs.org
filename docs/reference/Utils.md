@@ -1,4 +1,8 @@
-You will probably only need animation, authoring, interactivity, misc, mobile.
+This is a big hodge-podge of helper functions. Several of these arguably do not belong in this library, but we have chosen author convenience over library slimness. You will probably only need animation, authoring, interactivity, misc, and mobile.
+
+```tsx
+import {Utils} from "ractive-player";
+```
 
 ## `Utils.animation` {#animation}
 
@@ -110,6 +114,8 @@ awaitMediaCanPlayThrough(media: HTMLMediaElement): Promise<Event>;
 
 ## `Utils.misc` {#misc}
 
+A bunch of little functions that should be part of core Javascript, but aren't.
+
 ### `between()`
 
 Equivalent to `(min <= val) && (val < max)`.
@@ -160,6 +166,8 @@ waitFor(callback: () => boolean, interval?: number): Promise<void>;
 
 ## `Utils.mobile` {#mobile}
 
+Utilities for ensuring compatibility with mobile devices.
+
 ### `anyHover`
 Whether any available input mechanism can hover over elements. This is often used as a standin for desktop/mobile.
 
@@ -196,10 +204,12 @@ attachClickHandler(node: Node, callback: (e: MouseEvent| TouchEvent) => void): (
 ## `Utils.react` {#react}
 
 ### `useForceUpdate()`
+
+A forceUpdate() function.
+
 ```typescript
 useForceUpdate(): React.DispatchWithoutAction;
 ```
-A forceUpdate() function.
 
 ### `recursiveMap()`
 
@@ -227,23 +237,36 @@ concat<T>(...args: [ReplayData<T>, number][]): ReplayData<T>;
 
 ## `Utils.time` {#time}
 
+Utilities for manipulating time strings, e.g. `1:44.23`.
+
 ### `timeRegexp`
+
+The regular expression used internally by `parseTime()`. Equal to `/^(?:(?:(\d+):)?(\d+):)?(\d+)(?:\.(\d+))?$/`.
 
 ```typescript
 timeRegexp: RegExp;
 ```
 
 ### `parseTime()`
+
+Parses a time in `hh:mm:ss.ms` format to milliseconds. Hours, minutes, and milliseconds can be omitted if 0.
+
 ```typescript
 parseTime(str: string): number;
 ```
 
 ### `formatTime()`
+
+Format a time (given in milliseconds) as `hh:mm:ss`.
+
 ```typescript
 formatTime(time: number): string;
 ```
 
 ### `formatTimeMs()`
+
+Format a time (given in milliseconds) as `hh:mm:ss.ms`.
+
 ```typescript
 formatTimeMs(time: number): string;    
 ```

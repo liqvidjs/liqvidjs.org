@@ -51,11 +51,11 @@ canvas: HTMLDivElement;
 
 An [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) that your code can subscribe to. Emits the following events:
 
-| Name       | Description     |
-| ------------- | ---------- |
-| canplay | Fired when the ractive is ready to start playing, but may not be able to play to its end without having to stop for further buffering of content. |
+| Name           | Description |
+| -------------- | ----------- |
+| canplay        | Fired when the ractive is ready to start playing, but may not be able to play to its end without having to stop for further buffering of content. |
 | canplaythrough | Fired when the ractive is ready to start playing, and will be able to play up to its end without having to stop for further buffering of content. |
-| canvasClick | Fired when a click happens anywhere on the canvas, which by default pauses/resumes the video. See [Canvas clicks](/docs/guide/authoring#canvas-clicks) in the Authoring guide. |
+| canvasClick    | Fired when a click happens anywhere on the canvas, which by default pauses/resumes the video. See [Canvas clicks](/docs/guide/authoring#canvas-clicks) in the Authoring guide. |
 
 ```typescript
 hub: StrictEventEmitter<EventEmitter, {
