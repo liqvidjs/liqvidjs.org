@@ -26,7 +26,7 @@ Although you can create other KeyMap instances, you'll most likely only use the 
 
 ## Static methods
 
-### `canonize()`
+### `normalize()`
 
 Returns a canonical form of the shortcut sequence.
 
@@ -40,7 +40,7 @@ static normalize(seq: string): string;
 import {KeyMap} from "ractive-player";
 
 // returns "Ctrl+Alt+2"
-KeyMap.canonize("Alt+Ctrl+2");
+KeyMap.normalize("Alt+Ctrl+2");
 ```
 
 ### `identify()`
