@@ -1,11 +1,12 @@
 ## Static properties {#static-properties}
 
 ### `Context` {#Context}
+
+React [Context](https://reactjs.org/docs/context.html) containing a reference to the ambient player. If you are using Hooks, you can use [usePlayer()](/docs/reference/hooks#usePlayer) instead.
+
 ```typescript
 static Context: React.Context<Player>;
 ```
-
-React [Context](https://reactjs.org/docs/context.html) containing a reference to the ambient player. If you are using Hooks, you can use [usePlayer()](/docs/reference/hooks#usePlayer) instead.
 
 ## Static methods {#static-methods}
 

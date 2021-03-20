@@ -64,7 +64,7 @@ showIf(cond: boolean): {style?: React.CSSProperties;};
 
 ## `Utils.interactivity` {#interactivity}
 
-### `dragHelper()` {#draghelper}
+### `dragHelper()` {#dragHelper}
 
 ```typescript
 dragHelper<T extends Node, E extends MouseEvent | React.MouseEvent<T> | TouchEvent | React.TouchEvent<T>>(
@@ -79,7 +79,7 @@ dragHelper<T extends Node, E extends MouseEvent | React.MouseEvent<T> | TouchEve
 ): (e: E) => void;
 ```
 
-### `dragHelperReact()` {#draghelperreact}
+### `dragHelperReact()` {#dragHelperReact}
 
 ```typescript
 dragHelperReact<T extends Node>(
@@ -101,13 +101,13 @@ dragHelperReact<T extends Node>(
 
 ## `Utils.media` {#media}
 
-### `awaitMediaCanPlay()` {#awaitmediacanplay}
+### `awaitMediaCanPlay()` {#awaitMediaCanPlay}
 
 ```typescript
 awaitMediaCanPlay(media: HTMLMediaElement): Promise<Event>;
 ```
 
-### `awaitMediaCanPlayThrough()` {#awaitmediacanplaythrough}
+### `awaitMediaCanPlayThrough()` {#awaitMediaCanPlayThrough}
 ```typescript
 awaitMediaCanPlayThrough(media: HTMLMediaElement): Promise<Event>;
 ```
@@ -156,7 +156,7 @@ Returns a Promise that resolves in `time` milliseconds.
 wait(time: number): Promise<void>;
 ```
 
-### `waitFor()` {#waitfor}
+### `waitFor()` {#waitFor}
 
 Returns a Promise that resolves once `callback` returns true.
 
@@ -168,19 +168,18 @@ waitFor(callback: () => boolean, interval?: number): Promise<void>;
 
 Utilities for ensuring compatibility with mobile devices.
 
-### `anyHover` {#anyhover}
+### `anyHover` {#anyHover}
 Whether any available input mechanism can hover over elements. This is often used as a standin for desktop/mobile.
 
 ```typescript
 anyHover: boolean;
 ```
 
-### `onClick()` {#onclick}
+### `onClick()` {#onClick}
 
 Drop-in replacement for onClick handlers which works better on mobile.
 
 ```typescript
-/**  */
 onClick: <T extends Node>(
   callback: (e: React.MouseEvent<T, MouseEvent> | React.TouchEvent<T>) => void,
   innerRef?: React.Ref<T>
@@ -191,7 +190,7 @@ onClick: <T extends Node>(
 };
 ```
 
-### `attachClickHandler()` {#attachclickhandler}
+### `attachClickHandler()` {#attachClickHandler}
 
 Replacement for addEventListener("click") which works better on mobile.
 
@@ -203,7 +202,7 @@ attachClickHandler(node: Node, callback: (e: MouseEvent| TouchEvent) => void): (
 
 ## `Utils.react` {#react}
 
-### `useForceUpdate()` {#useforceupdate}
+### `useForceUpdate()` {#useForceUpdate}
 
 A forceUpdate() function.
 
@@ -211,7 +210,7 @@ A forceUpdate() function.
 useForceUpdate(): React.DispatchWithoutAction;
 ```
 
-### `recursiveMap()` {#recursivemap}
+### `recursiveMap()` {#recursiveMap}
 
 Used internally by [IdMap](/docs/reference/IdMap); you probably shouldn't use it.
 
@@ -239,7 +238,7 @@ concat<T>(...args: [ReplayData<T>, number][]): ReplayData<T>;
 
 Utilities for manipulating time strings, e.g. `1:44.23`.
 
-### `timeRegexp` {#timeregexp}
+### `timeRegexp` {#timeRegexp}
 
 The regular expression used internally by `parseTime()`. Equal to `/^(?:(?:(\d+):)?(\d+):)?(\d+)(?:\.(\d+))?$/`.
 
@@ -247,7 +246,7 @@ The regular expression used internally by `parseTime()`. Equal to `/^(?:(?:(\d+)
 timeRegexp: RegExp;
 ```
 
-### `parseTime()` {#parsetime}
+### `parseTime()` {#parseTime}
 
 Parses a time in `hh:mm:ss.ms` format to milliseconds. Hours, minutes, and milliseconds can be omitted if 0.
 
@@ -255,7 +254,7 @@ Parses a time in `hh:mm:ss.ms` format to milliseconds. Hours, minutes, and milli
 parseTime(str: string): number;
 ```
 
-### `formatTime()` {#formattime}
+### `formatTime()` {#formatTime}
 
 Format a time (given in milliseconds) as `hh:mm:ss`.
 
@@ -263,7 +262,7 @@ Format a time (given in milliseconds) as `hh:mm:ss`.
 formatTime(time: number): string;
 ```
 
-### `formatTimeMs()` {#formattimems}
+### `formatTimeMs()` {#formatTimeMs}
 
 Format a time (given in milliseconds) as `hh:mm:ss.ms`.
 

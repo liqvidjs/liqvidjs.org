@@ -40,12 +40,90 @@ This link will open in a new tab and will not pause the video when clicked.
 </a>
 ```
 
-<!-- ### Dragging
+If you would like to disable pause-on-click globally, you can write:
+```tsx
+import {usePlayer} from "ractive-player";
+
+function Ractive() {
+  const player = usePlayer();
+  
+  React.useEffect(() => {
+    player.hub.on("canvasClick", () => false);
+  }, []);
+}
+```
+
+### Dragging {#dragging}
+
+We provide the [`dragHelperReact`](/docs/reference/Utils#dragHelperReact) utility to help with making components draggable by abstracting over the difference between mouse and touch events. Here is code for a draggable pig:
 
 ```tsx
-import {Utils} from "ractive-player";
-const {dragHelperReact} = Utils.interactivity;
-```-->
+import {useMemo, useRef} from "react";
+import {Utils, usePlayer} from "ractive-player";
+const {dragHelperReact} = Utils.interactivity,
+      {constrain} = Utils.misc;
+
+function DraggablePig() {
+  const player = usePlayer();
+
+  const ref = useRef<HTMLImageElement>();
+  const offset = useRef({x: 0, y: 0});
+  const dragEvents = useMemo(() => dragHelperReact<HTMLImageElement>(
+    // move
+    (e, hit) => {
+      // prevent from dragging off the page
+      const left = constrain(
+        0,
+        hit.x - offset.current.x - player.canvas.offsetLeft,
+        player.canvas.offsetWidth - ref.current.offsetWidth
+      ) / player.canvas.offsetWidth;
+
+      const top = constrain(
+        0,
+        hit.y - offset.current.y - player.canvas.offsetTop,
+        player.canvas.offsetHeight - ref.current.offsetHeight
+      ) / player.canvas.offsetHeight;
+
+      Object.assign(ref.current.style, {
+        left: `${left * 100}%`,
+        top: `${top * 100}%`
+      });
+    },
+    // down
+    (e, hit) => {
+      e.preventDefault();
+      const dims = ref.current.getBoundingClientRect();
+      offset.current.x = hit.x - dims.left;
+      offset.current.y = hit.y - dims.top;
+
+      document.body.classList.add("dragging");
+    },
+    // up
+    () => {
+      document.body.classList.remove("dragging");
+    }
+  ), []);
+
+  return (
+    <img className="draggable" src="/img/pig.svg" ref={ref} {...dragEvents}/>
+  );
+}
+```
+
+This is accompanied by the CSS code
+```css
+.draggable {
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+
+body.dragging .rp-canvas,
+body.dragging .draggable,
+.dragging {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+```
 
 ## Mobile {#mobile}
 

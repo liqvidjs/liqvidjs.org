@@ -2,6 +2,12 @@
 
 ### `hub` {#hub}
 
+An [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) that your code can subscribe to. Emits the following events:
+
+| Name           | Description |
+| -------------- | ----------- |
+| markerupdate | Fired when the active marker changes. Callback receives the index of the previously active marker. |
+
 ```typescript
 hub: StrictEventEmitter<EventEmitter, {
   "markerupdate": number;
@@ -31,6 +37,8 @@ markerName: string;
 ```
 
 ### `markers` {#markers}
+
+The array of markers, in the form `[name, startTime, endTime]`.
 
 ```typescript
 markers: [string, number, number][];
@@ -68,6 +76,9 @@ forward(): void;
 ```
 
 ### `markerByName()` {#markerByName}
+
+
+
 ```typescript
 markerByName(name: string): [string, number, number];
 ```
