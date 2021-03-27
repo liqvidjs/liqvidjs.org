@@ -32,6 +32,11 @@ module.exports = {
         // {to: "tutorial", label: "Tutorial", position: "left"},
         {to: "faq", label: "FAQ", position: "left"},
         {
+          href: "https://discord.gg/u8Qab99zHx",
+          label: "Discord",
+          position: "right",
+        },
+        {
           href: "https://github.com/ysulyma/ractive-player",
           label: "GitHub",
           position: "right",
