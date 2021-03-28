@@ -50,4 +50,5 @@ For example, to make a component occupy the full height of the canvas, but not b
 ```css
 .my-component {
   height: calc(100% - var(--rp-controls-height));
-}```
+}
+```
