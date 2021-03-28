@@ -31,7 +31,7 @@ The above links provide practical advice on the issues that arise in each phase.
 
 ## Classes and Concepts {#classes-and-concepts}
 
-### Playback {#playback}
+### `Playback` {#playback}
 
 This is the most important class. Effectively, a [Playback](/docs/reference/Playback) mimics an audio/video element that can be played and rewinded, has volume settings, a playback rate, etc. It thus imitates the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/">HTMLMediaElement</a> interface to a certain extent, although it does not fully implement that interface.
 
@@ -41,7 +41,7 @@ Times are generally represented as numbers representing milliseconds since the b
 The HTMLMediaElement interface usually represents times in _seconds_.
 :::
 
-### Script {#script}
+### `Script` and markers {#script}
 
 A [Script](/docs/reference/Script) augments a Playback by breaking it into named segments, which we call <dfn>markers</dfn> (<em>cue</em> would also be appropriate, but that conflicts with WebVTT Cues).
 
@@ -65,11 +65,14 @@ const script = new Script(markers);
 
 When defining markers in the [Authoring](/docs/guide/authoring) phase, you can put anything for the duration, e.g. `["intro/", "1:00"]`. The durations will get filled in during the [Recording](/docs/guide/recording) phase.
 
-### Player {#player}
+### `Player` {#player}
 
 A [Player](/docs/reference/Player) provides a GUI interface for playing ractives, resembling a traditional web video player.
 
-#### Showing/Hiding {#showinghiding}
+It is important that <code class="language-typescript">Playback</code> and <code class="language-typescript">Script</code> do not depend on React, and could be used without <code class="language-typescript">Player</code>. Eventually we will be more agnostic about templating systems, so that e.g. Vue or Custom Elements could be used instead of (or in conjunction with) React.
+
+
+### Showing/Hiding {#showinghiding}
 
 If an element has the <code class="language-html">data-from-first="first"</code> attribute, it will be visible only when the current marker is equal to or comes after the marker whose name is <code>"first"</code>. If an element further has the <code class="language-html">data-from-last="last"</code> attribute, it will be visible only when the current marker comes strictly before the marker whose name is <code>"last"</code>. If an element has the <code class="language-html">data-during="prefix"</code> attribute, it will be visible only when the current marker's name begins with <code class="language-typescript">"prefix"</code>.
 
@@ -99,9 +102,11 @@ Internally, elements are hidden by setting <code class="language-css">opacity:0;
 
 <!-- <p class="todo">insert warning about starting -->
 
+:::note
+
 It may seem strange to render everything at the beginning and then selectively show/hide it, rather than rendering selectively based on the current time. My own use case for this library uses a lot of MathJax, which takes a few seconds to render, so selective rendering would disrupt the viewing experience. If you don't have any content with long repaints, selective rendering will probably work fine.
 
-It is important that <code class="language-typescript">Playback</code> and <code class="language-typescript">Script</code> do not depend on React, and could be used without <code class="language-typescript">Player</code>. Eventually we will be more agnostic about templating systems, so that e.g. Vue or Custom Elements could be used instead of (or in conjunction with) React.
+:::
 
 ### ReplayData {#replaydata}
 

@@ -5,10 +5,10 @@ You will typically not instantiate this class directly. The Playback is attached
 ```tsx
 import {usePlayer} from "ractive-player";
 
-function Button() {
+function Component() {
   const {playback} = usePlayer();
 
-  return <button onClick={() => playback.pause()}>Pause</button>;
+  // do stuff with playback
 }
 ```
 

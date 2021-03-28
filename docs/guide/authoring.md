@@ -2,30 +2,6 @@
 title: Authoring
 ---
 
-## Forms {#forms}
-In order for a component to receive keyboard input, you need to disable the keyboard controls. There is also a strange bug in iOS Safari where input components need to be manually focused.
-
-```tsx
-import {useCallback, useState} from "react";
-import {Utils, usePlayer} from "ractive-player";
-const {onClick} = Utils.mobile;
-
-function Form() {
-  const player = usePlayer();
-  const [value, setValue] = useState("Alice");
-  const handler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value), []);
-
-  return (
-    <form>
-      <input
-        {...onClick((e: React.SyntheticEvent<HTMLInputElement>) => e.currentTarget.focus())}
-        onBlur={player.resumeKeyCapture} onFocus={player.suspendKeyCapture}
-        onChange={handler} value={value}/>
-    </form>
-  );
-}
-```
-
 ## Interactivity {#interactivity}
 
 ### Canvas clicks {#canvas-clicks}
@@ -122,6 +98,30 @@ body.dragging .draggable,
 .dragging {
   cursor: grabbing;
   cursor: -webkit-grabbing;
+}
+```
+
+### Forms {#forms}
+In order for a component to receive keyboard input, you need to disable the keyboard controls. There is also a strange bug in iOS Safari where input components need to be manually focused.
+
+```tsx
+import {useCallback, useState} from "react";
+import {Utils, usePlayer} from "ractive-player";
+const {onClick} = Utils.mobile;
+
+function Form() {
+  const player = usePlayer();
+  const [value, setValue] = useState("Alice");
+  const handler = useCallback((e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value), []);
+
+  return (
+    <form>
+      <input
+        {...onClick((e: React.SyntheticEvent<HTMLInputElement>) => e.currentTarget.focus())}
+        onBlur={player.resumeKeyCapture} onFocus={player.suspendKeyCapture}
+        onChange={handler} value={value}/>
+    </form>
+  );
 }
 ```
 
@@ -222,4 +222,60 @@ Click events do not work reliably on mobile devices; one should use touch events
 
 ```tsx
 <div onTouchMove={Player.allowScroll}>
+```
+
+## Recipes
+
+### Navigation
+
+Here is a button to seek to a specific marker. For example, you could use this to make a table of contents.
+
+```tsx
+import {Utils, usePlayer} from "ractive-player";
+const {onClick} = Utils.mobile;
+
+function Button() {
+  const {playback, script} = usePlayer();
+
+  const events = React.useMemo(() => {
+    const time = script.parseStart("good-part");
+    return onClick(() => {
+      playback.seek(time);
+    });
+  }), []);
+
+  return <button {...events}>Skip to the good part</button>;
+}
+```
+
+### Pausing the video
+Here is a component to automatically pause the video at a certain time/marker, e.g. for the viewer to make a choice.
+
+```tsx
+import {Utils, usePlayer, useTimeUpdate} from "ractive-player";
+const {between} = Utils.misc;
+
+interface Props {
+  time: string;
+  interval: number;
+}
+
+function PauseAt(props: Props) {
+  const {playback, script} = usePlayer();
+
+  const time = React.useMemo(() => script.parseStart(props.time), []);
+  const interval = props.interval ?? 300;
+
+  const prev = React.useRef(playback.currentTime);
+
+  useTimeUpdate(t => {
+    if (between(time - interval, prev.current, time) && between(time, t, time + interval)) {
+      playback.pause();
+    }
+    prev.current = t;
+  }, []);
+}
+
+// usage
+<PauseAt time="intro/pause"/>
 ```
