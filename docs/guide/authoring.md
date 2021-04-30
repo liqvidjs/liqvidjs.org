@@ -224,9 +224,9 @@ Click events do not work reliably on mobile devices; one should use touch events
 <div onTouchMove={Player.allowScroll}>
 ```
 
-## Recipes
+## Recipes {#recipes}
 
-### Navigation
+### Navigation {#navigation}
 
 Here is a button to seek to a specific marker. For example, you could use this to make a table of contents.
 
@@ -248,7 +248,7 @@ function Button() {
 }
 ```
 
-### Pausing the video
+### Pausing the video {#pausing-the-video}
 Here is a component to automatically pause the video at a certain time/marker, e.g. for the viewer to make a choice.
 
 ```tsx

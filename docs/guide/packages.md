@@ -19,7 +19,7 @@ The core library only aims to provide a framework, much like React itself. Compl
 
 - [rp-prompt](https://www.npmjs.com/package/rp-prompt)<br/>Provides prompts to read from when recording.
 
-## Coding
+## Coding {#coding}
 
 - [rp-codebooth](https://www.npmjs.com/package/rp-codebooth)<br/>A GUI with Code/Playground/Copy/Run/Clear buttons and an Output pane. Based on `rp-codemirror`; use that directly if you want more customization.
 

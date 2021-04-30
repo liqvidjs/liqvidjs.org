@@ -2,15 +2,19 @@
 title: Mastering
 ---
 
-Once you are done recording, there are still a few steps required to get your ractive polished and cross-compatible. We call this the mastering or post-processing phase. At the end we provide a checklist to go through when deploying a ractive to production.
+Once you are done recording, there are still a few steps required to get your ractive polished and cross-compatible. We call this the mastering or post-processing phase.
+
+You will need to have [ffmpeg](https://ffmpeg.org/download.html) installed. In case you have have issues installing it, [this guide](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-FFmpeg) may help.
+
+At the end we provide a checklist to go through when deploying a ractive to production.
 
 ## Audio {#audio}
 
-### Joining audio
+### Joining audio {#joining-audio}
 
 It can be convenient to record several audio segments separately. However, due to the <a href="https://developer.mozilla.org/en-US/docs/Web/Media/Autoplay_guide#The_play()_method">Web Autoplay Policy</a>, you need to join them into a single audio file when you are finished. See <a href="https://trac.ffmpeg.org/wiki/Concatenate#demuxer">https://trac.ffmpeg.org/wiki/Concatenate#demuxer</a> for how to do this with ffmpeg.
 
-### Fixing the browser recording
+### Fixing the browser recording {#fixing-the-browser-recording}
 The audio file produced by the browser will not have the correct metadata for seeking. To fix it:
 
 ```bash
@@ -18,14 +22,14 @@ ffmpeg -i audio.webm -strict -2 audio-fixed.webm
 mv audio-fixed.webm audio.webm
 ```
 
-### Converting audio
+### Converting audio {#converting-audio}
 It is necessary to provide audio in both webm and mp4 format. To convert the webm recording:
 
 ```bash
 ffmpeg -i audio.webm audio.mp4
 ```
 
-### Other tips
+### Other tips {#other-tips}
 
 [How to do noise reduction using ffmpeg and sox](http://www.zoharbabin.com/how-to-do-noise-reduction-using-ffmpeg-and-sox/) (skip steps 1 and 5)
 
