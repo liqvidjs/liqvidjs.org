@@ -11,8 +11,18 @@ module.exports = {
     },
     {
       type: "category",
-      label: "Reference",
+      label: "ractive-player",
       items: ["css", "Audio", "hooks", "IdMap", "KeyMap", "Playback", "Player", "Script", "Utils", "Video"].map(_ => "reference/" + _)
+    },
+    /*{
+      type: "category",
+      label: "rp-recording",
+      items: ["rp-recording"].map(_ => "extra/" + _)
+    },*/
+    {
+      type: "category",
+      label: "rp-master",
+      items: ["render", "thumbs"].map(_ => "rp-master/" + _)
     }
   ],
 };
