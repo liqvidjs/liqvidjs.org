@@ -29,8 +29,17 @@ module.exports = {
           label: "Docs",
           position: "left",
         },
-        // {to: "tutorial", label: "Tutorial", position: "left"},
-        {to: "faq", label: "FAQ", position: "left"},
+        {
+          to: "blog/",
+          activeBasePath: "blog",
+          label: "Blog",
+          position: "left",
+        },
+        {
+          to: "faq",
+          label: "FAQ",
+          position: "left"
+        },
         {
           href: "https://discord.gg/u8Qab99zHx",
           label: "Discord",
@@ -75,14 +84,14 @@ module.exports = {
         {
           title: "More",
           items: [
-            // {
-            //   label: "Blog",
-            //   to: "blog",
-            // },
             {
               label: "GitHub",
               href: "https://github.com/ysulyma/ractive-player",
             },
+            {
+              label: "Product Hunt",
+              href: "https://www.producthunt.com/posts/ractive-player"
+            }
           ],
         },
       ],

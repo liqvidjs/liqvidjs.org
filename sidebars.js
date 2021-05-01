@@ -12,7 +12,7 @@ module.exports = {
     {
       type: "category",
       label: "ractive-player",
-      items: ["css", "Audio", "hooks", "IdMap", "KeyMap", "Playback", "Player", "Script", "Utils", "Video"].map(_ => "reference/" + _)
+      items: ["css", "Audio", "Controls", "hooks", "IdMap", "KeyMap", "Playback", "Player", "Script", "Utils", "Video"].map(_ => "reference/" + _)
     },
     /*{
       type: "category",
