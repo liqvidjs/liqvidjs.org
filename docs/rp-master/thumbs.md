@@ -1,4 +1,6 @@
-The `thumbs` command produces sheets of thumbnail previews for the seeking bar. ([Example](https://d2og9lpzrymesl.cloudfront.net/r/rp-tutorial/thumbs/1.png))
+The `thumbs` command produces sheets of thumbnail previews for the seeking bar. These are passed to the [thumbs](/docs/reference/Player#thumbs) prop.
+
+[Example thumbs sheet](https://d2og9lpzrymesl.cloudfront.net/r/rp-tutorial/thumbs/1.png)
 
 The syntax is:
 
@@ -9,7 +11,7 @@ npx rp-master thumbs <url>
 For example:
 
 ```bash
-npx rp-master thumbs -H 800 -W 1280 "./thumbs/%.png" http://localhost:8080
+npx rp-master thumbs -H 800 -W 1280 "./thumbs/%.jpeg" http://localhost:8080
 ```
 
 To avoid passing command line options every time, you can create an `rp-master.config.js` file. This should export an object with a `thumbs` key containing the options for this command. Here is an example:
@@ -27,10 +29,13 @@ module.exports = {
     browserWidth: 1280,
     concurrency: os.cpus().length,
     imageFormat: "png",
+    // make sure the output pattern matches the imageFormat
     output: "./thumbs/%s.png"
   }
 };
 ```
+
+You can specify a different location for the configuration file using the [`--config`](#config) option.
 
 ## General options {#general-options}
 

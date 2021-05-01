@@ -4,8 +4,6 @@ title: Mastering
 
 Once you are done recording, there are still a few steps required to get your ractive polished and cross-compatible. We call this the mastering or post-processing phase.
 
-You will need to have [ffmpeg](https://ffmpeg.org/download.html) installed. In case you have have issues installing it, [this guide](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-FFmpeg) may help.
-
 At the end we provide a checklist to go through when deploying a ractive to production.
 
 ## Audio {#audio}
@@ -33,9 +31,25 @@ ffmpeg -i audio.webm audio.mp4
 
 [How to do noise reduction using ffmpeg and sox](http://www.zoharbabin.com/how-to-do-noise-reduction-using-ffmpeg-and-sox/) (skip steps 1 and 5)
 
+## Static video {#static-video}
+
+You may want a "static" (traditional mp4/webm) version of your ractive so that you can upload it to Facebook/YouTube/Twitter (and then link to the interactive version). You can make these with the [`rp-master render`](/docs/rp-master/render) command:
+
+```bash
+npx rp-master render -a ./audio/audio.mp4 http://localhost:8080 out.mp4
+```
+
+For this you will need to have [ffmpeg](https://ffmpeg.org/download.html) installed. In case you have have issues installing it, [this guide](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-FFmpeg) may help.
+
 ## Thumbnails {#thumbnails}
 
-Generate thumbnail previews using the <a href="https://github.com/ysulyma/rp-thumb-capture">rp-thumb-capture</a> package. This is a fairly complex process, it is demonstrated in the [deep dive](https://youtu.be/9O8h58ANY64?t=3202).
+Your ractive will be a lot easier to navigate if you have thumbnail previews on the scrubber bar. These can be generated with the [`rp-master thumbs`](/docs/rp-master/thumbs) command:
+
+```bash
+npx rp-master thumbs http://localhost:8080
+```
+
+These are then passed to the [thumbs](/docs/reference/Player#thumbs) prop of Player.
 
 ## Mastering Checklist {#mastering-checklist}
 
@@ -58,3 +72,4 @@ Generate thumbnail previews using the <a href="https://github.com/ysulyma/rp-thu
 1. <input type="checkbox"/> Compress Javascript
 1. <input type="checkbox"/> Compress CSS
 1. <input type="checkbox"/> Make sure the hosting page has Javascript/CSS for <a href="/docs/guide/authoring#fake-fullscreen">fake fullscreen</a>
+1. <input type="checkbox"/> Make static recordings for social media/discoverability

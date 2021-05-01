@@ -9,7 +9,7 @@ The core library only aims to provide a framework, much like React itself. Compl
 
 - [rp-recording](https://www.npmjs.com/package/rp-recording)<br/>A system for recording audio and author actions.
 
-- [rp-thumb-capture](https://github.com/ysulyma/rp-thumb-capture)<br/>Control and Chrome extension for generating [thumbnail previews](/docs/guide/mastering#thumbnails).
+- [rp-master](https://www.npmjs.com/package/rp-master)<br/>Produce <a href="/docs/rp-master/render">static recordings</a> of ractives and generate <a href="/docs/rp-master/thumbs">thumbnail previews</a>.
 
 ## Miscellaneous {#misc}
 

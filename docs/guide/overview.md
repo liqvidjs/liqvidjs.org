@@ -11,8 +11,6 @@ The code is split into many modules and plugins.
 
 * You will also need the recording package <a href="https://www.npmjs.com/package/rp-recording">rp-recording</a>
 
-* and [rp-thumb-capture](https://github.com/ysulyma/rp-thumb-capture) if you want thumbnails
-
 * The best way to get started is to clone <a href="https://github.com/ysulyma/rp-tutorial">rp-tutorial</a>
 
 * If you want to use this for mathematical/scientific content, you should also watch the [math tutorial](/math) and clone [rp-tutorial-math](https://github.com/ysulyma/rp-tutorial-math)
