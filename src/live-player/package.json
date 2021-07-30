@@ -1,0 +1,43 @@
+{
+  "name": "live-player",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@codemirror/autocomplete": "^0.18.8",
+    "@codemirror/basic-setup": "^0.18.2",
+    "@codemirror/closebrackets": "^0.18.0",
+    "@codemirror/collab": "^0.18.2",
+    "@codemirror/commands": "^0.18.3",
+    "@codemirror/comment": "^0.18.1",
+    "@codemirror/fold": "^0.18.1",
+    "@codemirror/gutter": "^0.18.4",
+    "@codemirror/highlight": "^0.18.4",
+    "@codemirror/history": "^0.18.1",
+    "@codemirror/lang-css": "^0.18.0",
+    "@codemirror/lang-html": "^0.18.1",
+    "@codemirror/lang-javascript": "^0.18.0",
+    "@codemirror/lang-json": "^0.18.0",
+    "@codemirror/lang-markdown": "^0.18.4",
+    "@codemirror/lang-python": "^0.18.0",
+    "@codemirror/lang-sql": "^0.18.0",
+    "@codemirror/lang-xml": "^0.18.0",
+    "@codemirror/language": "^0.18.2",
+    "@codemirror/language-data": "^0.18.0",
+    "@codemirror/lint": "^0.18.4",
+    "@codemirror/matchbrackets": "^0.18.0",
+    "@codemirror/panel": "^0.18.2",
+    "@codemirror/rangeset": "^0.18.4",
+    "@codemirror/rectangular-selection": "^0.18.0",
+    "@codemirror/search": "^0.18.4",
+    "@codemirror/state": "^0.18.7",
+    "@codemirror/text": "^0.18.1",
+    "@codemirror/tooltip": "^0.18.4",
+    "@codemirror/view": "^0.18.18"
+  }
+}
