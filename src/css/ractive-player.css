@@ -1,0 +1,35 @@
+.ractive-player {
+  border: 1px solid #000;
+  aspect-ratio:  16/10;
+  width: 100%;
+}
+
+.rp-canvas {
+  background: #EEE;
+}
+
+.rp-controls {
+
+}
+
+/*@media (min-aspect-ratio: 8/5)
+  :root
+    font-size 2vh
+
+  .ractive-player
+    --rp-height 100vh
+    --rp-width 160vh
+
+  .rp-canvas
+    margin 0 auto
+    
+@media (max-aspect-ratio: 8/5)
+  :root
+    font-size 1.25vw
+
+  .ractive-player
+    --rp-height 62.5vw
+    --rp-width 100vw
+  
+  .rp-canvas
+    top calc((100% - 62.5vw) / 2)*/

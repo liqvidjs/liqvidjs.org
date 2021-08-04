@@ -1,15 +1,20 @@
+const path = require("path");
+
 module.exports = {
-  title: "RactivePlayer",
+  title: "Liqvid",
   tagline: "Create interactive videos in React",
-  url: "https://ractive-player.org",
+  url: "https://liqvidjs.org",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
-  organizationName: "ysulyma", // Usually your GitHub org/user name.
-  projectName: "ractive-player", // Usually your repo name.
+  favicon: "/favicon.ico",
+  organizationName: "liqvidjs", // Usually your GitHub org/user name.
+  projectName: "player", // Usually your repo name.
   scripts: [
     "/fake-fullscreen.js",
+  ],
+  stylesheets: [
+    // "https://lmqm.dev/css/ractive-player.css"
   ],
   themeConfig: {
     colorMode: {
@@ -17,10 +22,10 @@ module.exports = {
     },
     image: "https://d2og9lpzrymesl.cloudfront.net/r/rp-tutorial/icon.png",
     navbar: {
-      title: "RactivePlayer",
+      title: "Liqvid",
       logo: {
-        alt: "RactivePlayer",
-        src: "img/logo.svg",
+        alt: "Liqvid",
+        src: "img/logo.png",
       },
       items: [
         {
@@ -46,7 +51,7 @@ module.exports = {
           position: "right",
         },
         {
-          href: "https://github.com/ysulyma/ractive-player",
+          href: "https://github.com/liqvidjs/player",
           label: "GitHub",
           position: "right",
         },
@@ -77,7 +82,7 @@ module.exports = {
             },
             {
               label: "Reddit",
-              href: "https://reddit.com/r/ractive_player/",
+              href: "https://reddit.com/r/liqvidjs/",
             }
           ],
         },
@@ -86,11 +91,11 @@ module.exports = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/ysulyma/ractive-player",
+              href: "https://github.com/liqvidjs/player",
             },
             {
               label: "Product Hunt",
-              href: "https://www.producthunt.com/posts/ractive-player"
+              href: "https://www.producthunt.com/posts/liqvid"
             }
           ],
         },
@@ -98,6 +103,7 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Yuri Sulyma`,
     },
   },
+  themes: ["./src/live-player"],
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -105,8 +111,8 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          // editUrl:
-            // "https://github.com/ysulyma/ractive-player/edit/master/website/",
+          editUrl:
+            "https://github.com/liqvidjs/liqvidjs.org/edit/main/",
         },
         // blog: {
         //   showReadingTime: true,
@@ -115,9 +121,18 @@ module.exports = {
         //     // "https://github.com/ysulyma/ractive-player/edit/master/website/blog/",
         // },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: [require.resolve("./src/css/custom.css")]
         },
       },
     ],
+    // [
+    //   "docusaurus-preset-shiki-twoslash",
+    //   {
+    //     themes: ["min-light"],
+    //     defaultCompilerOptions: {
+    //       types: ["node"]
+    //     },
+    //   }
+    // ]
   ],
 };

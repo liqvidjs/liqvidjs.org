@@ -1,7 +1,7 @@
 This exports the bundled player controls as individual components. The following will reproduce the default layout of controls:
 
 ```jsx
-import {Controls, Player} from "ractive-player";
+import {Controls, Player} from "liqvid";
 
 const controls = <>
   <Controls.PlayPause/>

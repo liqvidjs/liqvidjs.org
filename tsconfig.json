@@ -1,16 +1,6 @@
 {
+  "extends": "@tsconfig/docusaurus/tsconfig.json",
+  "include": ["src/"],
   "compilerOptions": {
-    "allowJs": true,
-    "alwaysStrict": true,
-    "jsx": "react",
-    "lib": ["esnext"],
-    "moduleResolution": "node",
-    "pretty": true,
-    "removeComments": true,
-    "target": "es2018",
-
-    "baseUrl": "."
-  },
-
-  "files": ["./server.ts"]
+  "types": ["node", "@docusaurus/module-type-aliases"]
 }

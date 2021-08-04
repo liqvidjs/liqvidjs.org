@@ -53,7 +53,7 @@ These are then passed to the [thumbs](/docs/reference/Player#thumbs) prop of Pla
 
 ## Mastering Checklist {#mastering-checklist}
 
-1. <input type="checkbox"/> Remove the <code>rp-recording</code> <code class="language-html">&lt;script&gt;</code> tag
+1. <input type="checkbox"/> Compile in production mode
 
 1. <input type="checkbox"/> Ensure <a href="/docs/guide/authoring/#fat-fingers">fat-fingers</a> etc. for mobile
 
@@ -69,7 +69,6 @@ These are then passed to the [thumbs](/docs/reference/Player#thumbs) prop of Pla
 
 1. <input type="checkbox"/> Make sure there is CSS to load custom fonts etc.
 1. <input type="checkbox"/> Make sure MEDIA_URL is set to production assets host
-1. <input type="checkbox"/> Compress Javascript
 1. <input type="checkbox"/> Compress CSS
 1. <input type="checkbox"/> Make sure the hosting page has Javascript/CSS for <a href="/docs/guide/authoring#fake-fullscreen">fake fullscreen</a>
 1. <input type="checkbox"/> Make static recordings for social media/discoverability

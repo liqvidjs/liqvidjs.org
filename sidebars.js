@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 module.exports = {
   docs: [
     {
@@ -7,17 +9,24 @@ module.exports = {
     {
       type: "category",
       label: "Guide",
-      items: ["overview", "authoring", "recording", "mastering", "packages"].map(_ => `guide/${_}`),
+      items: ["overview", "animation", "interactivity", "mobile", "recipes", "recording", "mastering", "packages"].map(_ => `guide/${_}`),
     },
     {
       type: "category",
-      label: "ractive-player",
-      items: ["css", "Audio", "Controls", "hooks", "IdMap", "KeyMap", "Playback", "Player", "Script", "Utils", "Video"].map(_ => "reference/" + _)
+      label: "API",
+      items:
+        ["css", "Audio", "Controls", "hooks", "IdMap", "KeyMap", "Playback", "Player", "Script"].map(_ => "reference/" + _)
+        .concat({
+          type: "category",
+          label: "Utils",
+          items: ["animation", "authoring", "interactivity", "media", "misc", "mobile", "react", "replayData", "time"].map(_ => `reference/Utils/${_}`)
+        })
+        .concat("reference/Video")
     },
     /*{
       type: "category",
       label: "rp-recording",
-      items: ["rp-recording"].map(_ => "extra/" + _)
+      items: ["recorders", "RecordingManager"].map(_ => "rp-recording/" + _)
     },*/
     {
       type: "category",

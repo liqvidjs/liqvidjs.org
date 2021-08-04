@@ -4,12 +4,52 @@ title: Getting Started
 slug: /
 ---
 
-The easiest way to get started is to clone https://github.com/ysulyma/rp-tutorial, which is the video on the [homepage](/). You can use that as a sample project structure and modify it to your needs. The source code demonstrates how to use a lot of the different features.
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
-The deep dive goes fairly comprehensively through the entire process of creating, recording, and mastering a ractive. It also explains how to use several of the plugins/utilities.
+## Prerequisites
 
-[Deep Dive Part 1: Authoring, Recording, Mastering](https://www.youtube.com/watch?v=cLa9kOGbRhM)
+The only dependency for Liqvid is Node.js. For some purposes (exporting to static video, touching up audio) FFMPEG is also required.
 
-[Deep Dive Part 2: Plugins+Interactivity](https://www.youtube.com/watch?v=Ic3EoGOfIwU)
+- [Installing Node.js](https://nodejs.org/en/download/)
+- [Installing FFMPEG](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-FFmpeg)
 
-There is also a second tutorial focused on mathematical content (equations, 2d and 3d graphs): https://github.com/ysulyma/rp-tutorial-math, which you can watch [here](/math)
+## Installation
+
+You can initialize a new Liqvid project using
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: "npm", value: "npm"},
+    {label: "yarn", value: "yarn"}
+  ]}
+>
+  <TabItem value="npm">
+
+```bash
+npm init liqvid my-video
+```
+  </TabItem>
+  <TabItem value="yarn">
+
+  ```bash
+  yarn create liqvid my-video
+  ```
+  </TabItem>
+</Tabs>
+
+<!-- 
+## Templates
+Here are available templates:
+
+| Name           | Description |
+| -------------- | ----------- |
+| `minimal`      | Minimal template |
+| `code-html`    | Record HTML tutorials |
+| `code-js`      | Record Javascript tutorials |
+| `code-python`  | Record Python tutorials |
+| `desmos`       | Desmos tutorials |
+| `math`         | Content with equations |
+| `three`        | THREE.js demos |
+ -->

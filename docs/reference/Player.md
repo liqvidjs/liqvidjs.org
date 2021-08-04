@@ -15,7 +15,7 @@ controls?: JSX.Element;
 You can extend the default controls like so:
 
 ```jsx
-import {Player} from "ractive-player";
+import {Player} from "liqvid";
 
 const controls = (<>
   {Player.defaultControlsLeft}
@@ -30,7 +30,7 @@ const controls = (<>
 
 Say you wanted to have your own volume control, have the time display on the right, and not have the Settings control. Then you would write
 ```jsx
-import {Controls, Player} from "ractive-player";
+import {Controls, Player} from "liqvid";
 
 const controls = (<>
   <Controls.PlayPause/>

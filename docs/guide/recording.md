@@ -5,7 +5,7 @@ title: Recording
 Recording functionality is provided in the [rp-recording](https://github.com/ysulyma/rp-recording) package.
 
 ```tsx
-import {Player} from "ractive-player";
+import {Player} from "liqvid";
 import {RecordingControl} from "rp-recording";
 
 const controls = (<>

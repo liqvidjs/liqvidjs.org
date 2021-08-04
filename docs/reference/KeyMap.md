@@ -3,7 +3,7 @@ This class handles keyboard shortcuts.
 The KeyMap is attached to the [Player](/docs/reference/Player#keymap) and can be accessed like so:
 
 ```tsx
-import {usePlayer} from "ractive-player";
+import {usePlayer} from "liqvid";
 
 function Searchable() {
   const {keymap} = usePlayer();
@@ -37,7 +37,7 @@ static normalize(seq: string): string;
 #### Example {#example}
 
 ```tsx
-import {KeyMap} from "ractive-player";
+import {KeyMap} from "liqvid";
 
 // returns "Ctrl+Alt+2"
 KeyMap.normalize("Alt+Ctrl+2");

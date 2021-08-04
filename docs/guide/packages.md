@@ -5,7 +5,7 @@ title: Packages
 The core library only aims to provide a framework, much like React itself. Complex effects are provided in separate packages.
 
 ## Core packages {#core-packages}
-- [ractive-player](https://www.npmjs.com/package/ractive-player)<br/>The core package.
+- [liqvid](https://www.npmjs.com/package/liqvid)<br/>The core package.
 
 - [rp-recording](https://www.npmjs.com/package/rp-recording)<br/>A system for recording audio and author actions.
 

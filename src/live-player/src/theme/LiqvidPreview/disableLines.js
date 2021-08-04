@@ -50,6 +50,11 @@ export function disableLines(...lines) {
     freezeTheme,
     EditorView.domEventHandlers({
       keydown: (e, view) => {
+        // don't prevent copy
+        if (e.key === "c" && (e.getModifierState("Control") || e.getModifierState("Meta"))) {
+          return;
+        }
+
         if (preventDelete(view)) {
           e.preventDefault();
           return false;
@@ -58,14 +63,14 @@ export function disableLines(...lines) {
     }),
     ViewPlugin.fromClass(class {
       constructor(view) {
-        window.view = view;
+        this.view = view;
         this.setDecorations();
       }
 
       setDecorations() {
         this.decorations = Decoration.set(
         lines.map(n => {
-          const {from} = view.state.doc.line(n);
+          const {from} = this.view.state.doc.line(n);
           return freezeMark.range(from, from);
           })
         );

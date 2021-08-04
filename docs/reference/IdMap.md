@@ -21,7 +21,7 @@ export default {
 };
 
 // Intro.tsx
-import {IdMap} from "ractive-player";
+import {IdMap} from "liqvid";
 import objects from "./objects";
 
 function Intro() {
@@ -47,7 +47,7 @@ function Welcome() {
 will behave as if you had written
 ```tsx
 // Intro.tsx
-import {Utils} from "ractive-player";
+import {Utils} from "liqvid";
 const {during, from} = Utils.authoring;
 
 function Intro() {

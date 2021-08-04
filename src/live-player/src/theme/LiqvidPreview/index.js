@@ -125,9 +125,6 @@ function TSXEditor(props) {
         extensions: [
           disableLines(...props.linesToFreeze),
           basicSetup,
-          EditorView.editorAttributes.of({
-            class: "jsx"
-          }),
           keymap.of([defaultTabBinding]),
           // refresh iframe
           keymap.of([{
@@ -153,9 +150,6 @@ function CSSEditor(props) {
         doc: props.content,
         extensions: [
           basicSetup,
-          EditorView.editorAttributes.of({
-            class: "css"
-          }),
           keymap.of([defaultTabBinding]),
           // refresh iframe
           keymap.of([{

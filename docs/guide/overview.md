@@ -2,117 +2,136 @@
 title: Overview
 ---
 
-This is the text documentation. For a comprehensive personal tour through the library, check out the [ractives deep dive](https://www.youtube.com/watch?v=9O8h58ANY64).
+## Hello World
 
-## Code {#code}
-The code is split into many modules and plugins.
+Let's start with a very simple example.
 
-* The main package is <a href="https://www.npmjs.com/package/ractive-player">ractive-player</a>
+```tsx liqvid
+// @css
+section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
 
-* You will also need the recording package <a href="https://www.npmjs.com/package/rp-recording">rp-recording</a>
+h1 {
+  font-size: 6rem;
+  margin-top: 20%;
+  text-align: center;
+}
 
-* The best way to get started is to clone <a href="https://github.com/ysulyma/rp-tutorial">rp-tutorial</a>
+h2 {
+  font-size: 4rem;
+  margin-top: 10%;
+  text-align: center;
+}
 
-* If you want to use this for mathematical/scientific content, you should also watch the [math tutorial](/math) and clone [rp-tutorial-math](https://github.com/ysulyma/rp-tutorial-math)
+ol {
+  font-size: 3em;
+  margin: 1em auto;
+  width: max-content;
+}
+li {
+  margin: 1em 0;
+}
+// @/css
+// freeze-next-line
+import {Player, Script} from "liqvid";
 
-## Phases of development {#phases-of-development}
-
-In my experience, the process of creating a ractive can be divided into three phases. (This does not include the creative phase of deciding <em>what</em> you want to say, which is usually the hardest part.)
-
-1. [Authoring](/docs/guide/authoring): This is when you write HTML/CSS/Javascript for your ractive.
-
-1. [Recording](/docs/guide/recording): This is when you record audio and other interactions.
-
-1. [Mastering](/docs/guide/mastering): This is for the finishing touches on a video, ensuring cross-platform compatibility, etc.
-
-The above links provide practical advice on the issues that arise in each phase.
-
-## Classes and Concepts {#classes-and-concepts}
-
-### `Playback` {#playback}
-
-This is the most important class. Effectively, a [Playback](/docs/reference/Playback) mimics an audio/video element that can be played and rewinded, has volume settings, a playback rate, etc. It thus imitates the <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/">HTMLMediaElement</a> interface to a certain extent, although it does not fully implement that interface.
-
-Times are generally represented as numbers representing milliseconds since the beginning of playback. They can also be specified as strings like <code class="language-typescript">"7:35"</code> or <code class="language-typescript">"7:35.66"</code>. Currently, there is no distinction between time points and time durations.
-
-:::caution
-The HTMLMediaElement interface usually represents times in _seconds_.
-:::
-
-### `Script` and markers {#script}
-
-A [Script](/docs/reference/Script) augments a Playback by breaking it into named segments, which we call <dfn>markers</dfn> (<em>cue</em> would also be appropriate, but that conflicts with WebVTT Cues).
-
-A <dfn>marker</dfn> is a triple <code class="language-typescript">[name: string, start: number, end: number]</code>, where <code class="language-typescript">start</code> and <code class="language-typescript">end</code> are times in the sense of the previous section. However, when creating a <code class="language-typescript">Script</code> a marker may be specified as a pair <code class="language-typescript">[name: string, duration: number]</code>.
-
-```ts
 const markers = [
-  ["intro/","0:19.081"],
-  ["intro/name","0:07.332"],
-  ["intro/day", "0:09.351"],
-  ["animals/","0:03.737"],
-  ["animals/cat","0:00.931"],
-  ["animals/elephant","0:02.371"],
-  ["animals/dog","0:03.206"],
-  ["end/","0:08.897"],
-  ["end/qs","0:01.500"]
-] as [string, string][];
+  ["intro/", "0:01.5"],
+  ["intro/world", "0:01.5"],
+  ["plan/", "0:01"],
+  ["plan/1", "0:01"],
+  ["plan/2", "0:01"],
+  ["plan/3", "0:01"]
+];
 
+// freeze-next-line
 const script = new Script(markers);
-```
 
-When defining markers in the [Authoring](/docs/guide/authoring) phase, you can put anything for the duration, e.g. `["intro/", "1:00"]`. The durations will get filled in during the [Recording](/docs/guide/recording) phase.
-
-### `Player` {#player}
-
-A [Player](/docs/reference/Player) provides a GUI interface for playing ractives, resembling a traditional web video player.
-
-It is important that <code class="language-typescript">Playback</code> and <code class="language-typescript">Script</code> do not depend on React, and could be used without <code class="language-typescript">Player</code>. Eventually we will be more agnostic about templating systems, so that e.g. Vue or Custom Elements could be used instead of (or in conjunction with) React.
-
-
-### Showing/Hiding {#showinghiding}
-
-If an element has the <code class="language-html">data-from-first="first"</code> attribute, it will be visible only when the current marker is equal to or comes after the marker whose name is <code>"first"</code>. If an element further has the <code class="language-html">data-from-last="last"</code> attribute, it will be visible only when the current marker comes strictly before the marker whose name is <code>"last"</code>. If an element has the <code class="language-html">data-during="prefix"</code> attribute, it will be visible only when the current marker's name begins with <code class="language-typescript">"prefix"</code>.
-
-There are helper functions for this in [Utils.authoring](/docs/reference/Utils#utilsauthoring). Since you will be using these a lot, you might want to define a shortcut for them in your text editor.
-
-```tsx
-import {Utils} from "ractive-player";
-const {during, from} = Utils.authoring;
-
-function IntroSlide() {
+function MyVideo() {
   return (
-    <section {...during("intro/")}>
-      <h1 {...from("intro/", "intro/day")}>
-        Hello <span {...from("intro/name")}>Bob!</span>
-      </h1>
-      <p {...from("intro/day")}>Have a great day!</p>
+    <Player script={script}>
+      <Intro/>
+      <Plan/>
+    </Player>
+  );
+}
+
+function Intro() {
+  return (
+    <section data-during="intro/">
+      <h1>Hello <span data-from-first="intro/world">World!</span></h1>
     </section>
   );
 }
+
+function Plan() {
+  return (
+    <section data-during="plan/">
+      <h2>The Plan</h2>
+      <ol>
+        <li data-from-first="plan/1">Make interactive videos</li>
+        <li data-from-first="plan/2">???</li>
+        <li data-from-first="plan/3">Profit!</li>
+      </ol>
+    </section>
+  );
+}
+
+// freeze-next-line
+ReactDOM.render(<MyVideo/>, document.querySelector("main"));
 ```
 
-Internally, elements are hidden by setting <code class="language-css">opacity:0; pointer-events: none;</code>, and shown by removing these attributes. This operates outside of React rendering. The reason for using these styles instead of
+Let's break down what's going on here.
 
-* <code class="language-css">visibility: hidden;</code> is that an invisible element can have visible children with the latter approach, whereas our approach allows us to hide an element without recursing into its children.
+### Classes
 
-* <code class="language-css">display:none;</code> is that the latter causes reflow, which is slow. Another practical difference is that that elements hidden using our method will occupy whitespace (which may or may not be desired).
+The fundamental classes in Liqvid are [Playback](../reference/Playback.md), [Script](../reference/Script.md), and [Player](../reference/Player.md). `Playback` handles the logic of playing/rewinding, volume settings, playback rate, etc.; it imitates the [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface to a certain extent. A `Script` augments a `Playback` by breaking it into named segments, which we call <dfn>markers</dfn>. Finally, `Player` provides the graphical interface for playing videos.
 
-<!-- <p class="todo">insert warning about starting -->
+The entry point for our video is `<Player>`; all our content goes in there. To initialize the `Player`, we need to create a `Script` with our marker names/durations, then passed that to `<Player>`. The `Playback` is created automatically by the `Script`, e.g. try adding `console.log(script.playback)` to the above example.
 
-:::note
-
-It may seem strange to render everything at the beginning and then selectively show/hide it, rather than rendering selectively based on the current time. My own use case for this library uses a lot of MathJax, which takes a few seconds to render, so selective rendering would disrupt the viewing experience. If you don't have any content with long repaints, selective rendering will probably work fine.
-
+:::info
+`Playback` and `Script` do not depend on React, and can be used without `Player`. In a future release we will be agnostic about templating systems, so that e.g. Vue or Custom Elements could be used instead of (or in conjunction with) React.
 :::
 
-### ReplayData {#replaydata}
+### Markers
 
-This is a common pattern in RP elements replaying something recorded by the author (cursor movements, typing, etc.). It is not part of the JavaScript code, but is exported from the TypeScript.
+Markers designate "when things happen". Above, we used them to control when things are displayed (more on that below). You will also use them to time more sophisticated effects. To get the start and end times of a marker, use `script.parseStart("plan/")` and `script.parseEnd("plan/")`.
 
-<!-- <pre><code class="language-typescript"> -->
-```typescript
-type ReplayData<K> = [number, K][];
+You can flip between markers using the <kbd>E</kbd> and <kbd>W</kbd> keys. Try this out in the video above! You will use this a lot when developing your video, as well as when recording.
+
+Internally, markers are stored as `[name: string, start: number, end: number]`; however, when creating them, you specify them as `[name: string, duration: number | string]`. This allows you to reorder effects simply by reordering the markers. Typically you will [record](./recording.md) yourself flipping through the video and the durations will get filled in automatically. In this case you can put anything for the duration initially, e.g. `"1:00"` for all of them.
+
+### Showing/Hiding {#showinghiding}
+
+If an element has the `data-from-first="first"` attribute, it will be visible only when the current marker is equal to or comes after the marker whose name is `"first"`. If an element further has the `data-from-last="last"` attribute, it will be visible only when the current marker comes strictly before the marker whose name is `"last"`.
+
+If an element has the `data-during="prefix"` attribute, it will be visible only when the current marker's name begins with `"prefix"`. This is why we named our markers `intro/*` and `plan/*`; the `/` character has no special meaning, this is just a helpful pattern for separating content into different sections.
+
+There are helper functions for this in [`Utils.authoring`](../reference/Utils/authoring.md). For example, the above code could be rewritten as
+
+```tsx
+import {Utils} from "liqvid";
+const {during, from} = Utils.authoring;
+
+<section {...during("intro/")}>
+  <h1>Hello <span {...from("intro/world")}>World!</span></h1>
+</section>
 ```
+Since you will be using these a lot, you might want to define a shortcut for them in your text editor.
 
-The numbers represent durations in milliseconds. Thus, a piece of <code class="language-typescript">ReplayData</code> is usually paired with a <code class="language-typescript">start</code> attribute for replaying, but <code class="language-typescript">ReplayData</code> itself does not involve absolute times, so it can be moved around easily.
+Internally, elements are hidden by setting `opacity:0; pointer-events: none;`, and shown by removing these attributes. This operates outside of React rendering. The reason for using these styles instead of
+
+* `visibility: hidden;` is that an invisible element can have visible children with the latter approach, whereas our approach allows us to hide an element without recursing into its children.
+
+* `display:none;` is that the latter causes reflow, which is slow. Another practical difference is that that elements hidden using our method will occupy whitespace (which may or may not be desired).
+
+* removing the element entirely is to avoid layout flash for the viewer. (The original use case for this library involved a lot of MathJax, which is slow to render.)
+
+### Styling
+
+You will typically want all top-level children of the video to have `position: absolute;`, as we did with `<section>` above, so as not to interfere with each other's positioning.
+
+**Always use relative units** (%, em, rem) so that your video scales correctly on different devices and when resized/fullscreened. Liqvid automatically scales the root font size (what `rem` refers to) with the viewport size.

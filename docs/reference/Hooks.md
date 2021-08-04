@@ -6,7 +6,7 @@ title: Hooks API
 These functions provide [Hooks](https://reactjs.org/docs/hooks-intro.html) for accessing the ambient Player and subscribing to certain events. They are exported from the root of the library.
 
 ```tsx
-import {useMarkerUpdate, usePlayer, useTimeUpdate} from "ractive-player";
+import {useMarkerUpdate, usePlayer, useTimeUpdate} from "liqvid";
 ```
 
 ### `useMarkerUpdate()` {#useMarkerUpdate}

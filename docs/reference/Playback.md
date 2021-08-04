@@ -3,7 +3,7 @@ This class is the core of the library. It is an animation loop+event emitter whi
 You will typically not instantiate this class directly. The Playback is attached to the [Player](/docs/reference/Player#playback) and can be accessed like so:
 
 ```tsx
-import {usePlayer} from "ractive-player";
+import {usePlayer} from "liqvid";
 
 function Component() {
   const {playback} = usePlayer();

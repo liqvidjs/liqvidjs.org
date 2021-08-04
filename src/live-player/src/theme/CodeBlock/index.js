@@ -7,12 +7,12 @@
 
 import React from 'react';
 import CodeBlock from '@theme-init/CodeBlock';
-import Duck from "../Duck";
+import LiqvidPreview from "../LiqvidPreview";
 
 const withLiveEditor = (Component) => {
   const WrappedComponent = (props) => {
     if (props.liqvid) {
-      return <Duck {...props} />;
+      return <LiqvidPreview {...props} />;
     }
 
     return <Component {...props} />;
