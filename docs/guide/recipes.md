@@ -58,7 +58,7 @@ const {between} = Utils.misc;
 
 interface Props {
   time: string;
-  interval: number;
+  interval?: number;
 }
 
 function PauseAt(props: Props) {
@@ -75,6 +75,8 @@ function PauseAt(props: Props) {
     }
     prev.current = t;
   }, []);
+
+  return null;
 }
 
 // usage

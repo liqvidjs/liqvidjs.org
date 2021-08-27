@@ -55,9 +55,9 @@ These are then passed to the [thumbs](/docs/reference/Player#thumbs) prop of Pla
 
 1. <input type="checkbox"/> Compile in production mode
 
-1. <input type="checkbox"/> Ensure <a href="/docs/guide/authoring/#fat-fingers">fat-fingers</a> etc. for mobile
+1. <input type="checkbox"/> Ensure <a href="/docs/guide/mobile#fat-fingers">fat-fingers</a> etc. for mobile
 
-1. <input type="checkbox"/> Make sure that mouseUp events are appropriately <a href="/docs/guide/authoring#canvas-clicks">intercepted</a>.
+1. <input type="checkbox"/> Make sure that mouseUp events are appropriately <a href="/docs/guide/mobile#canvas-clicks">intercepted</a>.
 
 1. <input type="checkbox"/> Join audio audio files into a single file.
 
@@ -70,5 +70,5 @@ These are then passed to the [thumbs](/docs/reference/Player#thumbs) prop of Pla
 1. <input type="checkbox"/> Make sure there is CSS to load custom fonts etc.
 1. <input type="checkbox"/> Make sure MEDIA_URL is set to production assets host
 1. <input type="checkbox"/> Compress CSS
-1. <input type="checkbox"/> Make sure the hosting page has Javascript/CSS for <a href="/docs/guide/authoring#fake-fullscreen">fake fullscreen</a>
+1. <input type="checkbox"/> Make sure the hosting page has Javascript/CSS for <a href="/docs/guide/mobile#fake-fullscreen">fake fullscreen</a>
 1. <input type="checkbox"/> Make static recordings for social media/discoverability

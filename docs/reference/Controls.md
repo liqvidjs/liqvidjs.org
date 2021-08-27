@@ -21,7 +21,7 @@ const controls = <>
 
 ## `FullScreen` {#FullScreen}
 
-Toggle fullscreen. See [fake fullscreen](/docs/guide/authoring#fake-fullscreen) for how to make this work on mobile.
+Toggle fullscreen.<!--  See [fake fullscreen](/docs/guide/mobile#fake-fullscreen) for how to make this work on mobile. -->
 
 ## `PlayPause` {#PlayPause}
 

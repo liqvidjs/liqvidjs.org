@@ -49,7 +49,7 @@ At this time, it is not possible to provide your own scrubber bar. This will be 
 
 ### `script` {#script-prop}
 
-The [Script](/docs/reference/Script) to use.
+The [Script](./Script.md) to use.
 
 ```ts
 script: Script;
@@ -129,7 +129,7 @@ The default controls appearing on the right: [`Settings`](/docs/reference/Contro
 
 ### `allowScroll()` {#allowScroll}
 
-Prevents intercepting of scroll on mobile. See [Scroll events](/docs/guide/authoring#scroll-events) in the Authoring guide.
+Prevents intercepting of scroll on mobile. See [Scroll events](/docs/guide/mobile#scroll-events) in the Authoring guide.
 
 ```typescript
 static allowScroll(e: React.TouchEvent | TouchEvent): void;
@@ -137,7 +137,7 @@ static allowScroll(e: React.TouchEvent | TouchEvent): void;
 
 ### `preventCanvasClick()` {#preventCanvasClick}
 
-Prevents a click from pausing/playing the video. See [Canvas clicks](/docs/guide/authoring#canvas-clicks) in the Authoring guide.
+Prevents a click from pausing/playing the video. See [Canvas clicks](/docs/guide/interactivity#canvas-clicks) in the Authoring guide.
 
 ```typescript
 static preventCanvasClick(e: React.MouseEvent | MouseEvent): void;
@@ -173,7 +173,7 @@ An [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) 
 | -------------- | ----------- |
 | canplay        | Fired when the ractive is ready to start playing, but may not be able to play to its end without having to stop for further buffering of content. |
 | canplaythrough | Fired when the ractive is ready to start playing, and will be able to play up to its end without having to stop for further buffering of content. |
-| canvasClick    | Fired when a click happens anywhere on the canvas, which by default pauses/resumes the video. See [Canvas clicks](/docs/guide/authoring#canvas-clicks) in the Authoring guide. |
+| canvasClick    | Fired when a click happens anywhere on the canvas, which by default pauses/resumes the video. See [Canvas clicks](/docs/guide/interactivity#canvas-clicks) in the Authoring guide. |
 
 ```typescript
 hub: StrictEventEmitter<EventEmitter, {
@@ -225,7 +225,7 @@ ready(): void;
 
 ### `resumeKeyCapture()` {#resumeKeyCapture}
 
-Resumes keyboard controls. See [Forms](/docs/guide/authoring#forms) in the Authoring guide.
+Resumes keyboard controls.
 
 ```typescript
 resumeKeyCapture(): void;
@@ -233,7 +233,7 @@ resumeKeyCapture(): void;
 
 ### `suspendKeyCapture()` {#suspendKeyCapture}
 
-Suspends keyboard controls so that components can receive keyboard input. See [Forms](/docs/guide/authoring#forms) in the Authoring guide.
+Suspends keyboard controls so that components can receive keyboard input.
 
 ```typescript
 suspendKeyCapture(): void;

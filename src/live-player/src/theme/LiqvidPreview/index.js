@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import * as React from 'react';
-import styles from './styles.module.css';
+import * as React from "react";
+import styles from "./styles.module.css";
 
 import {basicSetup} from "@codemirror/basic-setup";
 import {defaultTabBinding} from "@codemirror/commands";
@@ -16,13 +16,14 @@ import {keymap, EditorView} from "@codemirror/view";
 import {EditorState} from "@codemirror/state";
 import * as Babel from "@babel/standalone";
 
-import {disableLines} from "./disableLines";
-
-import {findLines, freezeMark} from "./disableLines";
+import {disableLines, findLines, freezeMark} from "./disableLines";
 import {extractCSS} from "./extractCSS";
 import {Decoration} from "@codemirror/view";
 
-const Mod = (navigator.platform === "MacIntel" ? "Cmd" : "Ctrl");
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
+import BrowserOnly from "@docusaurus/BrowserOnly";
+
+const Mod = (!ExecutionEnvironment.canUseDOM || navigator.platform === "MacIntel" ? "Cmd" : "Ctrl");
 
 export default function Playground({children, transformCode, ...props}) {
   const tsxView = React.useRef();

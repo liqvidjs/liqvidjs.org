@@ -1,5 +1,4 @@
-import {keymap, Decoration, DecorationSet, EditorView, ViewPlugin, highlightActiveLine, drawSelection} from "@codemirror/view";
-import {ChangeSet, EditorState, StateField, StateEffect} from "@codemirror/state";
+import {keymap, Decoration, DecorationSet, EditorView, ViewPlugin} from "@codemirror/view";
 
 /** Find lines to freeze */
 export function findLines(code) {
@@ -103,6 +102,4 @@ const freezeMark = Decoration.line({attributes: {class: "cm-disabled", contentEd
 
 const freezeTheme = EditorView.baseTheme({
   ".cm-disabled": {opacity: "0.5", pointerEvents: "none" }
-})
-
-window.freezeMark = freezeMark;
+});
