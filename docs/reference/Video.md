@@ -1,6 +1,8 @@
 The `<Video>` component is a drop-in replacement for the [`<video>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video) tag. This can be used to use static videos inside interactive ones. The syntax is:
 
 ```tsx
+import {Video} from "liqvid";
+
 <Video className="example" start={0}>
   <source src={`video.webm`} type="video/webm"/>
   <source src={`video.mp4`} type="video/mp4"/>
