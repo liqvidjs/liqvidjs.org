@@ -4,7 +4,7 @@ author: Yuri Sulyma
 author_title: Mathematician & web developer
 author_url: https://github.com/ysulyma
 author_image_url: https://avatars.githubusercontent.com/u/453486?v=4
-description: Create interactive code recordings with CodeMirror 6 in ractive-player (+ @remotion/player compatibility!)
+description: Create interactive code recordings with CodeMirror 6 in Liqvid (+ @remotion/player compatibility!)
 hide_table_of_contents: true
 ---
 

@@ -2,24 +2,85 @@ This class handles keyboard shortcuts.
 
 The KeyMap is attached to the [Player](/docs/reference/Player#keymap) and can be accessed like so:
 
-```tsx
-import {usePlayer} from "liqvid";
+```tsx liqvid
+// @css
+#instructions {
+  color: purple;
+  font-size: 2rem;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 45%;
+}
+
+aside.help {
+  background: #FFF;
+  border: .5em solid #0002;
+  border-radius: .5em;
+  box-shadow: 0 0 .2em #0002;
+  font-size: 2rem;
+  padding: 1em;
+  position: absolute;
+  z-index: 2;
+  width: 50%;
+  left: 25%;
+  top: 15%;
+}
+
+aside.help > header {
+  background-image: linear-gradient(#00AAFF, #0088FF);
+  color: #FFF;
+  font-size: 1.5em;
+  padding: .5em;
+}
+// @/css
+// freeze-next-line
+import {Player, Script, usePlayer} from "liqvid";
 
 function Searchable() {
   const {keymap} = usePlayer();
+  const [visible, setVisible] = React.useState(false);
 
   // create Alt-F shortcut for search
   React.useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      /* do something */
+      setVisible(prev => !prev);
     };
 
-    keymap.bind("Alt+F", handler);
+    keymap.bind("Shift+?", handler);
+    keymap.bind("H", handler);
     return () => {
-      keymap.unbind("Alt+F", handler);
+      keymap.unbind("Shift+?", handler);
+      keymap.unbind("H", handler);
     };
   }, []);
+
+  return (
+    <aside className="help" style={{display: visible ? "block" : "none"}}>
+      Put useful information here
+    </aside>
+  );
 }
+
+
+function MyVideo() {
+  return (
+    <Player script={script}>
+      <div id="instructions">
+        Press H or ? to open help dialog.
+      </div>
+      <Searchable/>
+    </Player>
+  );
+}
+
+// freeze-start
+const markers = [
+  ["video/", "0:10"]
+];
+const script = new Script(markers);
+
+ReactDOM.render(<MyVideo/>, document.querySelector("main"));
 ```
 
 Although you can create other KeyMap instances, you'll most likely only use the one attached to the player.
