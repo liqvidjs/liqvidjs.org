@@ -35,5 +35,5 @@ The core library only aims to provide a framework, much like React itself. Compl
 
 ## Tutorials / Sample projects {#tutorials--sample-projects}
 
-- [rp-tutorial](https://github.com/ysulyma/rp-tutorial) (watch online [here](/))
+- [lv-tutorial](https://github.com/ysulyma/lv-tutorial) (watch online [here](/))
 - [rp-tutorial-math](https://github.com/ysulyma/rp-tutorial-math) (watch online [here](/math/))

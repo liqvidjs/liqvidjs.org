@@ -20,7 +20,7 @@ module.exports = {
     colorMode: {
       disableSwitch: true
     },
-    image: "https://d2og9lpzrymesl.cloudfront.net/r/rp-tutorial/icon.png",
+    image: "https://d2og9lpzrymesl.cloudfront.net/r/lv-tutorial/icon.png",
     navbar: {
       title: "Liqvid",
       logo: {

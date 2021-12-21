@@ -16,10 +16,10 @@ function Tutorial() {
       <main className="tutorial">
         <div className="video-container">
           <div className="aspect-ratio" style={{paddingBottom: "62.5%"}}>
-            <iframe src="/r/rp-tutorial/" allowFullScreen></iframe>
+            <iframe src="/r/lv-tutorial/" allowFullScreen></iframe>
           </div>
         </div>
-        <p>To use this tutorial, clone the <a href="https://github.com/ysulyma/rp-tutorial">repository</a> and follow along in the source.</p>
+        <p>To use this tutorial, clone the <a href="https://github.com/ysulyma/lv-tutorial">repository</a> and follow along in the source.</p>
       </main>
     </Layout>
   );

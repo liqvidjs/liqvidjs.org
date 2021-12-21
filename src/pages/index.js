@@ -21,7 +21,7 @@ const features = [
     // imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        Interactive graphics with THREE.js, interactive coding demos with CodeMirror—ractives turn the entire JavaScript ecosystem into video creation tools. Create and distribute your own React components to reuse across videos.
+        Interactive graphics with THREE.js, interactive coding demos with CodeMirror—Liqvid turns the entire JavaScript ecosystem into video creation tools. Create and distribute your own React components to reuse across videos.
       </>
     ),
   },
@@ -30,7 +30,7 @@ const features = [
     // imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Ractives dissolve the boundaries between text, images, audio, and video—or even between author and viewer. The creative possibilities have barely begun to be scratched.
+        "Liquid videos" dissolve the boundaries between text, images, audio, and video—or even between author and viewer. The creative possibilities have barely begun to be scratched.
       </>
     ),
   },
@@ -76,7 +76,7 @@ function Home() {
         </div>
         <div className="video-container">
           <div className="aspect-ratio" style={{paddingBottom: "62.5%"}}>
-            <iframe src="/r/rp-tutorial/" allowFullScreen></iframe>
+            <iframe src="/r/lv-tutorial/" allowFullScreen></iframe>
           </div>
         </div>
       </header>

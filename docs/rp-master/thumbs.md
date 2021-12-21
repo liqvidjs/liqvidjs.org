@@ -1,6 +1,6 @@
 The `thumbs` command produces sheets of thumbnail previews for the seeking bar. These are passed to the [thumbs](/docs/reference/Player#thumbs) prop.
 
-[Example thumbs sheet](https://d2og9lpzrymesl.cloudfront.net/r/rp-tutorial/thumbs/1.png)
+[Example thumbs sheet](https://d2og9lpzrymesl.cloudfront.net/r/lv-tutorial/thumbs/1.png)
 
 The syntax is:
 
