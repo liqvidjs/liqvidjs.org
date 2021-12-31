@@ -13,7 +13,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "API",
+      label: "API Reference",
       items:
         ["css", "Audio", "Controls", "hooks", "IdMap", "KeyMap", "Playback", "Player", "Script"].map(_ => "reference/" + _)
         .concat({
@@ -30,8 +30,8 @@ module.exports = {
     },*/
     {
       type: "category",
-      label: "rp-master",
-      items: ["render", "thumbs"].map(_ => "rp-master/" + _)
+      label: "CLI Reference",
+      items: ["tool", "macros", "audio", "build", "render", "serve", "thumbs"].map(_ => "cli/" + _)
     }
-  ],
+  ]
 };
