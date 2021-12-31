@@ -2,11 +2,15 @@
 title: Mobile
 ---
 
-<!-- ## Fake fullscreen {#fake-fullscreen}
+## Fake fullscreen {#fake-fullscreen}
 
-Mobile devices do not support the fullscreen API. As a workaround, when the fullscreen control is tapped on a mobile device, Liqvid will dispatch an event to the window containing the `iframe`. You can then maximize the iframe using CSS.
+iOS does not support the fullscreen API. Place the following code in the `<head>` of the hosting page (the page containing the `<iframe>`) to work around this:
 
-Here is example code for this: -->
+```html
+<head>
+  <script src="https://unpkg.com/@liqvid/host/lv-host.js"></script>
+</head>
+```
 
 ## Fat fingers {#fat-fingers}
 

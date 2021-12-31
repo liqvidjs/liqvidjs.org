@@ -32,7 +32,6 @@ Warning: by default, <code>Player</code> will pause/play whenever the canvas is 
 
 :::warning
 
-The audio recording produced by the browser will not have the metadata needed for seeking. To fix the recording: <pre class="language-bash command-line" data-prompt="$"><code>ffmpeg -i audio.webm -strict -2 audio-fixed.webm
-mv audio-fixed.webm audio.webm</code></pre>
+The audio recording produced by the browser will not have the metadata needed for seeking. To fix the recording and make it available as mp4: <pre class="language-bash command-line" data-prompt="$"><code>liqvid audio convert audio.webm</code></pre>
 
 :::

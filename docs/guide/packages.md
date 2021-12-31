@@ -9,8 +9,6 @@ The core library only aims to provide a framework, much like React itself. Compl
 
 - [rp-recording](https://www.npmjs.com/package/rp-recording)<br/>A system for recording audio and author actions.
 
-- [rp-master](https://www.npmjs.com/package/rp-master)<br/>Produce <a href="/docs/rp-master/render">static recordings</a> of ractives and generate <a href="/docs/rp-master/thumbs">thumbnail previews</a>.
-
 ## Miscellaneous {#misc}
 
 - [rp-cursor](https://www.npmjs.com/package/rp-cursor)<br/>Record and replay cursor motion.
