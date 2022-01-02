@@ -55,7 +55,7 @@ Directory for static files. Defaults to `./static`.
 
 ### `--scripts` {#scripts}
 
-See [`@script` syntax](.macros#script) for more details.
+See [`@script` syntax](macros.md#script) for more details.
 
 ```ts
 // liqvid.config.ts
@@ -92,7 +92,7 @@ liqvid serve \
 
 ### `--styles` {#styles}
 
-See [`@style` syntax](./macros#style) for more details.
+See [`@style` syntax](macros.md#style) for more details.
 
 ```ts
 // liqvid.config.ts

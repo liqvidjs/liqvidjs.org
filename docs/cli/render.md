@@ -45,10 +45,6 @@ Output filename. Defaults to `./video.mp4`.
 ### `--url`, `-u` {#url}
 URL of video to generate thumbs for. Defaults to `http://localhost:3000/dist/`.
 
-:::info
-`--start`, `--duration`, and `--end` apply to *both* the audio file (if any) and the video. At this time, it is not possible to configure these separately.
-:::
-
 ## General options {#general-options}
 
 ### `--browser-executable`, `-x` {#browser-executable}
@@ -73,6 +69,10 @@ Boolean flag to output an image sequence instead of a video. If set, `<outfile>`
 
 ### `--start`, `-s` {#start}
 Start time, specify as `[[hh:]mm:]ss[.ms]`. Defaults to 0, meaning the start of the video.
+
+:::info
+`--start`, `--duration`, and `--end` apply to *both* the audio file (if any) and the video. At this time, it is not possible to configure these separately.
+:::
 
 ## Frame formatting {#frame-formatting}
 
