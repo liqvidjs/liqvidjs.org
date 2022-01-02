@@ -1,5 +1,3 @@
-const fs = require("fs");
-
 module.exports = {
   docs: [
     {
@@ -23,11 +21,6 @@ module.exports = {
         })
         .concat("reference/Video")
     },
-    /*{
-      type: "category",
-      label: "rp-recording",
-      items: ["recorders", "RecordingManager"].map(_ => "rp-recording/" + _)
-    },*/
     {
       type: "category",
       label: "CLI Reference",
