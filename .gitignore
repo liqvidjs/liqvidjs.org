@@ -3,10 +3,14 @@ node_modules
 
 # Production
 /build
+build.tar.bz2
 
 # Generated files
 .docusaurus
 .cache-loader
+
+# Promo
+/promo
 
 # Misc
 .DS_Store
@@ -20,3 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 *.sublime-*
+*.code-*
