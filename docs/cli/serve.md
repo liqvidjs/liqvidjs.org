@@ -60,7 +60,7 @@ See [`@script` syntax](macros.md#script) for more details.
 ```ts
 // liqvid.config.ts
 const scripts = {
-  "katex: {
+  "katex": {
     "crossorigin": "anonymous",
     "defer": true,
     "integrity": "sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8",
