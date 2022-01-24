@@ -57,7 +57,7 @@ script: Script;
 
 ### `thumbs` {#thumbs}
 
-Provide thumbnail previews for the scrubber bar. You can generate thumbnail sheets with [`rp-master thumbs`](/docs/rp-master/thumbs).
+Provide thumbnail previews for the scrubber bar. You can generate thumbnail sheets with [`liqvid thumbs`](../cli/thumbs.md).
 
 * `cols` how many columns per sheet
 
