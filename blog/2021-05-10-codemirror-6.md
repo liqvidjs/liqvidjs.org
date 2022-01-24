@@ -34,8 +34,8 @@ The replay (but not recording) functionality is compatible with the [@remotion/p
   </div>
 </div>
 
-Finally, here it is as a "real" video, created with the new [`rp-master render`](/docs/rp-master/render) command:
+Finally, here it is as a "real" video, created with the [`liqvid render`](/docs/cli/render) command:
 
-<iframe width="800" height="450" src="https://www.youtube.com/embed/tFWetjCQJ8E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/tFWetjCQJ8E" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
 This is of course a bit silly, since one goal of this library is to make mp4/webm obsolete for this type of content. But until YouTube catches up, having a static version that you can share on social media is useful for discoverability.
