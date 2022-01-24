@@ -20,7 +20,7 @@ module.exports = {
     colorMode: {
       disableSwitch: true
     },
-    image: "https://d2og9lpzrymesl.cloudfront.net/r/lv-tutorial/icon.png",
+    image: "https://liqvidjs.org/img/og.png",
     navbar: {
       title: "Liqvid",
       logo: {
@@ -81,8 +81,12 @@ module.exports = {
               href: "https://discord.gg/u8Qab99zHx"
             },
             {
+              label: "Twitter",
+              href: "https://twitter.com/LiqvidJS"
+            },
+            {
               label: "Reddit",
-              href: "https://reddit.com/r/liqvidjs/",
+              href: "https://reddit.com/r/liqvidjs/"
             }
           ],
         },
