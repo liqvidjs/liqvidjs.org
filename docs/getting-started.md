@@ -9,10 +9,10 @@ import TabItem from "@theme/TabItem";
 
 ## Prerequisites
 
-The only dependency for Liqvid is Node.js. For some purposes (exporting to static video, touching up audio) FFMPEG is also required.
+The only dependency for Liqvid is Node.js. For some purposes (exporting to static video, touching up audio) FFmpeg is also required.
 
 - [Installing Node.js](https://nodejs.org/en/download/)
-- [Installing FFMPEG](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-FFmpeg)
+- [Installing FFmpeg](https://github.com/adaptlearning/adapt_authoring/wiki/Installing-FFmpeg)
 
 ## Installation
 
