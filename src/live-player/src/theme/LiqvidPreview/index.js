@@ -169,6 +169,7 @@ function CSSEditor(props) {
 }
 
 function render(tsx, css) {
+  try {
   const js = Babel.transform(tsx, {
     filename: "demo.tsx",
     plugins: [
@@ -192,8 +193,8 @@ function render(tsx, css) {
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1"/>
 
-  <!-- ractive-player -->
-  <link href="https://unpkg.com/liqvid/dist/liqvid.min.css" rel="stylesheet" type="text/css"/>
+  <!-- Liqvid -->
+  <link href="https://unpkg.com/liqvid@2.1.0-beta.2/dist/liqvid.min.css" rel="stylesheet" type="text/css"/>
   <style type="text/css">
   .rp-canvas {
     background: #FFF;
@@ -214,11 +215,14 @@ function render(tsx, css) {
   <script crossorigin integrity="sha384-YF0qbrX3+TW1Oyow2MYZpkEMq34QcYzbTJbSb9K0sdeykm4i4kTCSrsYeH8HX11w" src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.production.min.js"></script>
   <script crossorigin integrity="sha384-DHlzXk2aXirrhqAkoaI5lzdgwWB07jUHz7DJGmS4Vlvt5U/ztRy+Yr8oSgQw5QaE" src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js"></script>
 
-  <script src="https://unpkg.com/liqvid/dist/liqvid.min.js"></script>
+  <script src="https://unpkg.com/liqvid@2.1.0-beta.2/dist/liqvid.min.js"></script>
   <script crossorigin integrity="sha384-ImWMbbJ1rSn1mn+2vsKm/wN6Vc7hPNB2VKN0lX3FAzGK+c7M2mD6ZZcwknuKlP7K" src="https://cdn.rangetouch.com/2.0.1/rangetouch.js"></script>
 
   <script>${js}</script>
 </body>
 </html>`;
+} catch (e) {
+  return String.raw`<html><body><pre>${e}</pre></body></html>`;
+}
 }
 
