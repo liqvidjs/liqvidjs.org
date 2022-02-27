@@ -1,9 +1,13 @@
 
-Helpers for animating content.
+Helpers for animating content. See the [Animation](../../guide/animation.md) section of the guide for examples.
 
 ```tsx
+// access like this
 import {Utils} from "liqvid";
 const {animate} = Utils.animation;
+
+// or like this
+import {animate} from "@liqvid/utils/animation";
 ```
 
 ## `animate()` {#animate}
@@ -12,24 +16,23 @@ This helper returns a function `f: (t: number) => number;` that takes in a time 
 
 Takes a single object with the following keys:
 
-* `startValue` The value of `f` at the beginning of the animation. Optional, defaults to 0.
+* `startValue?: number`  
+  The value of `f` at the beginning of the animation. Optional, defaults to 0.
 
-* `endValue` The value of `f` at the end of the animation. Optional, defaults to 1.
+* `endValue?: number`  
+  The value of `f` at the end of the animation. Optional, defaults to 1.
 
-* `startTime` The time to start the animation. This will usually be specified with [`script.parseStart`](/docs/reference/Script#parseStart).
+* `startTime: number`  
+  The time to start the animation. This will usually be specified with [`script.parseStart`](/docs/reference/Script#parseStart).
 
-* `duration` How long (in milliseconds) the animation should last.
+* `duration: number`  
+  How long (in milliseconds) the animation should last.
 
-* `easing` A function [0, 1] &rarr; [0, 1] to use instead of linear easing. (The notation [0, 1] means numbers between 0 and 1 inclusive, not a JavaScript array.) This makes motion more natural-looking and is recommended in almost every situation. Optional, defaults to identity function `(x: number) => x`, i.e. linear easing.
+* `easing?: (x: number) => number`  
+  Easing function. Defaults to the identity function, i.e. linear easing.
 
 ```typescript
-animate(options: {
-  startValue?: number,
-  endValue?: number,
-  startTime: number,
-  duration: number,
-  easing?: (x: number) => number
-}): (t: number) => number;
+animate({startValue?, endValue?, startTime, duration, easing?}): (t: number) => number;
 ```
 <!-- 
 ### Example
@@ -87,6 +90,28 @@ ReactDOM.render(
 
 ## `replay()` {#replay}
 
+Returns a function that takes in a time (in milliseconds) and returns the "active" replay datum. Useful for writing replay plugins.
+
+Takes a single object with the following keys:
+
+* `data: ReplayData<K>`  
+  Recording data to iterate through.
+
+* `start?: number`  
+  Start time. Defaults to 0.
+
+* `end?: number`  
+  End time. If not specified, defaults to `start` + total duration of `data`.
+
+* `compressed?: boolean`  
+  If `true`, times are interpreted as relative (this reduces filesize of recording data). Otherwise, they are interpreted as absolute times. Defaults to `false`.
+
+* `active: (current: K, index: number) => void`  
+  Callback receiving active value and index of active value.
+
+* `inactive: () => void`  
+  Callback called when replay becomes inactive. Doesn't get called repeatedly.
+
 ```typescript
-replay<K>({data, start, end, active, inactive, compressed}: ReplayArgs<K>): (t: number) => void;
+replay<K>({data, start, end, active, inactive, compressed}): (t: number) => void;
 ```

@@ -1,8 +1,12 @@
 A bunch of little functions that should be part of core Javascript, but aren't.
 
 ```tsx
+// access like this
 import {Utils} from "liqvid";
 const {constrain, range} = Utils.misc;
+
+// or like this
+import {constrain, range} from "@liqvid/utils/misc";
 ```
 
 ## `between()` {#between}
