@@ -13,12 +13,12 @@ hub: StrictEventEmitter<EventEmitter, {
   "markerupdate": number;
 }>;
 ```
-
+<!-- 
 ### `loadTasks` {#loadTasks}
 
 ```typescript
 loadTasks: Promise<unknown>[];
-```
+``` -->
 
 ### `markerIndex` {#markerIndex}
 
@@ -77,7 +77,7 @@ forward(): void;
 
 ### `markerByName()` {#markerByName}
 
-
+Get a marker by its name.
 
 ```typescript
 markerByName(name: string): [string, number, number];

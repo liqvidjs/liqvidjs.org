@@ -145,7 +145,7 @@ static preventCanvasClick(e: React.MouseEvent | MouseEvent): void;
 
 ## Properties {#properties}
 
-### `canPlay` {#canPlay}
+<!-- ### `canPlay` {#canPlay}
 
 ```typescript
 canPlay: Promise<void[]>;
@@ -155,11 +155,11 @@ canPlay: Promise<void[]>;
 
 ```typescript
 canPlayThrough: Promise<void[]>;
-```
+``` -->
 
 ### `canvas` {#canvas}
 
-The div where ractive content is attached (which is separate from ractive controls).
+The div where video content is attached (which is separate from the controls).
 
 ```typescript
 canvas: HTMLDivElement;
@@ -209,19 +209,11 @@ script: Script;
 
 ## Methods {#methods}
 
-### `obstruct()` {#obstruct}
+<!-- ### `obstruct()` {#obstruct}
 
 ```typescript
 obstruct(event: "canplay" | "canplaythrough", task: Promise<unknown>): void;
-```
-
-### `ready()` {#ready}
-
-Call this method when the ractive is ready to begin playing.
-
-```typescript
-ready(): void;
-```
+``` -->
 
 ### `resumeKeyCapture()` {#resumeKeyCapture}
 

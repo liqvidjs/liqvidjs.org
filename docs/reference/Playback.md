@@ -14,14 +14,14 @@ function Component() {
 
 ## Properties {#properties}
 
-### `audioContext` {#audioContext}
+<!-- ### `audioContext` {#audioContext}
 ```typescript
 audioContext: AudioContext;
 ```
 ### `audioNode` {#audioNode}
 ```typescript
 audioNode: GainNode;
-```
+``` -->
 
 ### `currentTime` {#currentTime}
 The current playback time in milliseconds.
