@@ -25,20 +25,35 @@ Bind methods of an object to the object, so that `this` behaves as expected. Thi
 bind<T extends {[P in K]: Function}, K extends keyof T>(o: T, methods: K[]): void;
 ```
 
+## `clamp()` {#clamp}
+
+Clamps a value between a lower and upper bound.
+
+```typescript
+constrain: (min: number, val: number, max: number) => number;    
+
 ## `constrain()` {#constrain}
 
-Equivalent to `Math.min(max, Math.max(min, val))`.
+Clamps a value between a lower and upper bound. Alias for [`clamp()`](#clamp).
 
 ```typescript
 constrain: (min: number, val: number, max: number) => number;    
 ```
 
-## `range()` {#range}
+## `lerp()` {#lerp}
 
-Returns `[0, ..., n-1]`.
+Linear interpolation between `a` and `b`.
 
 ```typescript
-range: (n: number) => number[];
+lerp: (a: number, b: number, t: number) => number;
+```
+
+## `range()` {#range}
+
+Returns integers from `a` (inclusive) to `b` (exclusive). If called with one argument, `range(n)` is equivalent to `range(0, n)`.
+
+```typescript
+range: (a: number, b?: number) => number[];
 ```
 
 ## `wait()` {#wait}
