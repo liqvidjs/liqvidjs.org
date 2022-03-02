@@ -43,22 +43,27 @@
     "@codemirror/text": "^0.18.1",
     "@codemirror/tooltip": "^0.18.4",
     "@codemirror/view": "^0.18.19",
-    "@docusaurus/core": "^2.0.0-beta.3",
-    "@docusaurus/preset-classic": "^2.0.0-beta.3",
-    "@docusaurus/theme-live-codeblock": "^2.0.0-beta.3",
+    "@docusaurus/core": "^2.0.0-beta.16",
+    "@docusaurus/preset-classic": "^2.0.0-beta.16",
+    "@docusaurus/theme-live-codeblock": "^2.0.0-beta.16",
+    "@liqvid/utils": "^1.1.1",
     "@mdx-js/react": "^1.6.22",
+    "@microsoft/tsdoc": "^0.13.2",
     "@types/react": "^17.0.14",
     "@types/react-dom": "^17.0.9",
+    "clsx": "^1.1.1",
+    "colors": "^1.4.0",
     "docusaurus-preset-shiki-twoslash": "^1.1.16",
     "katex": "^0.13.13",
     "liqvid": "^2.0.10",
     "ractive-player": "^2.0.10",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "ts-node": "^10.5.0"
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.14.5",
-    "@docusaurus/module-type-aliases": "^2.0.0-beta.3",
+    "@docusaurus/module-type-aliases": "^2.0.0-beta.16",
     "@tsconfig/docusaurus": "^1.0.2"
   },
   "browserslist": {
