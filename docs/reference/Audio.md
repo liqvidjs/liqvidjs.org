@@ -13,6 +13,22 @@ import {Audio} from "liqvid";
 
 ## Props {#props}
 
+### `obstructCanPlay` {#obstructCanPlay}
+
+If true, prevents [`Player.canPlay`](./Player.md#canPlay) from resolving until the underlying `<audio>` element [can play](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplay_event).
+
+```ts
+obstructCanPlay?: boolean;
+```
+
+### `obstructCanPlayThrough` {#obstructCanPlayThrough}
+
+If true, prevents [`Player.canPlayThrough`](./Player.md#canPlayThrough) from resolving until the underlying `<audio>` element [can play through](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplaythrough_event).
+
+```ts
+obstructCanPlayThrough?: boolean;
+```
+
 ### `start` {#start}
 
 Time in milliseconds when the video should start playing.

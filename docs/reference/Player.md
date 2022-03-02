@@ -145,17 +145,21 @@ static preventCanvasClick(e: React.MouseEvent | MouseEvent): void;
 
 ## Properties {#properties}
 
-<!-- ### `canPlay` {#canPlay}
+### `canPlay` {#canPlay}
+
+Liqvid analogue of the [`canplay`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplay_event) event. This can be used to wait for [Audio](./Audio.md#obstructCanPlay) or [Video](./Video.md#obstructCanPlay) files to load. You can also use [`obstruct()`](#obstruct) to add custom loaders.
 
 ```typescript
-canPlay: Promise<void[]>;
+canPlay: Promise<void>;
 ```
 
 ### `canPlayThrough` {#canPlayThrough}
 
+Liqvid analogue of the [`canplaythrough`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplaythrough_event) event. This can be used to wait for [Audio](./Audio.md#obstructCanPlayThrough) or [Video](./Video.md#obstructCanPlayThrough) files to load. You can also use [`obstruct()`](#obstruct) to add custom loaders.
+
 ```typescript
-canPlayThrough: Promise<void[]>;
-``` -->
+canPlayThrough: Promise<void>;
+```
 
 ### `canvas` {#canvas}
 
@@ -171,8 +175,8 @@ An [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) 
 
 | Name           | Description |
 | -------------- | ----------- |
-| canplay        | Fired when the ractive is ready to start playing, but may not be able to play to its end without having to stop for further buffering of content. |
-| canplaythrough | Fired when the ractive is ready to start playing, and will be able to play up to its end without having to stop for further buffering of content. |
+| canplay        | Fired when the video is ready to start playing, but may not be able to play to its end without having to stop for further buffering of content. |
+| canplaythrough | Fired when the video is ready to start playing, and will be able to play up to its end without having to stop for further buffering of content. |
 | canvasClick    | Fired when a click happens anywhere on the canvas, which by default pauses/resumes the video. See [Canvas clicks](/docs/guide/interactivity#canvas-clicks) in the Authoring guide. |
 
 ```typescript
@@ -185,7 +189,7 @@ hub: StrictEventEmitter<EventEmitter, {
 
 ### `keymap` {#keymap}
 
-The [KeyMap](/docs/reference/KeyMap) instance attached to this player.
+The [KeyMap](./KeyMap.md) instance attached to this player.
 
 ```typescript
 keymap: KeyMap;
@@ -193,7 +197,7 @@ keymap: KeyMap;
 
 ### `playback` {#playback}
 
-The underlying [Playback](/docs/reference/Playback) instance.
+The underlying [Playback](./Playback.md) instance.
 
 ```typescript
 playback: Playback;
@@ -201,7 +205,7 @@ playback: Playback;
 
 ### `script` {#script}
 
-The underlying [Script](/docs/reference/Script) instance.
+The underlying [Script](./Script.md) instance.
 
 ```typescript
 script: Script;
@@ -209,11 +213,13 @@ script: Script;
 
 ## Methods {#methods}
 
-<!-- ### `obstruct()` {#obstruct}
+### `obstruct()` {#obstruct}
+
+Add a Promise to the list of tasks needed for [`canPlay`](#canPlay) or [`canPlayThrough`](#canPlayThrough) to resolve.
 
 ```typescript
 obstruct(event: "canplay" | "canplaythrough", task: Promise<unknown>): void;
-``` -->
+```
 
 ### `resumeKeyCapture()` {#resumeKeyCapture}
 
