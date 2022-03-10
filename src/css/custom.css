@@ -15,7 +15,6 @@
   --ifm-color-primary-lighter: #66d4bd;
   --ifm-color-primary-lightest: #92e0d0;
   --ifm-code-font-size: 95%;
-  /* --ifm-navbar-height: 3rem; */
 }
 .docusaurus-highlight-code-line {
   background-color: #484d5b;
@@ -195,4 +194,17 @@ iframe.fake-fullscreen {
 }
 .admonition {
   --ifm-color-danger: #d03535;
+}
+:root {
+  --ifm-code-background: #00f;
+}
+code {
+  background-color: unset;
+  border: none;
+}
+*:not(h1,
+h2,
+h3,
+a) > code {
+  color: #33f;
 }
