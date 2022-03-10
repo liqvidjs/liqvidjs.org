@@ -49,7 +49,7 @@ export default function Playground({children, transformCode, ...props}) {
     if (lastTSX.current === tsx) {
       iframe.current.contentWindow.postMessage({action: "update-css", value: css});
     } else {
-      iframe.current.srcdoc = render(tsx, css);
+      iframe.current.srcdoc = render(tsx, css, props.module);
     }
     lastTSX.current = tsx;
   }, []);
@@ -106,12 +106,12 @@ export default function Playground({children, transformCode, ...props}) {
         <div role="tabpanel">
           <TSXEditor
             content={content.current.children} linesToFreeze={content.current.linesToFreeze}
-            refresh={refresh} view={tsxView}/>
+            refresh={refresh} view={tsxView} />
         </div>
         <div role="tabpanel" hidden>
-          <CSSEditor content={content.current.styles} refresh={refresh} view={cssView}/>
+          <CSSEditor content={content.current.styles} refresh={refresh} view={cssView} />
         </div>
-        <iframe ref={iframe}/>
+        <iframe ref={iframe} />
       </div>
     </div>
   );
@@ -140,7 +140,7 @@ function TSXEditor(props) {
     ref.current.replaceWith(view.dom);
     props.view.current = view;
   }, []);
-  return <div ref={ref}/>;
+  return <div ref={ref} />;
 }
 
 function CSSEditor(props) {
@@ -165,64 +165,83 @@ function CSSEditor(props) {
     ref.current.replaceWith(view.dom);
     props.view.current = view;
   }, []);
-  return <div ref={ref}/>;
+  return <div ref={ref} />;
 }
 
-function render(tsx, css) {
-  try {
-  const js = Babel.transform(tsx, {
+function render(tsx, css, module) {
+  const opts = {
     filename: "demo.tsx",
-    plugins: [
+    presets: ["react", "typescript"]
+  };
+  if (!module) {
+    opts.plugins = [
       ["transform-modules-umd",
-      {"globals": {
-        "liqvid": "Liqvid",
-        "ractive-player": "RactivePlayer",
-        "react": "React",
-        "react-dom": "ReactDOM"
-      }}
-    ]],
-    presets: ["env", "react", "typescript"]
-  }).code;
-
-  return String.raw`
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1"/>
-
-  <!-- Liqvid -->
-  <link href="https://unpkg.com/liqvid@2.1.0-beta.2/dist/liqvid.min.css" rel="stylesheet" type="text/css"/>
-  <style type="text/css">
-  .rp-canvas {
-    background: #FFF;
+        {
+          "globals": {
+            "liqvid": "Liqvid",
+            "ractive-player": "RactivePlayer",
+            "react": "React",
+            "react-dom": "ReactDOM"
+          }
+        }
+      ]];
+    opts.presets.unshift("env");
   }
-  </style>
-  <style id="user-styles" type="text/css">${css}</style>
-  <script type="text/javascript">
-  window.addEventListener("message", msg => {
-    if (msg.data.action === "update-css") {
-      document.getElementById("user-styles").textContent = msg.data.value;
+  try {
+    const js = Babel.transform(tsx, opts).code;
+
+    let doc = String.raw`
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title></title>
+ 
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+   <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1"/>
+ 
+   <!-- Liqvid -->
+   <link href="https://unpkg.com/liqvid@2.1.0-beta.3/dist/liqvid.min.css" rel="stylesheet" type="text/css"/>
+   <style type="text/css">
+   .rp-canvas {
+     background: #FFF;
+   }
+   </style>
+   <style id="user-styles" type="text/css">${css}</style>
+   <script type="text/javascript">
+   window.addEventListener("message", msg => {
+     if (msg.data.action === "update-css") {
+       document.getElementById("user-styles").textContent = msg.data.value;
+     }
+   });
+   </script>
+ </head>
+ <body>
+   <main></main>`;
+
+    if (module) {
+      doc += String.raw`<script type="module">${esmShImports(js)}</script>`;
+    } else {
+      doc += String.raw`<!-- production -->
+     <script crossorigin integrity="sha384-YF0qbrX3+TW1Oyow2MYZpkEMq34QcYzbTJbSb9K0sdeykm4i4kTCSrsYeH8HX11w" src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.production.min.js"></script>
+     <script crossorigin integrity="sha384-DHlzXk2aXirrhqAkoaI5lzdgwWB07jUHz7DJGmS4Vlvt5U/ztRy+Yr8oSgQw5QaE" src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js"></script>
+   
+     <script src="https://unpkg.com/liqvid@2.1.0-beta.3/dist/liqvid.min.js"></script>
+     <script crossorigin integrity="sha384-ImWMbbJ1rSn1mn+2vsKm/wN6Vc7hPNB2VKN0lX3FAzGK+c7M2mD6ZZcwknuKlP7K" src="https://cdn.rangetouch.com/2.0.1/rangetouch.js"></script>
+   
+     <script>${js}</script>`;
     }
+
+    doc += String.raw`</body>
+     </html>`;
+
+    return doc;
+  } catch (e) {
+    return String.raw`<html><body><pre>${e}</pre></body></html>`;
+  }
+}
+
+function esmShImports(str) {
+  return str.replaceAll(/^(import .+? from\s+)(["'])(.+?)\2(;?)$/gm, (match, start, q, name, end) => {
+    return `${start}${q}https://esm.sh/${name}${q}${end}`;
   });
-  </script>
-</head>
-<body>
-  <main></main>
-  <!-- production -->
-  <script crossorigin integrity="sha384-YF0qbrX3+TW1Oyow2MYZpkEMq34QcYzbTJbSb9K0sdeykm4i4kTCSrsYeH8HX11w" src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.production.min.js"></script>
-  <script crossorigin integrity="sha384-DHlzXk2aXirrhqAkoaI5lzdgwWB07jUHz7DJGmS4Vlvt5U/ztRy+Yr8oSgQw5QaE" src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js"></script>
-
-  <script src="https://unpkg.com/liqvid@2.1.0-beta.2/dist/liqvid.min.js"></script>
-  <script crossorigin integrity="sha384-ImWMbbJ1rSn1mn+2vsKm/wN6Vc7hPNB2VKN0lX3FAzGK+c7M2mD6ZZcwknuKlP7K" src="https://cdn.rangetouch.com/2.0.1/rangetouch.js"></script>
-
-  <script>${js}</script>
-</body>
-</html>`;
-} catch (e) {
-  return String.raw`<html><body><pre>${e}</pre></body></html>`;
 }
-}
-
