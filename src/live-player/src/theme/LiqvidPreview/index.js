@@ -6,69 +6,74 @@
  */
 
 import * as React from "react";
+import {useCallback, useEffect, useRef} from "react";
 import styles from "./styles.module.css";
 
-import {basicSetup} from "@codemirror/basic-setup";
-import {defaultTabBinding} from "@codemirror/commands";
-import {css} from "@codemirror/lang-css";
-import {javascript} from "@codemirror/lang-javascript";
-import {keymap, EditorView} from "@codemirror/view";
-import {EditorState} from "@codemirror/state";
 import * as Babel from "@babel/standalone";
 
 import {disableLines, findLines, freezeMark} from "./disableLines";
-import {extractCSS} from "./extractCSS";
+import {extractCSS, extractHead} from "./extractCSS";
 import {Decoration} from "@codemirror/view";
 
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import {CSSEditor} from "./CSSEditor";
+import {HTMLEditor} from "./HTMLEditor";
+import {TSXEditor} from "./TSXEditor";
 
 const Mod = (!ExecutionEnvironment.canUseDOM || navigator.platform === "MacIntel" ? "Cmd" : "Ctrl");
 
 export default function Playground({children, transformCode, ...props}) {
-  const tsxView = React.useRef();
-  const cssView = React.useRef();
-  const iframe = React.useRef();
-  const content = React.useRef();
+  const tsxView = useRef();
+  const cssView = useRef();
+  const htmlView = useRef();
+  const iframe = useRef();
+  const content = useRef();
   if (content.current === undefined) {
-    let styles, linesToFreeze;
+    let styles, head, linesToFreeze;
     children = children.trim();
     [children, styles] = extractCSS(children);
+    [children, head] = extractHead(children);
     [children, linesToFreeze] = findLines(children);
     content.current = {
-      children, styles, linesToFreeze
+      children, styles, head, linesToFreeze
     };
   }
 
   // optimize css changes
-  const lastTSX = React.useRef();
-  const refresh = React.useCallback(() => {
+  const lastTSX = useRef();
+  const refresh = useCallback(() => {
+    if (!tsxView.current)
+      return;
     const tsx = tsxView.current.state.doc.toString();
     const css = cssView.current.state.doc.toString();
+    const head = htmlView.current?.state.doc.toString();
 
     if (lastTSX.current === tsx) {
       iframe.current.contentWindow.postMessage({action: "update-css", value: css});
     } else {
-      iframe.current.srcdoc = render(tsx, css, props.module);
+      iframe.current.srcdoc = render({
+        tsx, css, module: props.module, head
+      });
     }
     lastTSX.current = tsx;
   }, []);
 
-  React.useEffect(refresh, []);
+  useEffect(refresh, []);
 
   // collapse
-  const contentRef = React.useRef();
-  React.useEffect(() => {
+  const contentRef = useRef();
+  useEffect(() => {
     // need to set height for collapse animation to work
     contentRef.current.style.height = contentRef.current.scrollHeight + "px";
   }, []);
-  const toggleCollapse = React.useCallback(e => {
+  const toggleCollapse = useCallback(e => {
     const container = e.target.closest(".tabs-container");
     container.classList.toggle("collapsed");
   }, []);
 
   // tab switching
-  const toggleTab = React.useCallback((e) => {
+  const toggleTab = useCallback((e) => {
     const tabs = Array.from(e.target.parentNode.querySelectorAll(".tabs__item"));
 
     // set tabs
@@ -100,6 +105,7 @@ export default function Playground({children, transformCode, ...props}) {
         <li className={styles.liqvidPreviewCollapse} role="button" onClick={toggleCollapse}></li>
         <li className={`tabs__item tabs__item--active`} role="tab" tabIndex="0" aria-selected="true" onClick={toggleTab}>TSX</li>
         <li className={`tabs__item`} role="tab" tabIndex="-1" aria-selected="false" onClick={toggleTab}>CSS</li>
+        {content.current.head && <li className={`tabs__item`} role="tab" tabIndex="-1" aria-selected="false" onClick={toggleTab}>&lt;head&gt;</li>}
         <li className={styles.liqvidPreviewRefresh} role="button" title={`${Mod}+Enter`} onClick={refresh}>Refresh</li>
       </ul>
       <div className="margin-vert--md" ref={contentRef}>
@@ -111,64 +117,16 @@ export default function Playground({children, transformCode, ...props}) {
         <div role="tabpanel" hidden>
           <CSSEditor content={content.current.styles} refresh={refresh} view={cssView} />
         </div>
+        {content.current.head && <div role="tabpanel" hidden>
+          <HTMLEditor content={content.current.head} refresh={refresh} view={htmlView} />
+        </div>}
         <iframe ref={iframe} />
       </div>
     </div>
   );
 }
 
-function TSXEditor(props) {
-  const ref = React.useRef();
-  React.useEffect(() => {
-    const view = new EditorView({
-      state: EditorState.create({
-        doc: props.content,
-        extensions: [
-          disableLines(...props.linesToFreeze),
-          basicSetup,
-          keymap.of([defaultTabBinding]),
-          // refresh iframe
-          keymap.of([{
-            key: "Mod-Enter",
-            run: props.refresh
-          }]),
-          javascript({jsx: true, typescript: true})
-        ]
-      })
-    });
-
-    ref.current.replaceWith(view.dom);
-    props.view.current = view;
-  }, []);
-  return <div ref={ref} />;
-}
-
-function CSSEditor(props) {
-  const ref = React.useRef();
-  React.useEffect(() => {
-    const view = new EditorView({
-      state: EditorState.create({
-        doc: props.content,
-        extensions: [
-          basicSetup,
-          keymap.of([defaultTabBinding]),
-          // refresh iframe
-          keymap.of([{
-            key: "Mod-Enter",
-            run: props.refresh
-          }]),
-          css()
-        ]
-      })
-    });
-
-    ref.current.replaceWith(view.dom);
-    props.view.current = view;
-  }, []);
-  return <div ref={ref} />;
-}
-
-function render(tsx, css, module) {
+function render({tsx, css, module, head}) {
   const opts = {
     filename: "demo.tsx",
     presets: ["react", "typescript"]
@@ -201,11 +159,6 @@ function render(tsx, css, module) {
  
    <!-- Liqvid -->
    <link href="https://unpkg.com/liqvid@2.1.0-beta.3/dist/liqvid.min.css" rel="stylesheet" type="text/css"/>
-   <style type="text/css">
-   .rp-canvas {
-     background: #FFF;
-   }
-   </style>
    <style id="user-styles" type="text/css">${css}</style>
    <script type="text/javascript">
    window.addEventListener("message", msg => {
@@ -214,6 +167,7 @@ function render(tsx, css, module) {
      }
    });
    </script>
+   ${head}
  </head>
  <body>
    <main></main>`;
