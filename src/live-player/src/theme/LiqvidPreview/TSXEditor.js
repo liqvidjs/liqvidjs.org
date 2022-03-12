@@ -1,5 +1,5 @@
 import {basicSetup} from "@codemirror/basic-setup";
-import {defaultTabBinding} from "@codemirror/commands";
+import {indentWithTab} from "@codemirror/commands";
 import {javascript} from "@codemirror/lang-javascript";
 import {EditorState} from "@codemirror/state";
 import {EditorView, keymap} from "@codemirror/view";
@@ -16,7 +16,7 @@ export function TSXEditor(props) {
         extensions: [
           disableLines(...props.linesToFreeze),
           basicSetup,
-          keymap.of([defaultTabBinding]),
+          keymap.of([indentWithTab]),
           // refresh iframe
           keymap.of([{
             key: "Mod-Enter",

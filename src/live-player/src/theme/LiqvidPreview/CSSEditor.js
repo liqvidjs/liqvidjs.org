@@ -1,6 +1,6 @@
 import * as React from "react";
 import {basicSetup} from "@codemirror/basic-setup";
-import {defaultTabBinding} from "@codemirror/commands";
+import {indentWithTab} from "@codemirror/commands";
 import {css} from "@codemirror/lang-css";
 import {EditorState} from "@codemirror/state";
 import {EditorView, keymap} from "@codemirror/view";
@@ -14,7 +14,7 @@ export function CSSEditor(props) {
         doc: props.content,
         extensions: [
           basicSetup,
-          keymap.of([defaultTabBinding]),
+          keymap.of([indentWithTab]),
           // refresh iframe
           keymap.of([{
             key: "Mod-Enter",

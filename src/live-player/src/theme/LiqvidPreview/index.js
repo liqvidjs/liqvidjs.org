@@ -170,7 +170,9 @@ function render({tsx, css, module, head}) {
    ${head}
  </head>
  <body>
-   <main></main>`;
+   <main></main>
+    <script src="https://unpkg.com/@liqvid/polyfills/dist/waapi.js"></script>
+   `;
 
     if (module) {
       doc += String.raw`<script type="module">${esmShImports(js)}</script>`;
@@ -178,8 +180,8 @@ function render({tsx, css, module, head}) {
       doc += String.raw`<!-- production -->
      <script crossorigin integrity="sha384-YF0qbrX3+TW1Oyow2MYZpkEMq34QcYzbTJbSb9K0sdeykm4i4kTCSrsYeH8HX11w" src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.production.min.js"></script>
      <script crossorigin integrity="sha384-DHlzXk2aXirrhqAkoaI5lzdgwWB07jUHz7DJGmS4Vlvt5U/ztRy+Yr8oSgQw5QaE" src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js"></script>
-   
-     <script src="https://unpkg.com/liqvid@2.1.0-beta.3/dist/liqvid.min.js"></script>
+     
+     <script src="https://unpkg.com/liqvid@2.1.0-beta.4/dist/liqvid.min.js"></script>
      <script crossorigin integrity="sha384-ImWMbbJ1rSn1mn+2vsKm/wN6Vc7hPNB2VKN0lX3FAzGK+c7M2mD6ZZcwknuKlP7K" src="https://cdn.rangetouch.com/2.0.1/rangetouch.js"></script>
    
      <script>${js}</script>`;
@@ -195,7 +197,7 @@ function render({tsx, css, module, head}) {
 }
 
 function esmShImports(str) {
-  return str.replaceAll(/^(import .+? from\s+)(["'])(.+?)\2(;?)$/gm, (match, start, q, name, end) => {
+  return str.replace(/^(import .+? from\s+)(["'])(.+?)\2(;?)$/gm, (match, start, q, name, end) => {
     return `${start}${q}https://esm.sh/${name}${q}${end}`;
   });
 }
