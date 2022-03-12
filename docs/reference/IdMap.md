@@ -1,9 +1,14 @@
 This class gives a way to automagically attach data loaded from a file as attributes on elements. This is provided to facilitate the development of—and provide a standard interface for—GUI tools.
 
-For example, the following code
-```tsx
-// objects.ts
-export default {
+## Example
+
+```tsx liqvid
+import * as ReactDOM from "react-dom";
+import {IdMap, Player, Script} from "liqvid";
+
+/* The point is that objects.ts can be written to by a third-party tool */
+// import {objects} from "./objects";
+const objects = {
   "intro-slide": {
     "data-during": "intro/"
   },
@@ -17,20 +22,28 @@ export default {
       "color": "blue",
       "fontFamily": "Comic Sans MS"
     }
+  },
+  "next-slide": {
+    "data-during": "next/"
   }
 };
 
-// Intro.tsx
-import {IdMap} from "liqvid";
-import objects from "./objects";
+const script = new Script([
+  ["intro/hello", "0:02"],
+  ["intro/world", "0:02"],
+  ["next/", "0:02"]
+]);
 
 function Intro() {
   return (
-    <IdMap map={objects}>
-      <section id="intro-slide">
-        <Welcome/>
-      </section>
-    </IdMap>
+    <Player script={script}>
+      <IdMap map={objects}>
+        <section id="intro-slide">
+          <Welcome/>
+        </section>
+        <section id="next-slide">Something else here</section>
+      </IdMap>
+    </Player>
   );
 }
 
@@ -43,26 +56,6 @@ function Welcome() {
     </IdMap>
   );
 }
-```
-will behave as if you had written
-```tsx
-// Intro.tsx
-import {Utils} from "liqvid";
-const {during, from} = Utils.authoring;
 
-function Intro() {
-  return (
-    <section id="intro-slide" {...during("intro/")}>
-      <Welcome/>
-    </section>
-  );
-}
-
-function Welcome() {
-  return (<>
-    <h1 id="hello" {...from("intro/hello", "intro/world")}>Hello</h1>
-    <h2 id="world" {...from("intro/world")} style={{color: "blue", fontFamily: "Comic Sans MS"}}>World!</h2>
-  </>);
-}
+ReactDOM.render(<Intro/>, document.querySelector("main"));
 ```
-The point is that `objects.ts` can be written to by a third-party tool.

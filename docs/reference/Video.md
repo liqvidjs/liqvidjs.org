@@ -3,22 +3,22 @@ The `<Video>` component is a drop-in replacement for the [`<video>`](https://dev
 ```tsx
 import {Video} from "liqvid";
 
-<Video className="example" start={0}>
+<Video>
   <source src={`video.webm`} type="video/webm"/>
   <source src={`video.mp4`} type="video/mp4"/>
 </Video>
 ```
 
-`start` is a number indicating when the video should start playing. Any additional props or children will be forwarded to the underlying `<video>` element.
-
 ## Props {#props}
+
+This component accepts the following props. Any additional props or children will be forwarded to the underlying `<video>` element.
 
 ### `obstructCanPlay` {#obstructCanPlay}
 
 If true, prevents [`Player.canPlay`](./Player.md#canPlay) from resolving until the underlying `<video>` element [can play](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplay_event).
 
 ```ts
-obstructCanPlay?: boolean;
+obstructCanPlay?: boolean = false;
 ```
 
 ### `obstructCanPlayThrough` {#obstructCanPlayThrough}
@@ -26,7 +26,7 @@ obstructCanPlay?: boolean;
 If true, prevents [`Player.canPlayThrough`](./Player.md#canPlayThrough) from resolving until the underlying `<video>` element [can play through](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplaythrough_event).
 
 ```ts
-obstructCanPlayThrough?: boolean;
+obstructCanPlayThrough?: boolean = false;
 ```
 
 ### `start` {#start}
@@ -34,7 +34,7 @@ obstructCanPlayThrough?: boolean;
 Time in milliseconds when the video should start playing.
 
 ```ts
-start: number;
+start?: number = 0;
 ```
 
 ## Example
@@ -64,8 +64,7 @@ video {
 }
 // @/css
 import {useRef} from "react";
-import {Player, Script, Utils, Video, useTimeUpdate} from "liqvid";
-const {animate} = Utils.animation;
+import {Player, Script, Video} from "liqvid";
 
 const markers = [
   ["train/", "0:1"],
@@ -75,20 +74,9 @@ const markers = [
 
 const script = new Script(markers);
 
-const fadeIn = animate({
-  startTime: 3000,
-  duration: 500
-});
-
 function Popup() {
-  /* animate in */
-  const ref = useRef<HTMLElement>();
-  useTimeUpdate(t => {
-    ref.current.opacity = fadeIn(t).toString();
-  }, []);
-
   return (
-    <aside className="popup" id="emergency" ref={ref} data-during="train/emergency">
+    <aside className="popup" id="emergency" data-during="train/emergency">
       Pull in case of emergency &rarr;
     </aside>
   );
@@ -98,7 +86,7 @@ function MyVideo() {
   return (
     <Player script={script}>
       <Popup/>
-      <Video start={0}>
+      <Video>
         <source src="https://d2og9lpzrymesl.cloudfront.net/v/train_1920.mp4" type="video/mp4"/>
       </Video>
     </Player>

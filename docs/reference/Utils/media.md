@@ -1,4 +1,4 @@
-Used internally by [Audio](../Audio.md) and [Video](../Video.md); you probably don't need them.
+Used internally by [`<Audio>`](../Audio.md) and [`<Video>`](../Video.md); you probably don't need them.
 
 ```tsx
 import {Utils} from "liqvid";

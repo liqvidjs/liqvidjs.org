@@ -8,7 +8,7 @@ const controls = <>
   <Controls.Volume/>
   <Controls.TimeDisplay/>
 
-  <div className="rp-controls-right">
+  <div className="lv-controls-right">
     <Controls.Settings/>
     <Controls.FullScreen/>
   </div>
@@ -19,22 +19,22 @@ const controls = <>
 </Player>
 ```
 
-## `FullScreen` {#FullScreen}
+## `<FullScreen>` {#FullScreen}
 
 Toggle fullscreen.<!--  See [fake fullscreen](/docs/guide/mobile#fake-fullscreen) for how to make this work on mobile. -->
 
-## `PlayPause` {#PlayPause}
+## `<PlayPause>` {#PlayPause}
 
 Play/pause the video.
 
-## `Settings` {#Settings}
+## `<Settings>` {#Settings}
 
 Controls playback rate.
 
-## `TimeDisplay` {#TimeDisplay}
+## `<TimeDisplay>` {#TimeDisplay}
 
 Displays the current time and total duration of the video.
 
-## `Volume` {#Volume}
+## `<Volume>` {#Volume}
 
 Adjust the volume.

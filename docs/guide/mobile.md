@@ -2,6 +2,19 @@
 title: Mobile
 ---
 
+## Polyfills {#polyfills}
+
+The Web Animations API is not supported on older browsers, and the official polyfill does not completely work. Place the following code in your video page to work around this:
+
+```html
+<script src="https://unpkg.com/@liqvid/polyfills@0.0.1/dist/waapi.js"></script>
+```
+You can also just do
+```html
+<!-- @script "polyfills" -->
+```
+if you are using the [magic resource syntax](../cli/macros.md).
+
 ## Fake fullscreen {#fake-fullscreen}
 
 iOS does not support the fullscreen API. Place the following code in the `<head>` of the hosting page (the page containing the `<iframe>`) to work around this:
@@ -106,11 +119,11 @@ const script = new Script(markers);
 
 ReactDOM.render(<Player script={script}><Face/></Player>, document.querySelector("main"));
 ```
-
+<!-- 
 ## Scroll events {#scroll-events}
 
 On mobile, `Player` intercepts `touchmove` events to prevent scrolling of the window. This can cause problems with scrolling in elements with `overflow: auto` and variants. To ensure an element can be scrolled, write
 
 ```tsx
 <div onTouchMove={Player.allowScroll}>
-```
+``` -->

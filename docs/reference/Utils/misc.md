@@ -30,15 +30,12 @@ bind<T extends {[P in K]: Function}, K extends keyof T>(o: T, methods: K[]): voi
 Clamps a value between a lower and upper bound.
 
 ```typescript
-constrain: (min: number, val: number, max: number) => number;    
+clamp: (min: number, val: number, max: number) => number;
+```
 
 ## `constrain()` {#constrain}
 
-Clamps a value between a lower and upper bound. Alias for [`clamp()`](#clamp).
-
-```typescript
-constrain: (min: number, val: number, max: number) => number;    
-```
+Alias for [`clamp()`](#clamp).
 
 ## `lerp()` {#lerp}
 

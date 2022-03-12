@@ -21,7 +21,7 @@ function Quadratic() {
 
 ## Exports
 
-### `<MJX/>` {#MJX}
+### `<MJX>` {#MJX}
 
 This component accepts the following props:
 
@@ -41,7 +41,7 @@ Refs attached to this component have the following properties:
 * `ready: Promise<void>`  
   A Promise that will resolve once the element has finished typesetting.
 
-### `<RenderGroup/>` {#RenderGroup}
+### `<RenderGroup>` {#RenderGroup}
 
 #### Props
 

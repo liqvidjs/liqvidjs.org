@@ -29,34 +29,7 @@ will produce
 </head>
 ```
 
-You can then use this from code as follows:
-```tsx
-import {loadJSON, loadAllJSON, getJSON} from "@liqvid/utils/json";
-
-/* let Typescript know what we're loading */
-declare module "@liqvid/utils/json" {
-  interface GetJSONMap {
-    "recordings": {
-      /* add types here */
-    };
-  }
-}
-
-/* Option 1: load all at once, then access synchronously */
-loadAllJSON().then(() => {
-  ReactDOM.render(<MyVideo/>, document.querySelector("main"));
-});
-
-function MyVideo() {
-  const recordings = getJSON("recordings");
-  // do stuff with recordings
-}
-
-/* Option 2: load asynchronously */
-loadJSON("recordings").then(recordings => {
-  // do stuff with recordings
-});
-```
+You can then use [`Utils.json`](../reference/Utils/json.md) to load this file and do things with it.
 
 ## `@script`
 
@@ -79,28 +52,23 @@ but in production mode, it will become
 
 Scripts are configured in the [`build`](./build#scripts) and [`serve`](./serve#scripts) commands. The configuration can either be a string or an object. If a string, a script with that `src` will be used in both development and production. If an object is specified, the options are:
 
-* `development: string | () => string;`
-<!--  -->
+* `development?: string | () => string`  
 Script [src](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-src) to use in development mode. If omitted, nothing will be output in development mode.
 <!--  -->
 If a function is specified, will render a `<script>` tag with the return value of the function as the *content* of the tag (i.e. no `src`).
 
-* `production: string | () => string;`
-<!--  -->
+* `production?: string | () => string`  
 Script [src](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-src) to use in production mode. If omitted, nothing will be output in production mode.
 <!--  -->
 If a function is specified, will render a `<script>` tag with the return value of the function as the *content* of the tag (i.e. no `src`).
 
-* `crossorigin: boolean | string;`
-<!--  -->
+* `crossorigin?: boolean | string`  
 [Crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-crossorigin) attribute. Can be either a boolean or a string.
 
-* `defer: boolean;`
-<!-- -->
+* `defer?: boolean;`  
 [Defer](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-defer) attribute for the script
 
-* `integrity: string;`
-<!--  -->
+* `integrity?: string;`  
 [Integrity](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#attr-integrity) hash for the script. Only applied in production mode.
 
 ### Defaults
@@ -161,12 +129,10 @@ but in production mode, it will become
 
 Styles are configured in the [`build`](./build#styles) and [`serve`](./serve#styles) commands. The configuration can either be a string or an object. If a string, a stylesheet with that `href` will be used in both development and production. If an object is specified, the options are:
 
-* `development: string;`
-<!--  -->
+* `development?: string`  
 Stylesheet [href](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attr-href) to use in development mode. If omitted, nothing will be output in development mode.
 
-* `production: string;`
-<!--  -->
+* `production?: string`  
 Stylesheet [href](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link#attr-href) to use in production mode. If omitted, nothing will be output in production mode.
 
 ### Defaults

@@ -1,4 +1,4 @@
-This class provides a GUI interface for playing ractives, resembling a traditional web video player. It is the main entry point to the library.
+This class provides a GUI interface for playing liquid videos, resembling a traditional web video player. It is the main entry point to the library.
 
 ## Props {#props}
 
@@ -17,11 +17,11 @@ You can extend the default controls like so:
 ```jsx
 import {Player} from "liqvid";
 
-const controls = (<>
+const controls = [(<>
   {Player.defaultControlsLeft}
   <MyCustomControl/>
 
-  <div className="rp-controls-right">
+  <div className="lv-controls-right">
     <AnotherCustomControl/>
     {Player.defaultControlsRight}
   </div>
@@ -36,7 +36,7 @@ const controls = (<>
   <Controls.PlayPause/>
   <MyVolumeControl/>
 
-  <div className="rp-controls-right">
+  <div className="lv-controls-right">
     <Controls.TimeDisplay/>
     <Controls.FullScreen/>
   </div>
@@ -47,46 +47,46 @@ const controls = (<>
 At this time, it is not possible to provide your own scrubber bar. This will be corrected in a future release.
 :::
 
-### `script` {#script-prop}
+### `playback` {#playback-prop}
 
-The [Script](./Script.md) to use.
+The [`Playback`](./Playback.md) to use. This prop isn't needed if you're using a `Script`.
 
 ```ts
-script: Script;
+playback?: Playback;
+```
+
+### `script` {#script-prop}
+
+The [`Script`](./Script.md) to use.
+
+```ts
+script?: Script;
 ```
 
 ### `thumbs` {#thumbs}
 
 Provide thumbnail previews for the scrubber bar. You can generate thumbnail sheets with [`liqvid thumbs`](../cli/thumbs.md).
 
-* `cols` how many columns per sheet
+* `cols?: number = 5`  
+  how many columns per sheet
 
-* `rows` how many rows per sheet
+* `rows?: number = 5`  
+  how many rows per sheet
 
-* `width` the width of each thumbnail
+* `width?: number = 160`  
+  the width of each thumbnail
 
-* `height` the height of each thumbnail
+* `height?: number = 100`  
+  the height of each thumbnail
 
-* `frequency` how many seconds between thumbnails
+* `frequency?: number = 4`  
+  how many seconds between thumbnails
 
-* `path` pattern where the sheets are located. Must contain `%s`.
+* `path: string`  
+  pattern where the sheets are located. Must contain `%s`.
 
-* `highlights` points of interest in the video, these will be highlighted on the scrubber bar
-
-```ts
-thumbs?: {
-  cols: number;
-  rows: number;
-  width: number;
-  height: number;
-  frequency: number;
-  path: string;
-  highlights?: {
-    time: number;
-    title: string;
-  }[];
-}
-```
+* `highlights?: {time: number, title: string}[]`  
+  points of interest in the video, these will be highlighted on the scrubber bar
 
 #### Example
 
@@ -97,21 +97,18 @@ const highlights = [
 ];
 
 const thumbs = {
-  cols: 5,
-  rows: 5,
-  height: 100,
-  width: 160,
-  frequency: 4,
   path: `./thumbs/%s.png`,
   highlights
 };
+
+<Player script={script} thumbs={thumbs}>
 ```
 
 ## Static properties {#static-properties}
 
 ### `Context` {#Context}
 
-React [Context](https://reactjs.org/docs/context.html) containing a reference to the ambient player. If you are using Hooks, you can use [usePlayer()](/docs/reference/hooks#usePlayer) instead.
+React [Context](https://reactjs.org/docs/context.html) containing a reference to the ambient player. If you are using Hooks, you can use [`usePlayer()`](./Hooks.md#usePlayer) instead.
 
 ```typescript
 static Context: React.Context<Player>;
@@ -123,25 +120,13 @@ The default controls appearing on the left: [`PlayPause`](/docs/reference/Contro
 
 ### `defaultControlsRight` {#defaultControlsRight}
 
-The default controls appearing on the right: [`Settings`](/docs/reference/Controls#Settings) and [`FullScreen`](/docs/reference/Controls#FullScreen). **Note that you need to wrap these in `<div className="rp-controls-right"` for these to actually be right-aligned.**
+The default controls appearing on the right: [`Settings`](/docs/reference/Controls#Settings) and [`FullScreen`](/docs/reference/Controls#FullScreen).
 
-## Static methods {#static-methods}
+:::note
 
-### `allowScroll()` {#allowScroll}
+You need to wrap these in `<div className="lv-controls-right">` for these to actually be right-aligned.
 
-Prevents intercepting of scroll on mobile. See [Scroll events](/docs/guide/mobile#scroll-events) in the Authoring guide.
-
-```typescript
-static allowScroll(e: React.TouchEvent | TouchEvent): void;
-```
-
-### `preventCanvasClick()` {#preventCanvasClick}
-
-Prevents a click from pausing/playing the video. See [Canvas clicks](/docs/guide/interactivity#canvas-clicks) in the Authoring guide.
-
-```typescript
-static preventCanvasClick(e: React.MouseEvent | MouseEvent): void;
-```
+:::
 
 ## Properties {#properties}
 
@@ -171,7 +156,7 @@ canvas: HTMLDivElement;
 
 ### `hub` {#hub}
 
-An [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) that your code can subscribe to. Emits the following events:
+An [`EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter) that your code can subscribe to. Emits the following events:
 
 | Name           | Description |
 | -------------- | ----------- |
@@ -189,15 +174,15 @@ hub: StrictEventEmitter<EventEmitter, {
 
 ### `keymap` {#keymap}
 
-The [KeyMap](./KeyMap.md) instance attached to this player.
+The [`Keymap`](./Keymap.md) instance attached to this player.
 
 ```typescript
-keymap: KeyMap;
+keymap: Keymap;
 ```
 
 ### `playback` {#playback}
 
-The underlying [Playback](./Playback.md) instance.
+The underlying [`Playback`](./Playback.md) instance.
 
 ```typescript
 playback: Playback;
@@ -205,7 +190,7 @@ playback: Playback;
 
 ### `script` {#script}
 
-The underlying [Script](./Script.md) instance.
+The underlying [`Script`](./Script.md) instance.
 
 ```typescript
 script: Script;
@@ -215,10 +200,27 @@ script: Script;
 
 ### `obstruct()` {#obstruct}
 
-Add a Promise to the list of tasks needed for [`canPlay`](#canPlay) or [`canPlayThrough`](#canPlayThrough) to resolve.
+Add a Promise to the list of tasks needed for [`canPlay`](#canPlay) or [`canPlayThrough`](#canPlayThrough) to resolve. Parameters:
+
+* `event: "canplay" | "canplaythrough"`  
+Which event type to obstruct
+
+* `task: Promise<void>`  
+Promise to append
 
 ```typescript
 obstruct(event: "canplay" | "canplaythrough", task: Promise<unknown>): void;
+```
+
+### `reparseTree()` {#reparseTree}
+
+Reparse a section of the document for `during()` and `from()`. Accepts the following parameters:
+
+* `node`  
+Element to reparse
+
+```typescript
+reparseTree(node: HTMLElement | SVGElement): void;
 ```
 
 ### `resumeKeyCapture()` {#resumeKeyCapture}

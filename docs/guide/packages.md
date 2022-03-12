@@ -23,14 +23,6 @@ The core library only aims to provide a framework, much like React itself. Compl
 
 - [rp-codemirror](https://www.npmjs.com/package/rp-codemirror)<br/>Record and replay CodeMirror interactions.
 
-## Mathematics {#mathematics}
-
-- [rp-katex](https://www.npmjs.com/package/rp-katex)<br/>Helpers for using [KaTeX](https://katex.org) in ractives.
-
-- [rp-mathjax](https://www.npmjs.com/package/rp-mathjax)<br/>Helpers for using [MathJax 2.x](https://www.mathjax.org) in ractives.
-
-- [rp-xyjax](https://www.npmjs.com/package/rp-xyjax)<br/>Helpers for animating [XyJax](https://sonoisa.github.io/xyjax/xyjax.html) diagrams.
-
 ## Tutorials / Sample projects {#tutorials--sample-projects}
 
 - [lv-tutorial](https://github.com/ysulyma/lv-tutorial) (watch online [here](/))

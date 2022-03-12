@@ -1,6 +1,6 @@
 This class handles keyboard shortcuts.
 
-The KeyMap is attached to the [Player](/docs/reference/Player#keymap) and can be accessed like so:
+The `Keymap` is attached to the [Player](./Player.md#keymap) and can be accessed like so:
 
 ```tsx liqvid
 // @css
@@ -34,15 +34,17 @@ aside.help > header {
   padding: .5em;
 }
 // @/css
-// freeze-next-line
-import {Player, Script, usePlayer} from "liqvid";
+// freeze-start
+import {Playback, Player, usePlayer} from "liqvid";
+import {useEffect, useMemo, useState} from "react";
+// freeze-end
 
 function Searchable() {
   const {keymap} = usePlayer();
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
 
   // create Alt-F shortcut for search
-  React.useEffect(() => {
+  useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       setVisible(prev => !prev);
     };
@@ -55,8 +57,12 @@ function Searchable() {
     };
   }, []);
 
+  const style = useMemo(() => ({
+    display: visible ? "block" : "none"
+  }), [visible]);
+
   return (
-    <aside className="help" style={{display: visible ? "block" : "none"}}>
+    <aside className="help" style={style}>
       Put useful information here
     </aside>
   );
@@ -65,7 +71,7 @@ function Searchable() {
 
 function MyVideo() {
   return (
-    <Player script={script}>
+    <Player playback={playback}>
       <div id="instructions">
         Press H or ? to open help dialog.
       </div>
@@ -75,15 +81,12 @@ function MyVideo() {
 }
 
 // freeze-start
-const markers = [
-  ["video/", "0:10"]
-];
-const script = new Script(markers);
+const playback = new Playback({duration: 10000});
 
 ReactDOM.render(<MyVideo/>, document.querySelector("main"));
 ```
 
-Although you can create other KeyMap instances, you'll most likely only use the one attached to the player.
+Although you can create other `Keymap` instances, you'll most likely only use the one attached to the player.
 
 ## Static methods {#static-methods}
 
@@ -98,15 +101,15 @@ static normalize(seq: string): string;
 #### Example {#example}
 
 ```tsx
-import {KeyMap} from "liqvid";
+import {Keymap} from "liqvid";
 
 // returns "Ctrl+Alt+2"
-KeyMap.normalize("Alt+Ctrl+2");
+Keymap.normalize("Alt+Ctrl+2");
 ```
 
 ### `identify()` {#identify}
 
-Given a KeyboardEvent (or React wrapper thereof), returns a shortcut sequence matching that event.
+Given a [`KeyboardEvent`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent) (or React wrapper thereof), returns a shortcut sequence matching that event.
 
 ```typescript
 static identify(e: KeyboardEvent | React.KeyboardEvent<unknown>): string;
@@ -120,14 +123,6 @@ Bind a handler to be called when the shortcut sequence is pressed.
 
 ```typescript
 bind(seq: string, cb: (e: KeyboardEvent) => void): void;
-```
-
-### `unbind()` {#unbind}
-
-Unbind a handler from a shortcut sequence.
-
-```typescript
-unbind(seq: string, cb: (e: KeyboardEvent) => void): void;
 ```
 
 ### `getKeys()` {#getkeys}
@@ -152,4 +147,12 @@ Dispatches all handlers matching the given event.
 
 ```typescript
 handle(e: KeyboardEvent): void;
+```
+
+### `unbind()` {#unbind}
+
+Unbind a handler from a shortcut sequence.
+
+```typescript
+unbind(seq: string, cb: (e: KeyboardEvent) => void): void;
 ```

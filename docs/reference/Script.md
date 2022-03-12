@@ -1,18 +1,18 @@
-## Properties {#properties}
-
-### `hub` {#hub}
-
-An [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) that your code can subscribe to. Emits the following events:
-
-| Name           | Description |
-| -------------- | ----------- |
-| markerupdate | Fired when the active marker changes. Callback receives the index of the previously active marker. |
+A `Script` augments a [`Playback`](./Playback.md) by breaking it into named segments, called <dfn>markers</dfn>. 
 
 ```typescript
-hub: StrictEventEmitter<EventEmitter, {
-  "markerupdate": number;
-}>;
+import {Player, Script} from "liqvid";
+
+const script = new Script([
+  ["slide-1", "1:00"],
+  ["slide-2", "1:00"]
+]);
+
+<Player script={script}>{/* ... */}</Player>
 ```
+
+## Properties {#properties}
+
 <!-- 
 ### `loadTasks` {#loadTasks}
 
@@ -46,7 +46,7 @@ markers: [string, number, number][];
 
 ### `playback` {#playback}
 
-The underlying [Playback](/docs/reference/Playback) instance.
+The underlying [`Playback`](./Playback.md) instance.
 
 ```typescript
 playback: Playback;
@@ -56,7 +56,7 @@ playback: Playback;
 
 ### `constructor()` {#constructor}
 ```typescript
-constructor(markers: Array<[string, string | number] | [string, string | number, string | number]>);
+constructor(markers: Array<[string, string | number] | [string, string | number, string | number]>): Script;
 ```
 
 ### `back()` {#back}
@@ -106,3 +106,11 @@ If `start` is a string, returns the starting time of the marker with that name. 
 ```typescript
 parseStart(start: number | string): number;
 ```
+
+## Events {#events}
+
+This class extends [`EventEmitter`](https://nodejs.org/dist/v11.13.0/docs/api/events.html#events_class_eventemitter). It emits the following events:
+
+### `markerupdate` {#markerupdate}
+
+Fired when the active marker changes. Callback receives the index of the *previously* active marker.

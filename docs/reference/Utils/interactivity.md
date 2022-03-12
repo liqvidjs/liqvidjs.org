@@ -27,8 +27,10 @@ Helper for implementing drag functionality, abstracting over mouse vs touch even
     Object containing information about the pointer location:
     * `x: number` Horizontal coordinate of pointer
     * `y: number` Vertical coordinate of pointer
-    * `upHandler: (e: MouseEvent | TouchEvent) => void` Up handler used internally by this method (in case you need to cancel it)
-    * `moveHandler: (e: MouseEvent | TouchEvent) => void` Move handler used internally by this method (in case you need to cancel it)
+    * `upHandler: (e: MouseEvent | TouchEvent) => void`  
+      Up handler used internally by this method (in case you need to cancel it)
+    * `moveHandler: (e: MouseEvent | TouchEvent) => void`  
+      Move handler used internally by this method (in case you need to cancel it)
 * `up?: (e, hit) => void`  
   Callback for when dragging ends (pointer is lifted). Receives the following arguments:
   * `e: MouseEvent | TouchEvent`  

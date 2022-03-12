@@ -3,22 +3,22 @@ The `<Audio>` component is a drop-in replacement for the [`<audio>`](https://dev
 ```tsx
 import {Audio} from "liqvid";
 
-<Audio start={0}>
+<Audio>
   <source src={`audio.webm`} type="audio/webm"/>
   <source src={`audio.mp4`} type="audio/mp4"/>
 </Audio>
 ```
 
-`start` is a number indicating when the audio should start playing. Any additional props or children will be forwarded to the underlying `<audio>` element.
-
 ## Props {#props}
+
+This component accepts the following props. Any additional props or children will be forwarded to the underlying `<audio>` element.
 
 ### `obstructCanPlay` {#obstructCanPlay}
 
 If true, prevents [`Player.canPlay`](./Player.md#canPlay) from resolving until the underlying `<audio>` element [can play](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplay_event).
 
 ```ts
-obstructCanPlay?: boolean;
+obstructCanPlay?: boolean = false;
 ```
 
 ### `obstructCanPlayThrough` {#obstructCanPlayThrough}
@@ -26,7 +26,7 @@ obstructCanPlay?: boolean;
 If true, prevents [`Player.canPlayThrough`](./Player.md#canPlayThrough) from resolving until the underlying `<audio>` element [can play through](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/canplaythrough_event).
 
 ```ts
-obstructCanPlayThrough?: boolean;
+obstructCanPlayThrough?: boolean = false;
 ```
 
 ### `start` {#start}
@@ -34,7 +34,7 @@ obstructCanPlayThrough?: boolean;
 Time in milliseconds when the video should start playing.
 
 ```ts
-start: number;
+start?: number = 0;
 ```
 
 ## Web Autoplay Policy {#web-autoplay-policy}
