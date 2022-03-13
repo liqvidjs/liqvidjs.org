@@ -7,13 +7,13 @@ title: Mobile
 The Web Animations API is not supported on older browsers, and the official polyfill does not completely work. Place the following code in your video page to work around this:
 
 ```html
-<script src="https://unpkg.com/@liqvid/polyfills@0.0.1/dist/waapi.js"></script>
+<script src="https://unpkg.com/@liqvid/polyfills/dist/waapi.js"></script>
 ```
 You can also just do
 ```html
 <!-- @script "polyfills" -->
 ```
-if you are using the [magic resource syntax](../cli/macros.md).
+if you are using the [magic resource syntax](../cli/macros.md#script).
 
 ## Fake fullscreen {#fake-fullscreen}
 
@@ -79,7 +79,7 @@ p {
 // @/css
 // freeze-start
 import {useMemo, useRef, useState} from "react";
-import {Player, Script, Utils} from "liqvid";
+import {Playback, Player, Utils} from "liqvid";
 const {onClick} = Utils.mobile;
 // freeze-end
 
@@ -100,7 +100,7 @@ function Face() {
   return (
     <>
       <p>Click the face to {happy ? "make them sad again" : "turn that frown upside down"}!</p>
-      <svg id="face" viewBox="0 0 100 100" {...events} onMouseUp={Player.preventCanvasClick}>
+      <svg id="face" viewBox="0 0 100 100" {...events} data-affords="click">
         <circle cx="50" cy="50" r="45" fill="#FF0" strokeWidth="3"/>
         <circle cx="20" cy="30" r="5" fill="#000"/>
         <circle cx="80" cy="30" r="5" fill="#000" strokeWidth="0"/>
@@ -112,12 +112,9 @@ function Face() {
 }
 
 // freeze-start
-const markers = [
-  ["face", "1:00"]
-];
-const script = new Script(markers);
+const playback = new Playback({duration: 60000});
 
-ReactDOM.render(<Player script={script}><Face/></Player>, document.querySelector("main"));
+ReactDOM.render(<Player playback={playback}><Face/></Player>, document.querySelector("main"));
 ```
 <!-- 
 ## Scroll events {#scroll-events}
