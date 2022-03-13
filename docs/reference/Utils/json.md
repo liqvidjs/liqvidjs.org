@@ -9,7 +9,7 @@ const {loadAllJSON} = Utils.json;
 import {loadAllJSON} from "@liqvid/utils/json";
 ```
 
-These can be inserted with the [`@json` macro](../cli/macros.md#json).
+These can be inserted with the [`@json` macro](../../cli/macros.md#json).
 
 ## Usage {#usage}
 ```tsx

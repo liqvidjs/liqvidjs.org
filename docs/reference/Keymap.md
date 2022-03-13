@@ -1,4 +1,4 @@
-This class handles keyboard shortcuts.
+This class handles keyboard shortcuts.  It is also available as a standalone package `@liqvid/keymap`.
 
 The `Keymap` is attached to the [Player](./Player.md#keymap) and can be accessed like so:
 

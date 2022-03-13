@@ -88,7 +88,7 @@ Let's break down what's going on here.
 
 ### Classes
 
-The fundamental classes in Liqvid are [Playback](../reference/Playback.md), [Script](../reference/Script.md), and [Player](../reference/Player.md). `Playback` handles the logic of playing/rewinding, volume settings, playback rate, etc.; it imitates the [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface to a certain extent. A `Script` augments a `Playback` by breaking it into named segments, which we call <dfn>markers</dfn>. Finally, `Player` provides the graphical interface for playing videos.
+The fundamental classes in Liqvid are [`Playback`](../reference/Playback.md), [`Script`](../reference/Script.md), and [`Player`](../reference/Player.md). `Playback` handles the logic of playing/rewinding, volume settings, playback rate, etc.; it imitates the [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface to a certain extent. A `Script` augments a `Playback` by breaking it into named segments, which we call <dfn>markers</dfn>. Finally, `Player` provides the graphical interface for playing videos.
 
 The entry point for our video is `<Player>`; all our content goes in there. To initialize the `Player`, we need to create a `Script` with our marker names/durations, then passed that to `<Player>`. The `Playback` is created automatically by the `Script`, e.g. try adding `console.log(script.playback)` to the above example.
 
@@ -122,7 +122,9 @@ const {during, from} = Utils.authoring;
 ```
 Since you will be using these a lot, you might want to define a shortcut for them in your text editor.
 
-Internally, elements are hidden by setting `opacity:0; pointer-events: none;`, and shown by removing these attributes. This operates outside of React rendering. The reason for using these styles instead of
+:::info
+
+Internally, elements are hidden by setting `opacity:0; pointer-events: none`, and shown by removing these styles. This operates outside of React rendering. The reason for using these styles instead of
 
 * `visibility: hidden;` is that an invisible element can have visible children with the latter approach, whereas our approach allows us to hide an element without recursing into its children.
 
@@ -130,8 +132,14 @@ Internally, elements are hidden by setting `opacity:0; pointer-events: none;`, a
 
 * removing the element entirely is to avoid layout flash for the viewer. (The original use case for this library involved a lot of MathJax, which is slow to render.)
 
+:::
+
 ### Styling
 
-You will typically want all top-level children of the video to have `position: absolute;`, as we did with `<section>` above, so as not to interfere with each other's positioning.
+You will typically want all top-level children of the video to have `position: absolute`, as we did with `<section>` above, so as not to interfere with each other's positioning.
 
-**Always use relative units** (%, em, rem) so that your video scales correctly on different devices and when resized/fullscreened. Liqvid automatically scales the root font size (what `rem` refers to) with the viewport size.
+:::tip
+
+**Always use relative units** (`%`, `em`, `rem`) so that your video scales correctly on different devices and when resized/fullscreened. Liqvid automatically scales the root font size (what `rem` refers to) with the viewport size.
+
+:::

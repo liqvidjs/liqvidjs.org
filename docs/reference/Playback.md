@@ -1,4 +1,4 @@
-This class is the core of the library. It is an animation loop+event emitter which imitates an [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) being played (although it does not fully implement that interface).
+This class is the core of the library. It is an animation loop+event emitter which imitates an [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement) being played (although it does not fully implement that interface). This class is also available as a standalone package `@liqvid/playback`.
 
 There are two ways to create a `Playback`: you can instantiate it directly, or one is created automatically by a [`Script`](./Script.md). You can then pass either one of these to [`<Player>`](./Player.md):
 

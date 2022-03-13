@@ -152,8 +152,7 @@ ReactDOM.render(<Player playback={playback}><Pig/></Player>, document.querySelec
 
 Note the use of the `draggable` and `dragging` classes to provide feedback to the user.
 
-### SVG {#svg}
-
+<!-- ### SVG {#svg}
 
 ```tsx liqvid
 // @css
@@ -269,4 +268,4 @@ function Draw() {
 // freeze-start
 const playback = new Playback({duration: 5000});
 ReactDOM.render(<Player playback={playback}><Draw/></Player>, document.querySelector("main"));
-```
+``` -->
