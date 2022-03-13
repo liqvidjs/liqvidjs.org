@@ -26,7 +26,7 @@ The `@liqvid/katex` package helps with using [KaTeX](https://katex.org/) in Liqv
 import React from "react";
 import ReactDOM from "react-dom";
 
-import {KTX} from "@liqvid/katex?deps=liqvid@2.1.0-beta.4";
+import {KTX} from "@liqvid/katex";
 import {Player, Script} from "liqvid";
 
 const script = new Script([
@@ -83,7 +83,7 @@ ReactDOM.render(<Demo/>, document.querySelector("main"));
 import React, {useEffect, useRef, useState} from "react";
 import ReactDOM from "react-dom";
 
-import {Handle, KTX} from "@liqvid/katex?deps=liqvid@2.1.0-beta.4";
+import {Handle, KTX} from "@liqvid/katex";
 import {Player, Script} from "liqvid";
 
 const script = new Script([
@@ -131,11 +131,6 @@ function Demo() {
       </section>
     </Player>
   );
-}
-
-function LoadingScreen() {
-  const [loaded, setLoaded] = useState(false);
-  return (<div className="loading-screen"></div>);
 }
 
 ReactDOM.render(<Demo/>, document.querySelector("main"));

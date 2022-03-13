@@ -24,8 +24,8 @@ import React, {useRef} from "react";
 import ReactDOM from "react-dom";
 
 import {OrbitControls} from "@react-three/drei/core/OrbitControls";
-import {Canvas} from "@liqvid/react-three?deps=liqvid@2.1.0-beta.4";
-import {Playback, Player, useTime} from "liqvid"
+import {Canvas} from "@liqvid/react-three";
+import {Playback, Player, useTime} from "liqvid";
 
 const playback = new Playback({duration: 10000});
 
@@ -83,8 +83,8 @@ import ReactDOM from "react-dom";
 
 import {useThree} from "@react-three/fiber";
 import {OrbitControls} from "@react-three/drei/core/OrbitControls";
-import {Canvas} from "@liqvid/react-three?deps=liqvid@2.1.0-beta.4";
-import {Playback, Player, useTime} from "liqvid"
+import {Canvas} from "@liqvid/react-three";
+import {Playback, Player, useTime} from "liqvid";
 import * as THREE from "three";
 import {constrain} from "@liqvid/utils/misc";
 
@@ -140,7 +140,6 @@ const colors =
 
 function Horned() {
   const {camera, scene} = useThree();
-  window.camera = camera;
 
   useTime(t => {
     for (let iter = 0; iter < numIter; ++iter) {
