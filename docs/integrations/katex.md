@@ -97,7 +97,7 @@ const script = new Script([
 const {raw} = String;
 
 const fadeIn = (delay: number, duration: number = 500) => script.playback.newAnimation(
-  [{opacity: "0%"}, {opacity: "100%"}],
+  [{opacity: 0}, {opacity: 1}],
   {delay, duration: 500, easing: "ease-in-out", fill: "both"}
 )
 

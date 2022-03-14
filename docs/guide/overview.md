@@ -88,7 +88,7 @@ Let's break down what's going on here.
 
 ### Classes
 
-The fundamental classes in Liqvid are [`Playback`](../reference/Playback.md), [`Script`](../reference/Script.md), and [`Player`](../reference/Player.md). `Playback` handles the logic of playing/rewinding, volume settings, playback rate, etc.; it imitates the [HTMLMediaElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface to a certain extent. A `Script` augments a `Playback` by breaking it into named segments, which we call <dfn>markers</dfn>. Finally, `Player` provides the graphical interface for playing videos.
+The fundamental classes in Liqvid are [`Playback`](../reference/Playback.md), [`Script`](../reference/Script.md), and [`Player`](../reference/Player.md). `Playback` handles the logic of playing/rewinding, volume settings, playback rate, etc.; it imitates the [`HTMLMediaElement`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/) interface to a certain extent. A `Script` augments a `Playback` by breaking it into named segments, which we call <dfn>markers</dfn>. Finally, `Player` provides the graphical interface for playing videos.
 
 The entry point for our video is `<Player>`; all our content goes in there. To initialize the `Player`, we need to create a `Script` with our marker names/durations, then passed that to `<Player>`. The `Playback` is created automatically by the `Script`, e.g. try adding `console.log(script.playback)` to the above example.
 

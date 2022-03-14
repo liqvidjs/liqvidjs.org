@@ -6,7 +6,7 @@ The `@liqvid/react-three` package allows you to use [React Three Fiber](https://
 
 - [passes the Liqvid context through](https://docs.pmnd.rs/react-three-fiber/advanced/gotchas#consuming-context-from-a-foreign-provider) so that [`usePlayer()`](../reference/Hooks.md#usePlayer), [`useTime()`](../reference/Hooks.md#useTime) etc. still work
 
-- adds `touch-action="none"` to the container div (necessary for mobile interactions to work)
+- adds `touch-action: "none"` to the container div styles (necessary for mobile interactions to work)
 
 - adds `data-affords="click"` to the container div so that canvas clicks will not pause the video
 
