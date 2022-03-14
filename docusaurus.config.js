@@ -11,7 +11,7 @@ module.exports = {
   organizationName: "liqvidjs", // Usually your GitHub org/user name.
   projectName: "player", // Usually your repo name.
   scripts: [
-    "/fake-fullscreen.js",
+    "https://unpkg.com/@liqvid/host/lv-host.js",
   ],
   stylesheets: [
     // "https://lmqm.dev/css/ractive-player.css"

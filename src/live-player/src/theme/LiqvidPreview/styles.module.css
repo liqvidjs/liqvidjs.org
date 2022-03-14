@@ -12,7 +12,7 @@
   height: 300px;
 }
 
-.liqvidPreview > div > iframe {
+.liqvidPreview > div > iframe:not(.fake-fullscreen) {
   aspect-ratio: 16/10;
   border:  1px solid #DDD;
   /*box-shadow: 0 0 2px #000A;*/

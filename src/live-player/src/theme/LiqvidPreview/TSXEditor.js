@@ -15,13 +15,13 @@ export function TSXEditor(props) {
         doc: props.content,
         extensions: [
           disableLines(...props.linesToFreeze),
-          basicSetup,
-          keymap.of([indentWithTab]),
           // refresh iframe
           keymap.of([{
             key: "Mod-Enter",
             run: props.refresh
           }]),
+          basicSetup,
+          keymap.of([indentWithTab]),
           javascript({jsx: true, typescript: true})
         ]
       })

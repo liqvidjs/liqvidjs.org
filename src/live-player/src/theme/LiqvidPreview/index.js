@@ -22,6 +22,7 @@ import {HTMLEditor} from "./HTMLEditor";
 import {TSXEditor} from "./TSXEditor";
 
 const Mod = (!ExecutionEnvironment.canUseDOM || navigator.platform === "MacIntel" ? "Cmd" : "Ctrl");
+const liqvidVersion = "2.1.3";
 
 export default function Playground({children, transformCode, ...props}) {
   const tsxView = useRef();
@@ -57,6 +58,8 @@ export default function Playground({children, transformCode, ...props}) {
       });
     }
     lastTSX.current = tsx;
+
+    return true;
   }, []);
 
   useEffect(refresh, []);
@@ -120,13 +123,13 @@ export default function Playground({children, transformCode, ...props}) {
         {content.current.head && <div role="tabpanel" hidden>
           <HTMLEditor content={content.current.head} refresh={refresh} view={htmlView} />
         </div>}
-        <iframe ref={iframe} />
+        <iframe allowFullScreen ref={iframe} />
       </div>
     </div>
   );
 }
 
-function render({tsx, css, module, head}) {
+function render({tsx, css="", module, head = ""}) {
   const opts = {
     filename: "demo.tsx",
     presets: ["react", "typescript"]
@@ -158,7 +161,7 @@ function render({tsx, css, module, head}) {
    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1"/>
  
    <!-- Liqvid -->
-   <link href="https://unpkg.com/liqvid@2.1.0-beta.3/dist/liqvid.min.css" rel="stylesheet" type="text/css"/>
+   <link href="https://unpkg.com/liqvid@${liqvidVersion}/dist/liqvid.min.css" rel="stylesheet" type="text/css"/>
    <style id="user-styles" type="text/css">${css}</style>
    <script type="text/javascript">
    window.addEventListener("message", msg => {
@@ -178,10 +181,10 @@ function render({tsx, css, module, head}) {
       doc += String.raw`<script type="module">${esmShImports(js)}</script>`;
     } else {
       doc += String.raw`<!-- production -->
-     <script crossorigin integrity="sha384-YF0qbrX3+TW1Oyow2MYZpkEMq34QcYzbTJbSb9K0sdeykm4i4kTCSrsYeH8HX11w" src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.production.min.js"></script>
-     <script crossorigin integrity="sha384-DHlzXk2aXirrhqAkoaI5lzdgwWB07jUHz7DJGmS4Vlvt5U/ztRy+Yr8oSgQw5QaE" src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.1/umd/react.production.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.1/umd/react-dom.production.min.js"></script>
      
-     <script src="https://unpkg.com/liqvid@2.1.0-beta.4/dist/liqvid.min.js"></script>
+     <script src="https://unpkg.com/liqvid@${liqvidVersion}/dist/liqvid.min.js"></script>
      <script crossorigin integrity="sha384-ImWMbbJ1rSn1mn+2vsKm/wN6Vc7hPNB2VKN0lX3FAzGK+c7M2mD6ZZcwknuKlP7K" src="https://cdn.rangetouch.com/2.0.1/rangetouch.js"></script>
    
      <script>${js}</script>`;
@@ -198,6 +201,10 @@ function render({tsx, css, module, head}) {
 
 function esmShImports(str) {
   return str.replace(/^(import .+? from\s+)(["'])(.+?)\2(;?)$/gm, (match, start, q, name, end) => {
+    // https://github.com/esm-dev/esm.sh/issues/276
+    if (name.startsWith("@liqvid")) {
+      name += `?deps=liqvid@${liqvidVersion}`;
+    }
     return `${start}${q}https://esm.sh/${name}${q}${end}`;
   });
 }
