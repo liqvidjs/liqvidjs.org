@@ -88,6 +88,47 @@ ReactDOM.render(
 );
 ``` -->
 
+## `bezier()` {#bezier}
+
+Cubic bezier curves (this is the [`bezier-easing`](https://www.npmjs.com/package/bezier-easing) package).
+
+```typescript
+ bezier(x1: number, y1: number, x2: number, y2: number): (input: number) => number;
+```
+
+## `easings` {#easings}
+
+Provides parameters for common bezier curves:
+
+* `easeInSine`, `easeOutSine`, `easeInOutSine`
+
+* `easeInQuad`, `easeOutQuad`, `easeInOutQuad`
+
+* `easeInCubic`, `easeOutCubic`, `easeInOutCubic`
+
+* `easeInQuart`, `easeOutQuart`, `easeInOutQuart`
+
+* `easeInQuint`, `easeOutQuint`, `easeInOutQuint`
+
+* `easeInExpo`, `easeOutExpo`, `easeInOutExpo`
+
+* `easeInCirc`, `easeOutCirc`, `easeInOutCirc`
+
+* `easeInBack`, `easeOutBack`, `easeInOutBack`
+
+Usage:
+
+```tsx
+import {Utils} from "liqvid";
+const {animate, bezier, easings} = Utils;
+
+const animation = animate({
+  startTime: 0,
+  duration: 1000,
+  easing: bezier(...easeInOutSine)
+});
+```
+
 ## `replay()` {#replay}
 
 Returns a function that takes in a time (in milliseconds) and returns the "active" replay datum. Useful for writing replay plugins.

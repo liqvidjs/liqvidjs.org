@@ -51,7 +51,16 @@ useScript(): Script;
 
 ### `useTime()` {#useTime}
 
-Subscribe to the [`seek`](./Playback.md#seek) and [`timeupdate`](./Playback.md#timeupdate) event of Playback. Callback receives the current time in milliseconds. The second argument is an [array of dependencies](https://reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect) used to avoid resubscriptions; you will usually want to pass `[]`.
+Subscribe to the [`seek`](./Playback.md#seek) and [`timeupdate`](./Playback.md#timeupdate) event of Playback. Accepts the following arguments:
+
+* `callback: (value: T) => void`  
+Callback receiving the current time (if `transform` is not specified) or a value computed from it (if `transform` is specified). This gets called once initially, and will only be called thereafter when `value` changes.
+
+* `transform?: (t: number) => T`  
+A function which receives the current time (in milliseconds) and returns a value, which then gets passed to `callback`. If this argument is not specified, it defaults to `t => t`, so that `callback` will receive the current time.
+
+* `deps?: React.DependencyList`  
+An [array of dependencies](https://reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect) used to avoid resubscriptions; you will usually want to pass `[]`.
 
 ```typescript
 useTime(callback: (value: number) => void, deps?: React.DependencyList): void;
@@ -60,7 +69,7 @@ useTime<T = number>(callback: (value: T) => void, transform?: (t: number) => T, 
 
 ### `useTimeUpdate()` {#useTimeUpdate}
 
-Subscribe to the [`seek`](./Playback.md#seek) and [`timeupdate`](./Playback.md#timeupdate) event of Playback. Callback receives the current time in milliseconds. The second argument is an [array of dependencies](https://reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect) used to avoid resubscriptions; you will usually want to pass `[]`.
+Legacy version of [`useTime()`]. Compared to `useTime()`, this does not accept a `transform` parameter, and also does not call `callback` initially (so `callback` gets called only when the time *updates*).
 
 ```typescript
 useTimeUpdate(callback: (t: number) => void, deps?: React.DependencyList): void;

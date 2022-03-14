@@ -12,6 +12,8 @@ A few CSS variables are available to customize the appearance of the player:
   --lv-elapsed-color: #AF1866;
   --lv-scrubber-color: #AF1866;
   --lv-scrub-height: 6px;
+  --lv-buttons-height: calc(var(--lv-controls-height) - var(--lv-scrub-height));
+  --lv-canvas-height: calc(var(--lv-height) - var(--lv-controls-height));
 }
 
 /* these ones control the aspect ratio --- default is 8/5 */
