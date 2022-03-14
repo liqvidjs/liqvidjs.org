@@ -75,12 +75,12 @@ If a function is specified, will render a `<script>` tag with the return value o
 The default available scripts are
 ```json
 {
-  "host": "https://unpkg.com/@liqvid/host/lv-host.js",
+ "host": "https://unpkg.com/@liqvid/host/lv-host.js",
   "liqvid": {
     "crossorigin": true,
-    "development": "https://unpkg.com/liqvid@2.0.10/dist/liqvid.js",
-    "production": "https://unpkg.com/liqvid@2.0.10/dist/liqvid.min.js",
-    "integrity": "sha384-lnZkn8yCOe5KCGPD+FXy6WijWbXyc/BXtPzisykkd0qtH1Q2NCz0IMrEWOCnvZbB"
+    "development": "https://unpkg.com/liqvid@2.1.3/dist/liqvid.js",
+    "production": "https://unpkg.com/liqvid@2.1.3/dist/liqvid.min.js",
+    "integrity": "sha384-PF1Q6/ZHWULtuwe8ef5LK49usEuK4uCYtOM8l+u4Wu0hpZw5r0WDgDe9slKjNIwj"
   },
   "livereload": {},
   "polyfills": "https://unpkg.com/@liqvid/polyfills/dist/waapi.js",
@@ -140,8 +140,8 @@ The default available styles are
 ```json
 {
   "liqvid": {
-    "development": "https://unpkg.com/liqvid/dist/liqvid.css",
-    "production": "https://unpkg.com/liqvid/dist/liqvid.min.css"
+    "development": "https://unpkg.com/liqvid@2.1.3/dist/liqvid.css",
+    "production": "https://unpkg.com/liqvid@2.1.3/dist/liqvid.min.css"
   }
 }
 ```
