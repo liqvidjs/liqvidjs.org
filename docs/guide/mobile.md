@@ -2,9 +2,11 @@
 title: Mobile
 ---
 
-## Polyfills {#polyfills}
+Making web apps work smoothly on mobile is an extremely important part of web development, but often very challenging. Here are some tips for making sure your Liqvid videos work as well as static ones.
 
-The Web Animations API is not supported on older browsers, and the official polyfill does not completely work. Place the following code in your video page to work around this:
+## Web Animations {#web-animations}
+
+The Web Animations API is not supported on older browsers, and the [official polyfill](https://github.com/web-animations/web-animations-js) is broken in various ways. Place the following code in your video page to work around this:
 
 ```html
 <script src="https://unpkg.com/@liqvid/polyfills/dist/waapi.js"></script>
@@ -14,6 +16,21 @@ You can also just do
 <!-- @script "polyfills" -->
 ```
 if you are using the [magic resource syntax](../cli/macros.md#script).
+
+One part of the polyfill that we haven't yet patched is that "partial keyframes" are not supported: you must explicitly specify "initial state". The following **will not work** on iOS <=12:
+```tsx
+playback.newAnimation(
+  [{}, {transform: "scale(3)"}],
+  {delay, duration, easing: "ease-in-out", fill: "both"}
+)
+```
+Instead, you should write
+```tsx
+playback.newAnimation(
+  [{transform: "scale(1)"}, {transform: "scale(3)"}],
+  {delay, duration, easing: "ease-in-out", fill: "both"}
+)
+```
 
 ## Fake fullscreen {#fake-fullscreen}
 
@@ -116,6 +133,7 @@ const playback = new Playback({duration: 60000});
 
 ReactDOM.render(<Player playback={playback}><Face/></Player>, document.querySelector("main"));
 ```
+
 <!-- 
 ## Scroll events {#scroll-events}
 

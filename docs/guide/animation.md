@@ -2,7 +2,7 @@
 title: Animation
 ---
 
-Animation in Liqvid works much the same way as in normal web applications: you adjust attributes or CSS properties inside an animation loop. We also support the newer Web Animations API.
+Animation in Liqvid works much the same way as in normal web applications, just synced up to a player. Classically, this means adjusting attributes or CSS properties inside an animation loop. We also support the newer Web Animations API.
 
 ## Web Animations API
 
@@ -50,17 +50,17 @@ const playback = new Playback({duration: 5000});
 
 /* animations */
 const fall = (delay: number, duration: number) => playback.newAnimation(
-  [{top: "0%"}, {top: "55%", transform: "rotate(360deg)"}],
+  [{top: "0%", transform: "rotate(0deg)"}, {top: "55%", transform: "rotate(360deg)"}],
   {delay, duration, easing: `cubic-bezier(${easings.easeOutSine})`, fill: "both"}
 );
 
 const fadeIn = (delay: number, duration: number) => playback.newAnimation(
-  [{opacity: "0%"}, {opacity: "100%"}],
+  [{opacity: 0}, {opacity: 1}],
   {delay, duration, easing: "ease-in-out", fill: "both"}
 );
 
 const scale = (delay: number, duration: number) => playback.newAnimation(
-  [{}, {transform: "scale(3)"}],
+  [{transform: "scale(1)"}, {transform: "scale(3)"}],
   {delay, duration, easing: "ease-in-out", fill: "both"}
 );
 
@@ -78,6 +78,8 @@ ReactDOM.render(<MyVideo/>, document.querySelector("main"));
 ```
 
 ## Animating with `useTime()`
+
+<!-- 99% of [`offset-path`](https://developer.mozilla.org/en-US/docs/Web/CSS/offset-path). -->
 
 To synchronize with playback, we use the [`useTime()`](../reference/Hooks.md#useTime) hook with a callback. Every time the video advances in time, or is seeked, our callback is called with the current time (in milliseconds).
 
