@@ -94,9 +94,10 @@ const script = new Script([
   ["proof/4", "0:02"],
   ["proof/5", "0:02"]
 ]);
+const {playback} = script;
 const {raw} = String;
 
-const fadeIn = (delay: number, duration: number = 500) => script.playback.newAnimation(
+const fadeIn = (delay: number, duration: number = 500) => playback.newAnimation(
   [{opacity: 0}, {opacity: 1}],
   {delay, duration: 500, easing: "ease-in-out", fill: "both"}
 )
@@ -124,7 +125,7 @@ function Demo() {
           ${step(1)}{x^2 + \frac ba x + \frac ca} &${step(1)}{= 0}\\[1em]
           ${step(2)}{x^2 + \frac ba x + \frac{b^2}{4a^2}} &${step(2)}{= -\frac ca + \frac{b^2}{4a^2}}\\[1em]
           ${step(3)}{\left(x+\frac b{2a}\right)^2} &${step(3)}{= \frac{b^2-4ac}{4a^2}}\\[1em]
-          ${step(4)}{x+\frac b{2a}} &${step(4)}{= \sqrt{b^2-4ac}{2a}}\\[1em]
+          ${step(4)}{x+\frac b{2a}} &${step(4)}{= \frac{\sqrt{b^2-4ac}}{2a}}\\[1em]
           ${step(5)}{x} &${step(5)}{= \frac{-b \pm \sqrt{b^2-4ac}}{2a}}
           \end{aligned}
         `}</KTX>
