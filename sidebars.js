@@ -11,13 +11,18 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Integrations",
+      items: ["three", "katex", "mathjax", "xyjax"].map(_ => `integrations/${_}`)
+    },
+    {
+      type: "category",
       label: "API Reference",
       items:
-        ["css", "Audio", "Controls", "hooks", "IdMap", "KeyMap", "Playback", "Player", "Script"].map(_ => "reference/" + _)
+        ["css", "Audio", "Controls", "hooks", "IdMap", "Keymap", "Playback", "Player", "Script"].map(_ => "reference/" + _)
         .concat({
           type: "category",
           label: "Utils",
-          items: ["animation", "authoring", "interactivity", "media", "misc", "mobile", "react", "replayData", "time"].map(_ => `reference/Utils/${_}`)
+          items: ["animation", "authoring", "interactivity", "json", "media", "misc", "mobile", "react", "replayData", "svg", "time"].map(_ => `reference/Utils/${_}`)
         })
         .concat("reference/Video")
     },

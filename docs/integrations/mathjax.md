@@ -2,38 +2,185 @@
 title: MathJax
 ---
 
-The `@liqvid/mathjax` package helps with using [MathJax](https://www.mathjax.org/) in Liqvid videos.
+The `@liqvid/mathjax` package helps with using [MathJax](https://mathjax.org/) in Liqvid videos.
 
-## Usage
+## Examples
 
-```tsx
+### Revealing equations
+
+```tsx liqvid module
+// @head
+<script>
+  window.MathJax = {
+    loader: {
+      load: [
+        "[custom]/annotations.js"
+      ],
+      paths: {
+        custom: "https://cdn.jsdelivr.net/gh/ysulyma/mathjax-extensions/"
+      }
+    },
+    options: {
+      enableMenu: false
+    },
+    startup: {
+      typeset: false // don't perform initial typeset
+    },
+    tex: {
+      packages: {"[+]": ["annotate"]}
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+// @/head
+// @css
+.lv-canvas > section {
+  font-size: 1.8rem;
+  padding: 1rem;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+// @/css
+import React from "react";
+import ReactDOM from "react-dom";
+
 import {MJX} from "@liqvid/mathjax";
+import {Player, Script} from "liqvid";
 
-function Quadratic() {
+const script = new Script([
+  ["proof/", "0:02"],
+  ["proof/1", "0:02"],
+  ["proof/2", "0:02"],
+  ["proof/3", "0:02"],
+  ["proof/4", "0:02"],
+  ["proof/5", "0:02"]
+]);
+const {raw} = String;
+
+function Demo() {
+  const step = (n: number) => raw`\data{from-first="proof/${n}"}`;
   return (
-    <div>
-      The value of <MJX>x</MJX> is given by the quadratic formula
-      <MJX display>{String.raw`x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}`}</MJX>
-    </div>
+    <Player script={script}>
+      <section data-during="proof/">
+        <p>We can solve for <MJX>x</MJX> using the quadratic formula; here's how to derive that:</p>
+        <MJX display reparse>{raw`
+          \begin{aligned}
+          ax^2 + bx + c &= 0\\[1em]
+          ${step(1)}{x^2 + \frac ba x + \frac ca} &${step(1)}{= 0}\\[1em]
+          ${step(2)}{x^2 + \frac ba x + \frac{b^2}{4a^2}} &${step(2)}{= -\frac ca + \frac{b^2}{4a^2}}\\[1em]
+          ${step(3)}{\left(x+\frac b{2a}\right)^2} &${step(3)}{= \frac{b^2-4ac}{4a^2}}\\[1em]
+          ${step(4)}{x+\frac b{2a}} &${step(4)}{= \frac{\sqrt{b^2-4ac}}{2a}}\\[1em]
+          ${step(5)}{x} &${step(5)}{= \frac{-b \pm \sqrt{b^2-4ac}}{2a}}
+          \end{aligned}
+        `}</MJX>
+      </section>
+    </Player>
   );
 }
+
+ReactDOM.render(<Demo/>, document.querySelector("main"));
 ```
+
+### Fading equations
+
+```tsx liqvid module
+// @head
+<script>
+  window.MathJax = {
+    loader: {
+      load: [
+        "[custom]/annotations.js"
+      ],
+      paths: {
+        custom: "https://cdn.jsdelivr.net/gh/ysulyma/mathjax-extensions/"
+      }
+    },
+    options: {
+      enableMenu: false
+    },
+    startup: {
+      typeset: false // don't perform initial typeset
+    },
+    tex: {
+      packages: {"[+]": ["annotate"]}
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+// @/head
+// @css
+.lv-canvas > section {
+  font-size: 1.8rem;
+  padding: 1rem;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+// @/css
+import React, {useEffect, useRef, useState} from "react";
+import ReactDOM from "react-dom";
+
+import {Handle, MJX} from "@liqvid/mathjax";
+import {Player, Script} from "liqvid";
+
+const script = new Script([
+  ["proof/", "0:02"],
+  ["proof/1", "0:02"],
+  ["proof/2", "0:02"],
+  ["proof/3", "0:02"],
+  ["proof/4", "0:02"],
+  ["proof/5", "0:02"]
+]);
+const {playback} = script;
+const {raw} = String;
+
+const fadeIn = (delay: number, duration: number = 500) => playback.newAnimation(
+  [{opacity: 0}, {opacity: 1}],
+  {delay, duration: 500, easing: "ease-in-out", fill: "both"}
+)
+
+function Demo() {
+  const ref = useRef<Handle>();
+  const step = (n: number) => raw`\data{from-first="proof/${n}"}`;
+
+  useEffect(() => {
+    ref.current.ready.then(() => {
+      const nodes = ref.current.domElement.querySelectorAll("*[data-from-first]");
+      for (const node of nodes) {
+        const delay = script.parseStart(node.dataset.fromFirst);
+        fadeIn(delay)(node);
+      }
+    });
+  }, []);
+  return (
+    <Player script={script}>
+      <section data-during="proof/">
+        <p>We can solve for <MJX>x</MJX> using the quadratic formula; here's how to derive that:</p>
+        <MJX display reparse ref={ref}>{raw`
+          \begin{aligned}
+          ax^2 + bx + c &= 0\\[1em]
+          ${step(1)}{x^2 + \frac ba x + \frac ca} &${step(1)}{= 0}\\[1em]
+          ${step(2)}{x^2 + \frac ba x + \frac{b^2}{4a^2}} &${step(2)}{= -\frac ca + \frac{b^2}{4a^2}}\\[1em]
+          ${step(3)}{\left(x+\frac b{2a}\right)^2} &${step(3)}{= \frac{b^2-4ac}{4a^2}}\\[1em]
+          ${step(4)}{x+\frac b{2a}} &${step(4)}{= \frac{\sqrt{b^2-4ac}}{2a}}\\[1em]
+          ${step(5)}{x} &${step(5)}{= \frac{-b \pm \sqrt{b^2-4ac}}{2a}}
+          \end{aligned}
+        `}</MJX>
+      </section>
+    </Player>
+  );
+}
+
+ReactDOM.render(<Demo/>, document.querySelector("main"));
+```
+
 
 ## Exports
 
-### `<MJX>` {#MJX}
+### `Handle` {#Handle}
 
-This component accepts the following props:
-
-* `display?: boolean = false`  
-  Whether to render in displaystyle.
-
-* `reparse?: boolean = false`  
-  Whether to reparse the tree.
-
-#### Properties
-
-Refs attached to this component have the following properties:
+Type of refs attached to [`<MJX>`](#MJX) components.
 
 * `domElement: HTMLSpanElement`  
   Underlying `<span>` element.
@@ -41,84 +188,48 @@ Refs attached to this component have the following properties:
 * `ready: Promise<void>`  
   A Promise that will resolve once the element has finished typesetting.
 
+### `<MJX>` {#MJX}
+
+Component for including math; contents will be rendered using MathJax.
+
+#### Props {#MJX-props}
+
+This component accepts the following props. Any additional attributes will be forwarded to the underlying `<span>` element.
+
+* `display?: boolean = false`  
+  Whether to render in displaystyle.
+
+* `obstruct?: string = "canplay canplaythrough"`  
+Player events to obstruct.
+
+* `reparse?: boolean = false`  
+  Whether to reparse the tree.
+
+### `<MJXText>` {#MJXText}
+
+Element which will render any MathJax contained inside.
+
+#### Props {#MJXText-props}
+
+This component accepts the following props. Any additional attributes will be forwarded to the underlying element.
+
+* `tagName?: keyof (HTMLElementTagNameMap & JSX.IntrinsicElements) = "p"`  
+  HTML tag to insert.
+
 ### `<RenderGroup>` {#RenderGroup}
 
-#### Props
+Container for if you need to use `.ready` or `.reparse` on multiple `<MJX>` elements at once.
+
+#### Props {#RenderGroup-props}
 
 This component accepts the following props:
 
 * `reparse?: boolean = false`  
-  Whether to reparse the tree.
+  Whether to reparse the tree once all `<MJX>` descendants are ready.
 
 #### Properties
 
 Refs attached to this component have the following properties:
 
 * `ready: Promise<void>`  
-  A Promise that resolves once all `<KTX>` descendants are ready.
-
-<!-- 
-## Example
-
-```tsx liqvid module
-// @css
-.lv-canvas {
-  background: #3C352A;
-}
-// @/css
-import React, {useRef} from "react";
-import ReactDOM from "react-dom";
-
-import {Playback, Player, useTime} from "liqvid"
-import {MJX} from "@liqvid/mathjax?deps=liqvid@2.1.0-beta.4";
-
-const playback = new Playback({duration: 10000});
-
-function Lesson() {
-  return (
-    <Player playback={playback}>
-      <Derivation/>
-    </Player>
-  );
-}
-
-function Derivation() {
-  return (
-    <MJX>x^2 + y^2 = 1</MJX>
-  );
-}
-
-ReactDOM.render(<Lesson/>, document.querySelector("main"));
-``` -->
-
-<!-- 
-# XyJax integration
-
-`@liqvid/xyjax` [XyJax](https://github.com/sonoisa/XyJax-v3/).
-
-```tsx
-export declare function a$opacity(u: number, nodes: SVGElement[]): void;
-export declare function useAnimateArrows(o: {
-    head: string;
-    tail: string;
-    label?: string;
-    ref: React.MutableRefObject<MJX>;
-    headFn: (t: number) => void;
-    tailFn: (t: number) => void;
-    labelFn: (t: number) => void;
-}, deps?: React.DependencyList): void;
-export declare function useMathAnimation(o: {
-    ref: React.MutableRefObject<MJX>;
-    selector: string;
-    fn: (t: number) => number;
-    cb: (u: number, nodes: SVGElement[]) => void;
-}, deps?: React.DependencyList): void;
-export declare function useAnimation(opts: Opts, cb: (t: number) => void): void;
-export declare function useLazy(anim: (t: number) => number, cb: (t: number) => void, deps?: React.DependencyList): void;
-export declare function extendXY(): void;
-export declare function xyEncodeColor(color: string): string;
-export declare function xyDecodeColor(color: string): string;
-export declare function tob52(str: string): string;
-export declare function fromb52(str: string): string;
-export {};
-``` -->
+  A Promise that resolves once all `<MJX>` descendants are ready.
