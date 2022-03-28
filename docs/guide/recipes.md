@@ -232,6 +232,51 @@ function PauseAt(props: Props) {
 <PauseAt time="intro/pause"/>
 ```
 
+## Typing animation
+
+Here's a simple typing animation:
+```tsx liqvid
+// @css
+h1 {
+  font-size: 6rem;
+  position: absolute;
+  top: 30%;
+  text-align: center;
+  width: 100%;
+}
+// @/css
+import {Playback, Player, Utils, useTime} from "liqvid";
+import {createElement, useRef} from "react";
+
+const {clamp} = Utils.misc;
+
+const Typing: React.FC<{
+  speed: number;
+  start?: number;
+  tagName?: keyof HTMLElementTagNameMap & JSX.IntrinsicElements;
+}> = ({
+  children, start=0, speed, tagName="span"
+}) => {
+  const ref = useRef<HTMLSpanElement>();
+  useTime((count) => {
+    ref.current.textContent = children.slice(0, count);
+  }, t => clamp(0, Math.floor((t - start) / speed), children.length), []);
+  return createElement(tagName, {ref});
+}
+
+const playback = new Playback({duration: 10000});
+
+function MyVideo() {
+  return (
+    <Player playback={playback}>
+      <Typing speed={50} tagName="h1">Hello World!</Typing>
+    </Player>
+  );
+}
+
+ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+```
+
 ## Remember volume settings
 
 Because of the GDPR, Liqvid does not remember volume settings between page refreshes. Once your users have consented to local storage, you can use the following to remember volume settings:
