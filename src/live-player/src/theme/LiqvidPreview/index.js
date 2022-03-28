@@ -22,7 +22,7 @@ import {HTMLEditor} from "./HTMLEditor";
 import {TSXEditor} from "./TSXEditor";
 
 const Mod = (!ExecutionEnvironment.canUseDOM || navigator.platform === "MacIntel" ? "Cmd" : "Ctrl");
-const liqvidVersion = "2.1.3";
+const liqvidVersion = "2.1.4";
 
 export default function Playground({children, transformCode, ...props}) {
   const tsxView = useRef();
