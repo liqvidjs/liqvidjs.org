@@ -11,16 +11,16 @@ function Tutorial() {
   const {siteConfig = {}} = context;
   return (
     <Layout
-      image="https://d2og9lpzrymesl.cloudfront.net/r/rp-tutorial-math/icon.png"
+      image="https://d2og9lpzrymesl.cloudfront.net/r/lv-tutorial-math/icon.png"
       title={`Math Tutorial`}
       description="Math tutorial for ractives (equations and 2d/3d graphics)">
       <main className="tutorial">
         <div className="video-container">
           <div className="aspect-ratio" style={{paddingBottom: "62.5%"}}>
-            <iframe src="/r/rp-tutorial-math/" allowFullScreen></iframe>
+            <iframe src="/r/lv-tutorial-math/" allowFullScreen></iframe>
           </div>
         </div>
-        <p>To use this tutorial, clone the <a href="https://github.com/ysulyma/rp-tutorial-math" target="_blank">repository</a> and follow along in the source.</p>
+        <p>To use this tutorial, clone the <a href="https://github.com/ysulyma/lv-tutorial-math" target="_blank">repository</a> and follow along in the source.</p>
       </main>
     </Layout>
   );
