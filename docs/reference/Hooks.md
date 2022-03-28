@@ -69,7 +69,7 @@ useTime<T = number>(callback: (value: T) => void, transform?: (t: number) => T, 
 
 ### `useTimeUpdate()` {#useTimeUpdate}
 
-Legacy version of [`useTime()`]. Compared to `useTime()`, this does not accept a `transform` parameter, and also does not call `callback` initially (so `callback` gets called only when the time *updates*).
+Legacy version of [`useTime()`](#useTime). Compared to `useTime()`, this does not accept a `transform` parameter, and also does not call `callback` initially (so `callback` gets called only when the time *updates*).
 
 ```typescript
 useTimeUpdate(callback: (t: number) => void, deps?: React.DependencyList): void;
