@@ -8,73 +8,6 @@ At this time, you need to use a mildly modified version of XyJax in order for us
 
 ## Examples
 
-### Colored arrows
-
-```tsx liqvid module
-// @head
-<script>
-  window.MathJax = {
-    loader: {
-      load: [
-        "[custom]/annotations.js", "[custom]/xypic.js",
-        "[tex]/color.js", "[tex]/html.js"
-      ],
-      paths: {
-        custom: "https://cdn.jsdelivr.net/gh/ysulyma/mathjax-extensions/"
-      }
-    },
-    options: {
-      enableMenu: false
-    },
-    startup: {
-      typeset: false // don't perform initial typeset
-    },
-    tex: {
-      packages: {"[+]": ["annotate", "color", "html", "xypic"]}
-    }
-  };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-// @/head
-// @css
-.lv-canvas > section {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-}
-
-#eqn {
-  font-size: 5em;
-}
-// @/css
-import React from "react";
-import ReactDOM from "react-dom";
-
-import {MJX} from "@liqvid/mathjax";
-import {xyEncodeColor} from "@liqvid/xyjax";
-import {Playback, Player} from "liqvid";
-
-const playback = new Playback({duration: 5000});
-
-const {raw} = String;
-
-function Demo() {
-  return (
-    <Player playback={playback}>
-      <section>
-        <MJX display id="eqn" span>{raw`
-          ${"\\"}xymatrix{
-            H_n(X,A) \ar@[color${xyEncodeColor("AF1866")}][r]^-{\color{#AF1866} \partial} & H_{n-1}(A)
-          }
-        `}</MJX>
-      </section>
-    </Player>
-  );
-}
-
-ReactDOM.render(<Demo/>, document.querySelector("main"));
-```
-
 ### Animating arrows
 
 ```tsx liqvid module
@@ -172,6 +105,75 @@ function Lifting() {
         I \ar[r]_-{\alpha} \ar@[data${tob52(line)}]@{..>}[ur]^-{\class{fade}{\exists!\ \widetilde\alpha}} & S^1
       }
     `}</MJX>
+  );
+}
+
+ReactDOM.render(<Demo/>, document.querySelector("main"));
+```
+
+### Colored arrows
+
+XyJax does not allow arbitrary colors for arrows. We provide a very hacky way to do that. (This is not really Liqvid-related, it's just been useful in my videos.)
+
+```tsx liqvid module
+// @head
+<script>
+  window.MathJax = {
+    loader: {
+      load: [
+        "[custom]/annotations.js", "[custom]/xypic.js",
+        "[tex]/color.js", "[tex]/html.js"
+      ],
+      paths: {
+        custom: "https://cdn.jsdelivr.net/gh/ysulyma/mathjax-extensions/"
+      }
+    },
+    options: {
+      enableMenu: false
+    },
+    startup: {
+      typeset: false // don't perform initial typeset
+    },
+    tex: {
+      packages: {"[+]": ["annotate", "color", "html", "xypic"]}
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+// @/head
+// @css
+.lv-canvas > section {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+#eqn {
+  font-size: 5em;
+}
+// @/css
+import React from "react";
+import ReactDOM from "react-dom";
+
+import {MJX} from "@liqvid/mathjax";
+import {xyEncodeColor} from "@liqvid/xyjax";
+import {Playback, Player} from "liqvid";
+
+const playback = new Playback({duration: 5000});
+
+const {raw} = String;
+
+function Demo() {
+  return (
+    <Player playback={playback}>
+      <section>
+        <MJX display id="eqn" span>{raw`
+          ${"\\"}xymatrix{
+            H_n(X,A) \ar@[color${xyEncodeColor("AF1866")}][r]^-{\color{#AF1866} \partial} & H_{n-1}(A)
+          }
+        `}</MJX>
+      </section>
+    </Player>
   );
 }
 
