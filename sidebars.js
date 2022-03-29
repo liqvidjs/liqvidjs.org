@@ -16,6 +16,11 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Plugins",
+      items: ["recording", "cursor"].map(_ => `plugins/${_}`)
+    },
+    {
+      type: "category",
       label: "API Reference",
       items:
         ["css", "Audio", "Controls", "hooks", "IdMap", "Keymap", "Playback", "Player", "Script"].map(_ => "reference/" + _)
