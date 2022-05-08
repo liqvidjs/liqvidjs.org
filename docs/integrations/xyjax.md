@@ -224,8 +224,7 @@ Encode a hex color for XyJax.
 #### Parameters
 
 * `color: string`  
-
-Hex color to encode.
+  Hex color to encode.
 
 ### `xyDecodeColor()`  {#xyDecodeColor}
 
@@ -234,8 +233,7 @@ Decode a hex color for XyJax.
 #### Parameters
 
 * `color: string`  
-
-Encoded hex color to decode.
+  Encoded hex color to decode.
 
 ### `tob52()`  {#tob52}
 
@@ -243,9 +241,8 @@ Encode an object for XyJax.
 
 #### Parameters
 
-* `str: string`
-
-Dataset string to encode.
+* `str: string`  
+  Dataset string to encode.
 
 ### `fromb52()`  {#fromb52}
 
@@ -254,5 +251,4 @@ Decode an object for XyJax.
 #### Parameters
 
 * `str: string`  
-
-String to decode.
+  String to decode.
