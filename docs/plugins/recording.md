@@ -9,7 +9,7 @@ Liqvid is designed mainly for producing interactive tutorials. This requires rec
 
 Recording functionality itself is provided in the `@liqvid/recording` package. There are also several `@lqv/*` plugins for more particular types of recordings. The easiest way to get started with these is by cloning their demos:
 
-https://github.com/liqvidjs/plugins/tree/main/demos
+https://github.com/liqvidjs/plugins/tree/main/demos/liqvid/
 
 As a consumer, you only need [`<RecordingControl>`](#RecordingControl), [`AudioRecording`](#AudioRecording), and [`VideoRecording`](#VideoRecording), as well as the plugins in the next section. If you want to write your own recording plugins, you'll need to understand [`RecordingManager`](#RecordingManager), but it's probably easiest to look at the [source](https://github.com/liqvidjs/plugins/tree/main/packages) of our recording plugins.
 
@@ -97,6 +97,10 @@ Audio recording plugin. Pass to `plugins` prop on [`<RecordingControl>`](#Record
 The audio recording produced by the browser will not have the metadata needed for seeking. To fix the recording and make it available as mp4: <pre class="language-bash command-line" data-prompt="$"><code>liqvid audio convert audio.webm</code></pre>
 
 :::
+
+### `MarkerRecording` {#MarkerRecording}
+
+Plugin for recording [markers](../reference/Script.md). Pass to `plugins` prop on [`<RecordingControl>`](#RecordingControl-props).
 
 ### `<RecordingControl>` {#RecordingControl}
 
