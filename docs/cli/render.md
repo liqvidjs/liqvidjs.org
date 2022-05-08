@@ -43,7 +43,7 @@ Path to audio file. If not specified, the video will not have audio.
 Output filename. Defaults to `./video.mp4`.
 
 ### `--url`, `-u` {#url}
-URL of video to generate thumbs for. Defaults to `http://localhost:3000/dist/`.
+URL of video to render. Defaults to `http://localhost:3000/dist/`.
 
 ## General options {#general-options}
 
