@@ -17,7 +17,7 @@ module.exports = {
     {
       type: "category",
       label: "Plugins",
-      items: ["recording", "cursor"].map(_ => `plugins/${_}`)
+      items: ["recording", "codebooth", "codemirror", "cursor"].map(_ => `plugins/${_}`)
     },
     {
       type: "category",
