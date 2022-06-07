@@ -12,16 +12,17 @@ The `@liqvid/react-three` package allows you to use [React Three Fiber](https://
 
 For everything else, see the [React Three Fiber docs](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) and [THREE.js docs](https://threejs.org/docs/).
 
+
 ## Example
 
-```tsx liqvid module
+```tsx liqvid
 // @css
 .lv-canvas {
   background: #3C352A;
 }
 // @/css
 import React, {useRef} from "react";
-import ReactDOM from "react-dom";
+import {createRoot} from "react-dom/client";
 
 import {OrbitControls} from "@react-three/drei/core/OrbitControls";
 import {Canvas} from "@liqvid/react-three";
@@ -60,14 +61,14 @@ function Sphere() {
   );
 }
 
-ReactDOM.render(<Demo/>, document.querySelector("main"));
+createRoot(document.querySelector("main")).render(<Demo/>);
 ```
 
 ## Example: Alexander horned sphere
 
 Here is an example (with very messy code) illustrating the [Alexander horned sphere](https://en.wikipedia.org/wiki/Alexander_horned_sphere).
 
-```tsx liqvid module
+```tsx liqvid
 // @css
 .lv-canvas {
   background-color: #3C352A;
@@ -79,7 +80,7 @@ Here is an example (with very messy code) illustrating the [Alexander horned sph
 
 // @/css
 import React, {useMemo, useRef} from "react";
-import ReactDOM from "react-dom";
+import {createRoot} from "react-dom/client";
 
 import {useThree} from "@react-three/fiber";
 import {OrbitControls} from "@react-three/drei/core/OrbitControls";
@@ -341,5 +342,5 @@ function Horned() {
   return children.map((_, n) => <primitive key={n} object={_}/>);
 }
 
-ReactDOM.render(<Demo/>, document.querySelector("main"));
+createRoot(document.querySelector("main")).render(<Demo/>);
 ```

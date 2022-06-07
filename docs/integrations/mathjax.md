@@ -8,7 +8,7 @@ The `@liqvid/mathjax` package helps with using [MathJax](https://mathjax.org/) i
 
 ### Revealing equations
 
-```tsx liqvid module
+```tsx liqvid
 // @head
 <script>
   window.MathJax = {
@@ -43,7 +43,7 @@ The `@liqvid/mathjax` package helps with using [MathJax](https://mathjax.org/) i
 }
 // @/css
 import React from "react";
-import ReactDOM from "react-dom";
+import {createRoot} from "react-dom/client";
 
 import {MJX} from "@liqvid/mathjax";
 import {Player, Script} from "liqvid";
@@ -79,12 +79,12 @@ function Demo() {
   );
 }
 
-ReactDOM.render(<Demo/>, document.querySelector("main"));
+createRoot(document.querySelector("main")).render(<Demo/>);
 ```
 
 ### Fading equations
 
-```tsx liqvid module
+```tsx liqvid
 // @head
 <script>
   window.MathJax = {
@@ -119,7 +119,7 @@ ReactDOM.render(<Demo/>, document.querySelector("main"));
 }
 // @/css
 import React, {useEffect, useRef, useState} from "react";
-import ReactDOM from "react-dom";
+import {createRoot} from "react-dom/client";
 
 import {Handle, MJX} from "@liqvid/mathjax";
 import {Player, Script} from "liqvid";
@@ -172,7 +172,7 @@ function Demo() {
   );
 }
 
-ReactDOM.render(<Demo/>, document.querySelector("main"));
+createRoot(document.querySelector("main")).render(<Demo/>);
 ```
 
 

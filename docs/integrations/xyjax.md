@@ -10,7 +10,7 @@ At this time, you need to use a mildly modified version of XyJax in order for us
 
 ### Animating arrows
 
-```tsx liqvid module
+```tsx liqvid
 // @head
 <script>
   window.MathJax = {
@@ -48,11 +48,12 @@ At this time, you need to use a mildly modified version of XyJax in order for us
 }
 // @/css
 import React, {useRef} from "react";
-import ReactDOM from "react-dom";
+import {createRoot} from "react-dom/client";
 
+import {Playback, Player} from "liqvid";
 import {Handle, MJX} from "@liqvid/mathjax";
+import {animate, bezier, easings} from "@liqvid/utils/animation";
 import {tob52, useAnimateArrows} from "@liqvid/xyjax";
-import {Playback, Player, Utils} from "liqvid";
 
 const playback = new Playback({duration: 5000});
 
@@ -67,8 +68,6 @@ function Demo() {
     </Player>
   );
 }
-
-const {animate, bezier, easings} = Utils.animation;
 
 const fadeTail = animate({
   startTime: 0,
@@ -108,14 +107,14 @@ function Lifting() {
   );
 }
 
-ReactDOM.render(<Demo/>, document.querySelector("main"));
+createRoot(document.querySelector("main")).render(<Demo/>);
 ```
 
 ### Colored arrows
 
 XyJax does not allow arbitrary colors for arrows. We provide a very hacky way to do that. (This is not really Liqvid-related, it's just been useful in my videos.)
 
-```tsx liqvid module
+```tsx liqvid
 // @head
 <script>
   window.MathJax = {
@@ -153,7 +152,7 @@ XyJax does not allow arbitrary colors for arrows. We provide a very hacky way to
 }
 // @/css
 import React from "react";
-import ReactDOM from "react-dom";
+import {createRoot} from "react-dom/client";
 
 import {MJX} from "@liqvid/mathjax";
 import {xyEncodeColor} from "@liqvid/xyjax";
@@ -177,7 +176,7 @@ function Demo() {
   );
 }
 
-ReactDOM.render(<Demo/>, document.querySelector("main"));
+createRoot(document.querySelector("main")).render(<Demo/>);
 ```
 
 ## Exports

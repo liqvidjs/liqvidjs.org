@@ -8,7 +8,7 @@ The `@liqvid/katex` package helps with using [KaTeX](https://katex.org/) in Liqv
 
 ### Revealing equations
 
-```tsx liqvid module
+```tsx liqvid
 // @head
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
 
@@ -24,7 +24,7 @@ The `@liqvid/katex` package helps with using [KaTeX](https://katex.org/) in Liqv
 }
 // @/css
 import React from "react";
-import ReactDOM from "react-dom";
+import {createRoot} from "react-dom/client";
 
 import {KTX} from "@liqvid/katex";
 import {Player, Script} from "liqvid";
@@ -60,12 +60,12 @@ function Demo() {
   );
 }
 
-ReactDOM.render(<Demo/>, document.querySelector("main"));
+createRoot(document.querySelector("main")).render(<Demo/>);
 ```
 
 ### Fading equations
 
-```tsx liqvid module
+```tsx liqvid
 // @head
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
 
@@ -81,7 +81,7 @@ ReactDOM.render(<Demo/>, document.querySelector("main"));
 }
 // @/css
 import React, {useEffect, useRef, useState} from "react";
-import ReactDOM from "react-dom";
+import {createRoot} from "react-dom/client";
 
 import {Handle, KTX} from "@liqvid/katex";
 import {Player, Script} from "liqvid";
@@ -134,7 +134,7 @@ function Demo() {
   );
 }
 
-ReactDOM.render(<Demo/>, document.querySelector("main"));
+createRoot(document.querySelector("main")).render(<Demo/>);
 ```
 
 
