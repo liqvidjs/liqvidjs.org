@@ -1,12 +1,12 @@
 Some helpers for converting between screen and SVG coordinate systems.
 
 ```tsx
-// access like this
+// access like this (preferred)
+import {screenToSVG} from "@liqvid/utils/svg";
+
+// or like this (legacy)
 import {Utils} from "liqvid";
 const {screenToSVG} = Utils.svg;
-
-// or like this
-import {screenToSVG} from "@liqvid/utils/svg";
 ```
 
 ## `screenToSVG()` {#screenToSVG}

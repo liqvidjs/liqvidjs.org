@@ -1,12 +1,12 @@
 Some helpers for dealing with React.
 
 ```tsx
-// access like this
+// access like this (preferred)
+import {useForceUpdate} from "@liqvid/utils/react";
+
+// or like this (legacy)
 import {Utils} from "liqvid";
 const {useForceUpdate} = Utils.react;
-
-// or like this
-import {useForceUpdate} from "@liqvid/utils/react";
 ```
 
 ## `combineRefs()` {#combineRefs}

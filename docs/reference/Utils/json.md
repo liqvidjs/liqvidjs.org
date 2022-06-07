@@ -1,12 +1,12 @@
 Helpers for loading JSON data asynchronously.
 
 ```tsx
-// access like this
+// access like this (preferred)
+import {loadAllJSON} from "@liqvid/utils/json";
+
+// or like this (legacy)
 import {Utils} from "liqvid";
 const {loadAllJSON} = Utils.json;
-
-// or like this
-import {loadAllJSON} from "@liqvid/utils/json";
 ```
 
 These can be inserted with the [`@json` macro](../../cli/macros.md#json).
@@ -26,7 +26,7 @@ declare module "@liqvid/utils/json" {
 
 /* Option 1: load all at once, then access synchronously */
 loadAllJSON().then(() => {
-  ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+  ReactDOM.createRoot(document.querySelector("main")).render(<MyVideo />);
 });
 
 function MyVideo() {

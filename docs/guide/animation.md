@@ -42,9 +42,9 @@ h1 {
 }
 // @/css
 // freeze-next-line
-import {Playback, Player, Utils} from "liqvid";
-const {easings} = Utils.animation;
-const {combineRefs} = Utils.react;
+import {Playback, Player} from "liqvid";
+import {easings} from "@liqvid/utils/animation";
+import {combineRefs} from "@liqvid/utils/react";
 
 const playback = new Playback({duration: 5000});
 
@@ -74,7 +74,7 @@ function MyVideo() {
     </Player>
   );
 }
-ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+ReactDOM.createRoot(document.querySelector("main")).render(<MyVideo />);
 ```
 
 ## Animating with `useTime()`
@@ -177,7 +177,7 @@ function MyVideo() {
   );
 }
 
-ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+ReactDOM.createRoot(document.querySelector("main")).render(<MyVideo />);
 ```
 
 :::warning

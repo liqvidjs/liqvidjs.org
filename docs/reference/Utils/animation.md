@@ -2,12 +2,12 @@
 Helpers for animating content. See the [Animation](../../guide/animation.md) section of the guide for examples.
 
 ```tsx
-// access like this
+// access like this (preferred)
+import {animate} from "@liqvid/utils/animation";
+
+// or like this (legacy)
 import {Utils} from "liqvid";
 const {animate} = Utils.animation;
-
-// or like this
-import {animate} from "@liqvid/utils/animation";
 ```
 
 ## `animate()` {#animate}
@@ -40,11 +40,8 @@ animate({startValue?, endValue?, startTime, duration, easing?}): (t: number) => 
 Here is code for a duck that spins in an elliptical motion. The animation will start at the marker named `"duck"`, lasting 1 second with sinusoidal ease-in. This example uses the [bezier-easing](https://www.npmjs.com/package/bezier-easing) package. You can get parameters for Bezier curves from https://easings.net or https://cubic-bezier.com.
 
 ```tsx liqvid
-import {Player, Script, Utils, usePlayer, useTimeUpdate} from "liqvid";
-const {animate} = Utils.animation;
-
-//import * as BezierEasing from "bezier-easing";
-//const easeInSine = [0.47, 0, 0.745, 0.715] as const;
+import {animate} from "@liqvid/utils/animation";
+import {Player, Script, usePlayer, useTimeUpdate} from "liqvid";
 
 const script = new Script([
   ["intro/", "1:00"],
@@ -119,8 +116,7 @@ Provides parameters for common bezier curves:
 Usage:
 
 ```tsx
-import {Utils} from "liqvid";
-const {animate, bezier, easings} = Utils;
+import {animate, bezier, easings} from "@liqvid/utils/animation";
 
 const animation = animate({
   startTime: 0,

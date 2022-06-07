@@ -94,7 +94,7 @@ function MyVideo() {
 }
 
 // freeze-start
-ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+ReactDOM.createRoot(document.querySelector("main")).render(<MyVideo />);
 ```
 
 <!-- ## Web Autoplay Policy {#web-autoplay-policy}

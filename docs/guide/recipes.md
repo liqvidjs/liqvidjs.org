@@ -50,10 +50,10 @@ This shows how to have a draggable static video overtop of an interactive one. W
 }
 
 // @/css
+import {clamp} from "@liqvid/utils/misc";
 import {Playback, Player, Utils, Video, usePlayer} from "liqvid";
 import {useMemo, useRef, useState} from "react";
 
-const {clamp} = Utils.misc;
 const {dragHelperReact} = Utils.interactivity;
 const {onClick} = Utils.mobile;
 
@@ -150,7 +150,7 @@ function MyVideo() {
 }
 
 // freeze-start
-ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+ReactDOM.createRoot(document.querySelector("main")).render(<MyVideo />);
 ```
 
 ## Linking to a specific time
@@ -158,9 +158,8 @@ ReactDOM.render(<MyVideo/>, document.querySelector("main"));
 The following code will let you link to a specific time in the video by appending `?t=[time]` to the url, [like this](/?t=1:41.5).
 
 ```tsx twoslash
+import {parseTime, timeRegexp} from "@liqvid/utils/time";
 import type {Playback} from "liqvid";
-import {Utils} from "liqvid";
-const {parseTime, timeRegexp} = Utils.time;
 
 const rgx = new RegExp(
   "(?:^\\?|&)t=(" +
@@ -202,8 +201,8 @@ function Button() {
 Here is a component to automatically pause the video at a certain time/marker, e.g. for the viewer to make a choice.
 
 ```tsx
-import {Utils, usePlayer, useTimeUpdate} from "liqvid";
-const {between} = Utils.misc;
+import {usePlayer, useTime} from "liqvid";
+import {between} from "@liqvid/utils/misc";
 
 interface Props {
   time: string;
@@ -218,7 +217,7 @@ function PauseAt(props: Props) {
 
   const prev = React.useRef(playback.currentTime);
 
-  useTimeUpdate(t => {
+  useTime(t => {
     if (between(time - interval, prev.current, time) && between(time, t, time + interval)) {
       playback.pause();
     }
@@ -245,10 +244,10 @@ h1 {
   width: 100%;
 }
 // @/css
-import {Playback, Player, Utils, useTime} from "liqvid";
+import {clamp} from "@liqvid/utils/misc";
+import {Playback, Player, useTime} from "liqvid";
 import {createElement, useRef} from "react";
-
-const {clamp} = Utils.misc;
+import {createRoot} from "react-dom";
 
 const Typing: React.FC<{
   speed: number;
@@ -274,7 +273,7 @@ function MyVideo() {
   );
 }
 
-ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+createRoot(document.querySelector("main")).render(<MyVideo />);
 ```
 
 ## Remember volume settings
@@ -373,5 +372,5 @@ const markers = [
 ];
 const script = new Script(markers);
 
-ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+ReactDOM.createRoot(document.querySelector("main")).render(<MyVideo />);
 ``` -->

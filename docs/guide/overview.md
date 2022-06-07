@@ -81,7 +81,7 @@ function Plan() {
 }
 
 // freeze-next-line
-ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+ReactDOM.createRoot(document.querySelector("main")).render(<MyVideo />);
 ```
 
 Let's break down what's going on here.

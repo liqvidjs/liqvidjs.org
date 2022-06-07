@@ -83,7 +83,7 @@ function MyVideo() {
 // freeze-start
 const playback = new Playback({duration: 10000});
 
-ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+ReactDOM.createRoot(document.querySelector("main")).render(<MyVideo />);
 ```
 
 Although you can create other `Keymap` instances, you'll most likely only use the one attached to the player.

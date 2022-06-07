@@ -66,12 +66,12 @@ function DisablePause() {
 }
 
 // freeze-start
-ReactDOM.render(<MyVideo/>, document.querySelector("main"));
+ReactDOM.createRoot(document.querySelector("main")).render(<MyVideo />);
 ```
 
 ### Dragging {#dragging}
 
-Even in ordinary Javascript, drag functionality is nontrivial. We provide the [`dragHelperReact`](../docs/reference/Utils/interactivity.md#dragHelperReact) utility to make it a bit easier. Here is code for a draggable pig:
+Even in ordinary Javascript, drag functionality is nontrivial. We provide the [`dragHelperReact`](../reference/Utils/interactivity.md#dragHelperReact) utility to make it a bit easier. Here is code for a draggable pig:
 
 ```tsx liqvid
 // @css
@@ -93,8 +93,8 @@ body.dragging .draggable,
 }
 // @/css
 // freeze-start
-import {useMemo, useRef} from "react";
 import {Playback, Player, Utils, usePlayer} from "liqvid";
+import {useMemo, useRef} from "react";
 const {dragHelperReact} = Utils.interactivity,
       {clamp} = Utils.misc;
 // freeze-end
@@ -174,11 +174,11 @@ body.dragging .draggable,
 }
 // @/css
 // freeze-start
-import {useMemo, useRef} from "react";
+import {clamp} from "@liqvid/utils/misc";
+import {screenToSVG} from "@liqvid/utils/svg";
 import {Playback, Player, Utils, usePlayer} from "liqvid";
-const {dragHelperReact} = Utils.interactivity,
-      {clamp} = Utils.misc,
-      {screenToSVG} = Utils.svg;
+import {useMemo, useRef} from "react";
+const {dragHelperReact} = Utils.interactivity;
 // freeze-end
 
 function GlowOrb(props: {

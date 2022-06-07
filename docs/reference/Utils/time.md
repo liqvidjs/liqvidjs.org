@@ -1,12 +1,12 @@
 Utilities for manipulating time strings, e.g. `1:44.23`.
 
 ```tsx
-// access like this
+// access like this (preferred)
+import {formatTimeMs, parseTime} from "@liqvid/utils/time";
+
+// or like this (legacy)
 import {Utils} from "liqvid";
 const {formatTimeMs, parseTime} = Utils.time;
-
-// or like this
-import {formatTimeMs, parseTime} from "@liqvid/utils/time";
 ```
 
 ## `formatTime()` {#formatTime}
