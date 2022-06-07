@@ -5,40 +5,21 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import * as Babel from "@babel/standalone";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import * as React from "react";
 import {useCallback, useEffect, useRef} from "react";
-import styles from "./styles.module.css";
-
-import * as Babel from "@babel/standalone";
-
-import {disableLines, findLines, freezeMark} from "./disableLines";
-import {extractCSS, extractHead} from "./extractCSS";
-import {Decoration} from "@codemirror/view";
-
-import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
-import BrowserOnly from "@docusaurus/BrowserOnly";
 import {CSSEditor} from "./CSSEditor";
+import {findLines} from "./disableLines";
+import {extractCSS, extractHead} from "./extractCSS";
 import {HTMLEditor} from "./HTMLEditor";
+import styles from "./styles.module.css";
 import {TSXEditor} from "./TSXEditor";
 
 const Mod = (!ExecutionEnvironment.canUseDOM || navigator.platform === "MacIntel" ? "Cmd" : "Ctrl");
-const VERSIONS = {
-  "liqvid": "2.1.6",
-  "@liqvid/mathjax": "0.0.2",
-  "@react-three/fiber": "8.0.13",
-  "react": "17.0.2",
-  "react-dom": "17.0.2",
-  "three": "0.140.0"
-}
 
-const DEPS = {
-  "liqvid": ["react", "react-dom"],
-  "@liqvid/katex": ["liqvid", "react"],
-  "@liqvid/mathjax": ["liqvid", "react"],
-  "@liqvid/xyjax": ["@liqvid/mathjax", "liqvid", "react"],
-  "@liqvid/react-three": ["liqvid", "@react-three/fiber", "react", "three"],
-  "@react-three/fiber": ["react", "three"],
-  "react-dom": ["react"]
+const VERSIONS = {
+  "liqvid": "2.1.7"
 };
 
 export default function Playground({children, transformCode, ...props}) {
@@ -146,6 +127,43 @@ export default function Playground({children, transformCode, ...props}) {
   );
 }
 
+const IMPORTS = {
+  "@liqvid/katex": "liqvid_katex.js",
+  "@liqvid/mathjax": "liqvid_mathjax.js",
+  "@liqvid/xyjax": "liqvid_xyjax.js",
+  "three": "https://unpkg.com/three@0.141.0/build/three.min.js",
+  "@react-three/fiber": ["https://unpkg.com/three@0.141.0/build/three.min.js", "react_three_fiber.js"],
+  "@react-three/drei": ["https://unpkg.com/three@0.141.0/build/three.min.js", "react_three_fiber.js", "react_three_drei.js"],
+  "@liqvid/react-three": ["https://unpkg.com/three@0.141.0/build/three.min.js", "react_three_fiber.js", "liqvid_react_three.js"]
+};
+
+function getUmdImports(tsx) {
+  const scripts = [];
+  for (const key in IMPORTS) {
+    if (tsx.match(key)) {
+      if (typeof IMPORTS[key] === "string") {
+        let src = IMPORTS[key];
+        if (!src.startsWith("http")) {
+          src = `${location.origin}/imports/${src}`;
+        }
+        if (!scripts.includes(src)) {
+          scripts.push(src);
+        }
+      } else {
+        for (let src of IMPORTS[key]) {
+          if (!src.startsWith("http")) {
+            src = `${location.origin}/imports/${src}`;
+          }
+          if (!scripts.includes(src)) {
+            scripts.push(src);
+          }
+        }
+      }
+    }
+  }
+  return scripts.map(src => `<script src="${src}"></script>`).join("\n");
+}
+
 function render({tsx, css = "", module, head = ""}) {
   const opts = {
     filename: "demo.tsx",
@@ -155,17 +173,32 @@ function render({tsx, css = "", module, head = ""}) {
     opts.plugins = [
       ["transform-modules-umd",
         {
-          "globals": {
+          exactGlobals: true,
+          globals: {
+            "@liqvid/katex": "Liqvid_Katex",
+            "@liqvid/mathjax": "Liqvid_MathJax",
+            "@liqvid/react-three": "Liqvid_ReactThree",
+            "@liqvid/xyjax": "Liqvid_XyJax",
+            "@liqvid/utils/animation": "Liqvid.Utils.animation",
+            "@liqvid/utils/misc": "Liqvid.Utils.misc",
+            "@liqvid/utils/react": "Liqvid.Utils.react",
+            "@react-three/drei/core/OrbitControls": "ReactThreeDrei",
+            "@react-three/fiber": "ReactThreeFiber",
+            "katex": "katex",
             "liqvid": "Liqvid",
+            "mathjax": "MathJax",
             "ractive-player": "RactivePlayer",
             "react": "React",
-            "react-dom": "ReactDOM"
+            "react-dom": "ReactDOM",
+            "react-dom/client": "ReactDOM",
+            "three": "THREE"
           }
         }
       ]];
     opts.presets.unshift("env");
   }
   try {
+    const importScripts = getUmdImports(tsx);
     const js = Babel.transform(tsx, opts).code;
 
     let doc = String.raw`
@@ -195,48 +228,15 @@ function render({tsx, css = "", module, head = ""}) {
    `;
 
     if (module) {
-      doc += String.raw`<!--
-      JSPM Generator Import Map
-      Edit URL: https://generator.jspm.io/#U2VhYGCVD80rySzJSU1hcChKTUwu0S3JKEpN1U/LTEotcrDQM9AzNGbIySwsy0xxMNIz1DNjgKhKyc91MDQHShtBBGAcsG4HoC4TAz0DAAIAz8ZhAA
-    -->
-    <script type="importmap">
-    {
-      "imports": {
-        "@react-three/fiber": "https://ga.jspm.io/npm:@react-three/fiber@8.0.13/dist/react-three-fiber.esm.js",
-        "liqvid": "https://ga.jspm.io/npm:liqvid@2.1.6/dist/liqvid.mjs",
-        "react": "https://ga.jspm.io/npm:react@17.0.2/dev.index.js",
-        "react-dom": "https://ga.jspm.io/npm:react-dom@17.0.2/dev.index.js",
-        "three": "https://ga.jspm.io/npm:three@0.140.0/build/three.module.js"
-      },
-      "scopes": {
-        "https://ga.jspm.io/": {
-          "@babel/runtime/helpers/esm/extends": "https://ga.jspm.io/npm:@babel/runtime@7.17.9/helpers/esm/extends.js",
-          "debounce": "https://ga.jspm.io/npm:debounce@1.2.1/index.js",
-          "object-assign": "https://ga.jspm.io/npm:object-assign@4.1.1/index.js",
-          "process": "https://ga.jspm.io/npm:@jspm/core@2.0.0-beta.24/nodelibs/browser/process.js",
-          "react": "https://ga.jspm.io/npm:react@18.1.0/dev.index.js",
-          "react-merge-refs": "https://ga.jspm.io/npm:react-merge-refs@1.1.0/dist/react-merge-refs.esm.js",
-          "react-reconciler": "https://ga.jspm.io/npm:react-reconciler@0.27.0/dev.index.js",
-          "react-reconciler/constants": "https://ga.jspm.io/npm:react-reconciler@0.27.0/dev.constants.js",
-          "react-use-measure": "https://ga.jspm.io/npm:react-use-measure@2.1.1/dist/web.js",
-          "scheduler": "https://ga.jspm.io/npm:scheduler@0.21.0/dev.index.js",
-          "scheduler/tracing": "https://ga.jspm.io/npm:scheduler@0.20.2/dev.tracing.js",
-          "suspend-react": "https://ga.jspm.io/npm:suspend-react@0.0.8/dist/index.js",
-          "zustand": "https://ga.jspm.io/npm:zustand@3.7.2/esm/index.js"
-        },
-        "https://ga.jspm.io/npm:react-dom@17.0.2/": {
-          "scheduler": "https://ga.jspm.io/npm:scheduler@0.20.2/dev.index.js"
-        }
-      }
-    }
-    </script>`;
       doc += String.raw`<script type="module">${esmShImports(js)}</script>`;
     } else {
       doc += String.raw`<!-- production -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.1.0/umd/react.production.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.1.0/umd/react-dom.production.min.js"></script>
      
      <script src="https://unpkg.com/liqvid@${VERSIONS.liqvid}/dist/liqvid.min.js"></script>
+     ${importScripts}
+     
      <script crossorigin integrity="sha384-ImWMbbJ1rSn1mn+2vsKm/wN6Vc7hPNB2VKN0lX3FAzGK+c7M2mD6ZZcwknuKlP7K" src="https://cdn.rangetouch.com/2.0.1/rangetouch.js"></script>
    
      <script>${js}</script>`;
@@ -253,20 +253,27 @@ function render({tsx, css = "", module, head = ""}) {
 
 function esmShImports(str) {
   return str.replace(/(import .+? from\s+)(["'])(.+?)\2(;?)/gm, (match, start, q, name, end) => {
-    return match;
-    const pkgName = name;
+    const pkgName = getPackageName(name);
 
     // https://github.com/esm-dev/esm.sh/issues/276
-    if (pkgName in VERSIONS) {
-      name += `@${VERSIONS[pkgName]}`;
-    }
-    if (pkgName in DEPS) {
-      name += `?deps=` + deps(...DEPS[pkgName]);
-    }
+    // if (pkgName in VERSIONS) {
+    //   name = `${pkgName}@${VERSIONS[pkgName]}` + name.slice(pkgName.length);
+    // }
+    // if (pkgName in DEPS) {
+    //   name += `?dev&deps=` + deps(...DEPS[pkgName]);
+    // }
     return `${start}${q}https://esm.sh/${name}${q}${end}`;
   });
 }
 
 function deps(...keys) {
   return keys.map(key => `${key}@${VERSIONS[key]}`).join(",");
+}
+
+function getPackageName(name) {
+  if (name[0] === "@") {
+    return name.split("/").slice(0, 2).join("/");
+  } else {
+    return name.split("/")[0];
+  }
 }
