@@ -5,9 +5,13 @@ title: Cursor
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-The `@lqv/cursor` package lets you record your cursor moving around on the screen. To see how to use it, clone this [demo](https://github.com/liqvidjs/plugins/tree/main/demos/cursor).
+The `@lqv/cursor` package lets you record your cursor moving around on the screen. The easiest way to get started is to clone the demo:
 
-It has the following entrypoints:
+* [Liqvid demo](https://github.com/liqvidjs/plugins/tree/main/demos/liqvid/cursor)
+
+* [GSAP demo](https://github.com/liqvidjs/plugins/tree/main/demos/gsap/cursor)
+
+The package has the following entrypoints:
 
 * [`@lqv/cursor`](#main)
 
@@ -71,6 +75,10 @@ Takes a single object with the following keys:
 
 * `target: HTMLElement`  
   Element to sync with.
+
+  :::info
+  The cursor's position is stored as a left/top percentage relative to `target.offsetParent`. Therefore, to display correctly, the aspect ratio of `target.offsetParent` must remain constant (between recording and replaying), and `target.offsetParent` must have a nonzero height and width.
+  :::
 
 #### Return value
 
