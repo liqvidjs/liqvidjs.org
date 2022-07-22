@@ -9,6 +9,8 @@ The `@lqv/cursor` package lets you record your cursor moving around on the scree
 
 * [Liqvid demo](https://github.com/liqvidjs/plugins/tree/main/demos/liqvid/cursor)
 
+* [Remotion demo](https://github.com/liqvidjs/plugins/tree/main/demos/remotion/cursor)
+
 * [GSAP demo](https://github.com/liqvidjs/plugins/tree/main/demos/gsap/cursor)
 
 The package has the following entrypoints:

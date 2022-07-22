@@ -9,7 +9,13 @@ Liqvid is designed mainly for producing interactive tutorials. This requires rec
 
 Recording functionality itself is provided in the `@liqvid/recording` package. There are also several `@lqv/*` plugins for more particular types of recordings. The easiest way to get started with these is by cloning their demos:
 
-https://github.com/liqvidjs/plugins/tree/main/demos/liqvid/
+* [Demos](https://github.com/liqvidjs/plugins/tree/main/demos/liqvid/)
+
+These plugins can also be used with animation engines other than Liqvid. To get started, clone the demos for your framework:
+
+* [Remotion demos](https://github.com/liqvidjs/plugins/tree/main/demos/remotion/)
+
+* [GSAP demos](https://github.com/liqvidjs/plugins/tree/main/demos/gsap/)
 
 As a consumer, you only need [`<RecordingControl>`](#RecordingControl), [`AudioRecording`](#AudioRecording), and [`VideoRecording`](#VideoRecording), as well as the plugins in the next section. If you want to write your own recording plugins, you'll need to understand [`RecordingManager`](#RecordingManager), but it's probably easiest to look at the [source](https://github.com/liqvidjs/plugins/tree/main/packages) of our recording plugins.
 
