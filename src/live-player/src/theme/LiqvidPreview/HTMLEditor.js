@@ -1,5 +1,5 @@
 import * as React from "react";
-import {basicSetup} from "@codemirror/basic-setup";
+import {basicSetup} from "codemirror";
 import {indentWithTab} from "@codemirror/commands";
 import {html} from "@codemirror/lang-html";
 import {EditorState} from "@codemirror/state";
