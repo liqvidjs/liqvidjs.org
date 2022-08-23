@@ -4,7 +4,61 @@ title: CodeBooth
 
 The `@lqv/codebooth` package provides a GUI for interactive coding tutorials. It is based on [`@lqv/codemirror`](./codemirror.md), and you should use that directly if you need finer-grained control.
 
-This package aims to be very flexible, accommodating a wide variety of use cases. We ship a set of components for you to build-your-own UI, as well as a set of [presets](#presets) demonstrating configuration for common use cases. The easiest way to get started is to clone one of the [demos](https://github.com/liqvidjs/plugins/tree/main/demos/liqvid).
+This package aims to be very flexible, accommodating a wide variety of use cases. We ship a set of components for you to build-your-own UI, as well as a set of [presets](#presets) demonstrating configuration for common use cases. The easiest way to get started is to clone one of the demos:
+
+<table>
+  <thead>
+    <tr>
+      <th>Language / Library</th>
+      <th scope="col">Liqvid</th>
+      <th scope="col">Remotion</th>
+      <th scope="col">GSAP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>HTML</th>
+      <td>
+        <a href="https://github.com/liqvidjs/plugins/tree/main/demos/liqvid/codebooth-html">Demo</a>
+      </td>
+      <td>
+        <a href="https://github.com/liqvidjs/plugins/tree/main/demos/remotion/codebooth-html">Demo</a>
+      </td>
+      <td>
+        <a href="https://github.com/liqvidjs/plugins/tree/main/demos/gsap/codebooth-html">Demo</a>
+      </td>
+    </tr>
+    <tr>
+      <th>Python</th>
+      <td>
+        <a href="https://github.com/liqvidjs/plugins/tree/main/demos/liqvid/codebooth-python">Demo</a>
+      </td>
+      <td>
+        <a href="https://github.com/liqvidjs/plugins/tree/main/demos/remotion/codebooth-python">Demo</a>
+      </td>
+      <td>
+        <a href="https://github.com/liqvidjs/plugins/tree/main/demos/gsap/codebooth-python">Demo</a>
+      </td>
+    </tr>
+    <tr>
+      <th>TSX</th>
+      <td>
+        <a href="https://github.com/liqvidjs/plugins/tree/main/demos/liqvid/codebooth-tsx">Demo</a>
+      </td>
+      <td>
+        <a href="https://github.com/liqvidjs/plugins/tree/main/demos/remotion/codebooth-tsx">Demo</a>
+      </td>
+      <td>
+        <a href="https://github.com/liqvidjs/plugins/tree/main/demos/gsap/codebooth-tsx">Demo</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+:::warning
+Currently, this package does not work in [Strict Mode](https://reactjs.org/docs/strict-mode.html).
+:::
 
 ## Exports
 

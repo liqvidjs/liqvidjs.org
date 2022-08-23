@@ -1,0 +1,109 @@
+---
+title: New CodeMirror plugins
+author: Yuri Sulyma
+author_title: math, code, complaining
+author_url: https://github.com/ysulyma
+author_image_url: https://avatars.githubusercontent.com/u/453486?v=4
+description: CodeMirror 6, multi-file recordings, Remotion/GSAP compatibility, and a new DOM proposal
+hide_table_of_contents: true
+---
+
+<style>{String.raw`
+/* https://github.com/facebook/docusaurus/issues/2744 */
+main.col--7 {
+  --ifm-col-width: calc(9 / 12 * 100%);
+}
+
+.demo-matrix {
+  margin: 1em auto;
+}
+
+.demo-matrix > table {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.demo-matrix > table > caption {
+	background: var(--ifm-table-stripe-background);
+	border: 1px solid var(--ifm-table-border-color);
+	border-bottom: none;
+}
+
+.demo-matrix a {
+  cursor: pointer;
+}
+
+.demo-matrix a:hover {
+  text-decoration: underline;
+}
+
+.demo-matrix > iframe {
+  aspect-ratio: 16 / 10;
+  outline: 1px solid #eee;
+  width: 100%;
+}
+`}</style>
+
+The next generation of our [CodeMirror](https://codemirror.net/) plugins is here. They now support recording/replaying multiple files (e.g. `index.html`, `style.css`, and `script.js`), and are much easier to configure. Even better, they're also compatible with other animation libraries like [Remotion](https://www.remotion.dev/) and [GSAP](https://greensock.com/gsap/)!
+
+Check out the demos:
+
+<!-- truncate -->
+
+<Demo/>
+
+You can [clone these demos](https://github.com/liqvidjs/plugins) to get started using the plugins yourself.
+
+Interactive video is a new and exciting space, and I really **really** **REALLY** ***REALLY*** want to avoid a format war. (Having spent several hours of my life getting CJS and ESM to play nicely…) I have made a [WHATWG proposal](https://github.com/whatwg/dom/issues/1098) to standardize the interface which allows these plugins to be interoperable with other libraries. I'll talk more about this proposal in another blog post!
+
+export function Demo() {
+  const [url, setUrl] = React.useState("liqvid/codebooth-html");
+  // 
+  const demos = [
+    {title: "HTML", str: "codebooth-html"},
+    {title: "Python", str: "codebooth-python"},
+    {title: "TSX", str: "codebooth-tsx"},
+    {title: "Cursor", str: "cursor"}
+  ];
+  // 
+  const libs = [
+    {title: "Liqvid", str: "liqvid", working: ["cursor", "codebooth-html", "codebooth-python"]},
+    {title: "Remotion", str: "remotion", working: ["codebooth-html", "codebooth-python", "codebooth-tsx", "cursor"]},
+    {title: "GSAP", str: "gsap", working: ["cursor", "codebooth-python", "codebooth-html", "codebooth-tsx"]},
+  ];
+  //
+  const onClick = React.useCallback((e) => {
+    const {url} = e.currentTarget.dataset;
+    setUrl(url);
+  }, []);
+  //
+  return (
+    <div className="demo-matrix">
+      <table>
+        <caption>Demos</caption>
+        <thead>
+          <tr>
+            <th>Plugin / Library</th>
+            {libs.map(lib =>
+              <th scope="col" key={lib.str}>{lib.title}</th>
+            )}
+          </tr>
+        </thead>
+        <tbody>
+          {demos.map(demo => (
+            <tr key={demo.str}>
+              <th scope="row">{demo.title}</th>
+              {libs.map(lib =>
+                <td key={lib.str}>
+                  <a role="button" onClick={onClick} data-url={`${lib.str}/${demo.str}`}>Demo</a>
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <iframe allow="fullscreen" src={`/r/lqv-demos/${url}/`} />
+    </div>
+  );
+}

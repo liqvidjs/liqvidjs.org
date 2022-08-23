@@ -2,7 +2,7 @@
 title: CodeMirror
 ---
 
-The `@lqv/codemirror` package allows you to record and replay [CodeMirror](https://codemirror.net/6/) typing. You probably want the [`@lqv/codebooth`](./codebooth.md) package rather than using this directly.
+The `@lqv/codemirror` package allows you to record and replay [CodeMirror](https://codemirror.net/) typing. You probably want the [`@lqv/codebooth`](./codebooth.md) package rather than using this directly.
 
 ## `@lqv/codemirror` {#main}
 
