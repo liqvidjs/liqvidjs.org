@@ -4,7 +4,8 @@ author: Yuri Sulyma
 author_title: math, code, complaining
 author_url: https://github.com/ysulyma
 author_image_url: https://avatars.githubusercontent.com/u/453486?v=4
-description: CodeMirror 6, multi-file recordings, Remotion/GSAP compatibility, and a new DOM proposal
+description: Multi-file recordings, Remotion/GSAP compatibility, and a new DOM proposal
+image: https://d2og9lpzrymesl.cloudfront.net/blog/cm-social.png
 hide_table_of_contents: true
 ---
 
@@ -24,6 +25,10 @@ main.col--7 {
   width: fit-content;
 }
 
+.demo-matrix > table > tbody > tr > td {
+  text-align: center;
+}
+
 .demo-matrix > table > caption {
 	background: var(--ifm-table-stripe-background);
 	border: 1px solid var(--ifm-table-border-color);
@@ -32,6 +37,7 @@ main.col--7 {
 
 .demo-matrix a {
   cursor: pointer;
+  display: block;
 }
 
 .demo-matrix a:hover {
@@ -45,7 +51,7 @@ main.col--7 {
 }
 `}</style>
 
-The next generation of our [CodeMirror](https://codemirror.net/) plugins is here. They now support recording/replaying multiple files (e.g. `index.html`, `style.css`, and `script.js`), and are much easier to configure. Even better, they're also compatible with other animation libraries like [Remotion](https://www.remotion.dev/) and [GSAP](https://greensock.com/gsap/)!
+The next generation of our [CodeMirror](https://codemirror.net/) recording plugins is here. They now support recording/replaying multiple files (e.g. `index.html`, `style.css`, and `script.js`), and are much easier to set up and configure. Even better, they're also compatible with other animation libraries like [Remotion](https://www.remotion.dev/) and [GSAP](https://greensock.com/gsap/)!
 
 Check out the demos:
 
@@ -53,57 +59,99 @@ Check out the demos:
 
 <Demo/>
 
-You can [clone these demos](https://github.com/liqvidjs/plugins) to get started using the plugins yourself.
+You can [clone these demos](https://github.com/liqvidjs/plugins) to get started using the plugins yourself. In the coding demos, the Playground tab is an editor where you can experiment with the code on your own; I recommend explaining this to your viewers explicitly. I've also included demos for the cursor package, which is not as exciting, but still very useful for making tutorials.
 
-Interactive video is a new and exciting space, and I really **really** **REALLY** ***REALLY*** want to avoid a format war. (Having spent several hours of my life getting CJS and ESM to play nicely…) I have made a [WHATWG proposal](https://github.com/whatwg/dom/issues/1098) to standardize the interface which allows these plugins to be interoperable with other libraries. I'll talk more about this proposal in another blog post!
+Interactive video is a new and exciting space, and I really **really** **REALLY** ***REALLY*** want to avoid a format war. (Having spent several hours of my life getting CJS and ESM to play nicely…) I've made a [WHATWG proposal](https://github.com/whatwg/dom/issues/1098) to standardize the interface which allows these plugins to be interoperable with other libraries. I'll talk more about this proposal in another blog post!
+
+Here's the documentation for the new packages:
+
+- [`@lqv/codebooth`](/docs/plugins/codebooth)
+
+- [`@lqv/codemirror`](/docs/plugins/codemirror)
+
+- [`@lqv/cursor`](/docs/plugins/cursor)
+
+export function reducer(prev, update) {
+  return update;
+}
 
 export function Demo() {
-  const [url, setUrl] = React.useState("liqvid/codebooth-html");
+  const [state, dispatch] = React.useReducer(reducer, {
+    lib: "liqvid",
+    demo: "codebooth-html",
+    yt: null,
+    mode: "demo"
+  });
   // 
-  const demos = [
-    {title: "HTML", str: "codebooth-html"},
-    {title: "Python", str: "codebooth-python"},
-    {title: "TSX", str: "codebooth-tsx"},
-    {title: "Cursor", str: "cursor"}
-  ];
+  const demos = {
+    "codebooth-html": {title: "HTML"},
+    "codebooth-python": {title: "Python"},
+    "codebooth-tsx": {title: "TSX"},
+    "cursor": {title: "Cursor"},
+  };
   // 
-  const libs = [
-    {title: "Liqvid", str: "liqvid", working: ["cursor", "codebooth-html", "codebooth-python"]},
-    {title: "Remotion", str: "remotion", working: ["codebooth-html", "codebooth-python", "codebooth-tsx", "cursor"]},
-    {title: "GSAP", str: "gsap", working: ["cursor", "codebooth-python", "codebooth-html", "codebooth-tsx"]},
-  ];
+  const libs = {
+    "liqvid": {
+      title: "Liqvid",
+      renders: {}
+    },
+    "remotion": {
+      title: "Remotion",
+      renders: {
+        "codebooth-html": "hFt7nOJL5Ak",
+        "codebooth-python": "7nwDkhr8jJ0",
+        "codebooth-tsx": "OvaSIGT7fys"
+      }
+    },
+    "gsap": {title: "GSAP"}
+  };
   //
   const onClick = React.useCallback((e) => {
-    const {url} = e.currentTarget.dataset;
-    setUrl(url);
+    const {dataset} = e.currentTarget;
+    if (dataset.lib) {
+      dispatch({lib: dataset.lib, demo: dataset.demo, mode: "demo"});
+    } else {
+      dispatch({mode: "youtube", yt: dataset.yt});
+    }
   }, []);
   //
   return (
     <div className="demo-matrix">
       <table>
-        <caption>Demos</caption>
+        <caption>Awesome demo matrix</caption>
         <thead>
           <tr>
             <th>Plugin / Library</th>
-            {libs.map(lib =>
-              <th scope="col" key={lib.str}>{lib.title}</th>
+            {Object.entries(libs).map(([str, {title}]) =>
+              <th scope="col" key={str}>{title}</th>
             )}
           </tr>
         </thead>
         <tbody>
-          {demos.map(demo => (
-            <tr key={demo.str}>
+          {Object.entries(demos).map(([demoStr, demo]) => (
+            <tr key={demoStr}>
               <th scope="row">{demo.title}</th>
-              {libs.map(lib =>
-                <td key={lib.str}>
-                  <a role="button" onClick={onClick} data-url={`${lib.str}/${demo.str}`}>Demo</a>
+              {Object.entries(libs).map(([libStr, lib]) =>
+                <td key={libStr}>
+                  <a role="button" onClick={onClick} data-lib={libStr} data-demo={demoStr}>Demo</a>
+                  {lib.renders && demoStr in lib.renders &&
+                  <a role="button" onClick={onClick} data-yt={lib.renders[demoStr]}>Render</a>
+                  }
                 </td>
               )}
             </tr>
           ))}
         </tbody>
       </table>
-      <iframe allow="fullscreen" src={`/r/lqv-demos/${url}/`} />
+      {state.mode === "demo" ?
+        <iframe
+          allow="fullscreen"
+          src={`/r/lqv-demos/${state.lib}/${state.demo}/`} title={`${libs[state.lib].title} ${demos[state.demo].title} demo`}/> :
+        <iframe
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture"
+          src={`https://www.youtube-nocookie.com/embed/${state.yt}`}
+          title="YouTube video player" frameborder="0"></iframe>
+      }
     </div>
   );
 }
