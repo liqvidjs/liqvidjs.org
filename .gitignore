@@ -1,6 +1,10 @@
 # Dependencies
 node_modules
 
+# static assets
+*.mp4
+*.webm
+
 # Production
 /build
 build.tar.bz2
