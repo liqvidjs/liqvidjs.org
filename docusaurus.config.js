@@ -9,7 +9,7 @@ module.exports = {
   onBrokenMarkdownLinks: "warn",
   favicon: "/favicon.ico",
   organizationName: "liqvidjs", // Usually your GitHub org/user name.
-  projectName: "player", // Usually your repo name.
+  projectName: "liqvid", // Usually your repo name.
   scripts: [
     "https://unpkg.com/@liqvid/host/lv-host.js",
   ],
@@ -66,7 +66,7 @@ module.exports = {
           position: "right",
         },
         {
-          href: "https://github.com/liqvidjs/player",
+          href: "https://github.com/liqvidjs/liqvid",
           label: "GitHub",
           position: "right",
         },
@@ -110,7 +110,7 @@ module.exports = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/liqvidjs/player",
+              href: "https://github.com/liqvidjs/liqvid",
             },
             {
               label: "Product Hunt",
